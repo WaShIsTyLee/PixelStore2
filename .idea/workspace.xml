@@ -5,16 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b58af6a-48a4-4aa4-b7c7-eb37d1cd4fbd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/styles/primary.css" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/Layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/Layout.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/primary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/secondary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,9 +43,12 @@
     "Application.App.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "josant",
+
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/josant/IdeaProjects/PixelStore2",
+    "last_opened_file_path": "C:/Users/Washi/IdeaProjects/PixelStore",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,21 +65,6 @@
       <recent name="C:\Users\josant\IdeaProjects\PixelStore2\src\main\resources\org\example\view\styles" />
       <recent name="C:\Users\josant\IdeaProjects\PixelStore2\src\main\resources\org\example\view" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="PixelStore2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="PixelStore2" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -87,7 +83,9 @@
       <updated>1732262970908</updated>
       <workItem from="1732262971992" duration="60000" />
       <workItem from="1732263038685" duration="18000" />
-      <workItem from="1732263061574" duration="5579000" />
+      <workItem from="1732263061574" duration="2753000" />
+      <workItem from="1732266222167" duration="710000" />
+
     </task>
     <servers />
   </component>

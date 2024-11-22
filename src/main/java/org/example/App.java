@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-        public static Scene scene;
+    public static Scene scene;
     public static Stage stage;
     public static AppController currentController;
 
