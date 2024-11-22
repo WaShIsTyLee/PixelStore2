@@ -8,6 +8,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import org.example.App;
 
 public class PrimaryController extends Controller implements Initializable {
 

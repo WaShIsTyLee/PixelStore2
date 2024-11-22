@@ -1,6 +1,8 @@
 package org.example.view;
 
 
+import org.example.App;
+
 import java.io.IOException;
 
 public abstract class Controller {
