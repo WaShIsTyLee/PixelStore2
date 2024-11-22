@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b58af6a-48a4-4aa4-b7c7-eb37d1cd4fbd" name="Changes" comment="">
-
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BaseDatos/DataBaseConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Test/TestBD.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,10 +46,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
 
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-
+    "git-widget-placeholder": "RamaJuanje4",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Washi/IdeaProjects/PixelStore",
+    "last_opened_file_path": "C:/Users/Washi/IdeaProjects/PixelStore2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -61,9 +61,16 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Washi\IdeaProjects\PixelStore2" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\josant\IdeaProjects\PixelStore2\src\main\resources\org\example\view\styles" />
       <recent name="C:\Users\josant\IdeaProjects\PixelStore2\src\main\resources\org\example\view" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.Test" />
+      <recent name="org.example.BaseDatos" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -84,8 +91,7 @@
       <workItem from="1732262971992" duration="60000" />
       <workItem from="1732263038685" duration="18000" />
       <workItem from="1732263061574" duration="2753000" />
-      <workItem from="1732266222167" duration="710000" />
-
+      <workItem from="1732266222167" duration="4635000" />
     </task>
     <servers />
   </component>
