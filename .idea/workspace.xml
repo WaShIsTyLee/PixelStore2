@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b58af6a-48a4-4aa4-b7c7-eb37d1cd4fbd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
@@ -43,6 +44,7 @@
     "Application.App.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "RamaJuanje4",
     "kotlin-language-version-configured": "true",
@@ -63,6 +65,7 @@
       <recent name="C:\Users\Washi\IdeaProjects\PixelStore2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\josant\IdeaProjects\PixelStore2\src\main\resources\org\example\view\styles" />
       <recent name="C:\Users\josant\IdeaProjects\PixelStore2\src\main\resources\org\example\view" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
