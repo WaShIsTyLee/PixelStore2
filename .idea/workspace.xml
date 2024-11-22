@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b58af6a-48a4-4aa4-b7c7-eb37d1cd4fbd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/Logo_PixelStore.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/PrimaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/SecondaryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/styles/primary.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/Layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/Layout.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/primary.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/secondary.fxml" afterDir="false" />
@@ -41,7 +35,7 @@
     "Application.App.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "josant",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/josant/IdeaProjects/PixelStore2",
     "node.js.detected.package.eslint": "true",
@@ -57,6 +51,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\josant\IdeaProjects\PixelStore2\src\main\resources\org\example\view\styles" />
       <recent name="C:\Users\josant\IdeaProjects\PixelStore2\src\main\resources\org\example\view" />
     </key>
   </component>
@@ -92,7 +87,7 @@
       <updated>1732262970908</updated>
       <workItem from="1732262971992" duration="60000" />
       <workItem from="1732263038685" duration="18000" />
-      <workItem from="1732263061574" duration="2753000" />
+      <workItem from="1732263061574" duration="5579000" />
     </task>
     <servers />
   </component>
