@@ -12,10 +12,6 @@ import org.example.App;
 
 public class PrimaryController extends Controller implements Initializable {
 
-    @FXML
-    private void switchToSecondary() throws IOException {
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -25,10 +21,9 @@ public class PrimaryController extends Controller implements Initializable {
     public void onOpen(Object input) throws IOException {
 
     }
-    public void backtoSecondart(Event event) throws IOException {
-
+    @FXML
+    public void GoLogin() throws IOException {
         App.currentController.changeScene(Scenes.SECONDARY, null);
-        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
 }

@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import org.example.App;
 
 public class SecondaryController extends Controller implements Initializable {
 
@@ -21,5 +23,9 @@ public class SecondaryController extends Controller implements Initializable {
     @Override
     public void onOpen(Object input) throws IOException {
 
+    }
+    @FXML
+    public void GoPrimari() throws IOException {
+        App.currentController.changeScene(Scenes.PRIMARY, null);
     }
 }
