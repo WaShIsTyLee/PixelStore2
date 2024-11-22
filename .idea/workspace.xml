@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b58af6a-48a4-4aa4-b7c7-eb37d1cd4fbd" name="Changes" comment="">
+
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +43,10 @@
     "Application.App.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
+
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Washi/IdeaProjects/PixelStore",
     "node.js.detected.package.eslint": "true",
@@ -58,6 +62,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\josant\IdeaProjects\PixelStore2\src\main\resources\org\example\view\styles" />
       <recent name="C:\Users\josant\IdeaProjects\PixelStore2\src\main\resources\org\example\view" />
     </key>
   </component>
@@ -80,6 +85,7 @@
       <workItem from="1732263038685" duration="18000" />
       <workItem from="1732263061574" duration="2753000" />
       <workItem from="1732266222167" duration="710000" />
+
     </task>
     <servers />
   </component>
