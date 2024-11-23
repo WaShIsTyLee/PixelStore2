@@ -7,6 +7,15 @@ public class Desarrollador {
     private String nombre;
     private String pais;
 
+    public Desarrollador(String nombre, String pais) {
+        this.nombre = nombre;
+        this.pais = pais;
+    }
+
+    public Desarrollador(int id_desarrollador) {
+        this.id_desarrollador = id_desarrollador;
+    }
+
     public Desarrollador(int id_desarrollador, String nombre, String pais) {
         this.id_desarrollador = id_desarrollador;
         this.nombre = nombre;
