@@ -17,8 +17,19 @@ public class Usuario {
       this.administrador = administrador;
    }
 
+   public Usuario(String nombre, String email, String contrasena, boolean administrador) {
+      this.nombre = nombre;
+      this.email = email;
+      this.contrasena = contrasena;
+      this.administrador = administrador;
+   }
+
    public Usuario(int id_usuario) {
       this.id_usuario = id_usuario;
+   }
+
+   public Usuario() {
+
    }
 
    public int getId_usuario() {
