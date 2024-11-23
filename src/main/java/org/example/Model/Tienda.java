@@ -13,7 +13,14 @@ public class Tienda {
         this.telefono = telefono;
     }
 
-    public Tienda(){
+    public Tienda(String ubicacion, String telefono) {
+
+        this.ubicacion = ubicacion;
+        this.telefono = telefono;
+    }
+
+
+    public Tienda() {
 
     }
 

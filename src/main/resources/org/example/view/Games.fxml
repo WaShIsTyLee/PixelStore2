@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ControllerGames">
+   <children>
+      <ListView layoutX="25.0" layoutY="129.0" prefHeight="441.0" prefWidth="850.0" />
+      <Text layoutX="359.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Videojuegos" textAlignment="CENTER" wrappingWidth="180.29464721679688">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="48.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
