@@ -9,6 +9,13 @@ public class Videojuego {
     private float precio;
     private Desarrollador desarrollador;
 
+    public Videojuego(String nombre, String descripcion, float precio, Desarrollador desarrollador) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.desarrollador = desarrollador;
+    }
+
     public int getId_videojuego() {
         return id_videojuego;
     }
