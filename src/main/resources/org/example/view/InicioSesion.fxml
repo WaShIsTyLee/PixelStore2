@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Registrar.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.InicioSesionController">
+   <children>
+      <ImageView fitHeight="210.0" fitWidth="177.0" layoutX="363.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Logo_PixelStore.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imageFlechaAtras" fitHeight="52.0" fitWidth="51.0" layoutX="23.0" layoutY="14.0" onMouseClicked="#IrAPrimary" pickOnBounds="true" preserveRatio="true" styleClass="image-arrow">
+         <image>
+            <Image url="@flechaAtras.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+
+
+      <Text fill="#ff6600" layoutX="391.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar Sesión">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text fill="#ff6600" layoutX="335.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="#ff6600" layoutX="338.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField layoutX="338.0" layoutY="338.0" prefHeight="38.0" prefWidth="228.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <TextField layoutX="336.0" layoutY="436.0" prefHeight="38.0" prefWidth="228.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Button layoutX="389.0" layoutY="495.0" mnemonicParsing="false" text="Iniciar Sesión">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView fx:id="imageFlechaRegistrar" fitHeight="130.0" fitWidth="111.0" layoutX="781.0" layoutY="255.0" onMouseClicked="#IrARegistrar" pickOnBounds="true" preserveRatio="true" styleClass="image-arrow">
+         <image>
+            <Image url="@FlechaRegistrarse.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+
+      <Text fill="#ff6600" layoutX="789.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrate gratis" textAlignment="CENTER" wrappingWidth="69.8359375" />
+   </children>
+</AnchorPane>
