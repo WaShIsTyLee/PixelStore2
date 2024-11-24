@@ -23,7 +23,7 @@ public class PrimaryController extends Controller implements Initializable {
     }
     @FXML
     public void GoLogin() throws IOException {
-        App.currentController.changeScene(Scenes.SECONDARY, null);
+        App.currentController.changeScene(Scenes.PANTALLAADMIN, null);
     }
 
 }
