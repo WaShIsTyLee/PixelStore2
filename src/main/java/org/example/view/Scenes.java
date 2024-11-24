@@ -6,17 +6,18 @@ public enum Scenes {
     SECONDARY("/org/example/view/secondary.fxml"),
 
     REGISTRAR("/org/example/view/Registrar.fxml"),
-    INICIOSESION("/org/example/view/InicioSesion.fxml");
+    INICIOSESION("/org/example/view/InicioSesion.fxml"),
 
     PANTALLAADMIN("/org/example/view/PantallaPrincipalAdmin.fxml");
 
 
-
     private String url;
-    Scenes(String url){
-        this.url=url;
+
+    Scenes(String url) {
+        this.url = url;
     }
-    public String getURL(){
+
+    public String getURL() {
         return url;
     }
 }
