@@ -6,7 +6,7 @@ public enum Scenes {
     SECONDARY("/org/example/view/secondary.fxml"),
 
     REGISTRAR("/org/example/view/Registrar.fxml"),
-    INICIOSESION("/org/example/view/InicioSesion.fxml");
+    INICIOSESION("/org/example/view/InicioSesion.fxml"),
 
     PANTALLAADMIN("/org/example/view/PantallaPrincipalAdmin.fxml");
 
