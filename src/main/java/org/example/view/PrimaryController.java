@@ -27,11 +27,13 @@ public class PrimaryController extends Controller implements Initializable {
     }
     @FXML
     public void GoLogin() throws IOException {
+
         App.currentController.changeScene(Scenes.INICIOSESION, null);
     }
     @FXML
     public void IrARegistrar() throws IOException {
         App.currentController.changeScene(Scenes.REGISTRAR,null);
+
     }
 
 }

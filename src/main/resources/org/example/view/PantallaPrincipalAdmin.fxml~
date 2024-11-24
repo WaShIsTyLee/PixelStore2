@@ -12,10 +12,16 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/PantallaPrincipalAdmin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ControllerPantallaPrincipalAdmin">
     <children>
-        <!-- Se ha eliminado el cuadrado único para las imágenes y botones -->
+        <!-- Un único marco para todo el conjunto de imágenes y botones -->
+        <AnchorPane layoutX="100.0" layoutY="150.0" prefHeight="252.0" prefWidth="700.0">
+            <children>
+                <!-- Marco alrededor de las imágenes -->
+                <Rectangle arcHeight="10" arcWidth="10" fill="transparent" height="278.0" layoutX="60.0" stroke="white" strokeWidth="3" width="580.0" />
+            </children>
+        </AnchorPane>
 
-        <!-- HBox centrado dentro del AnchorPane, movido más abajo -->
-        <HBox alignment="CENTER" layoutX="100.0" layoutY="250.0" prefWidth="700.0" spacing="30.0">
+        <!-- HBox centrado dentro del AnchorPane -->
+        <HBox alignment="CENTER" layoutX="100.0" layoutY="200.0" prefWidth="700.0" spacing="30.0">
             <children>
                 <!-- Imagen 1 con su botón y borde -->
                 <VBox alignment="CENTER">
@@ -32,8 +38,7 @@
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <!-- Botón movido más abajo -->
-                        <Button fx:id="botonTienda" onAction="#GoToShops" text="Botón 1" layoutY="20.0"/>
+                        <Button fx:id="botonTienda" onAction="#GoToShops" text="Botón 1" />
                     </children>
                 </VBox>
 
@@ -52,8 +57,7 @@
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <!-- Botón movido más abajo -->
-                        <Button fx:id="botonJuegos" onAction="#GoToGames" text="Botón 2" layoutY="20.0"/>
+                        <Button fx:id="botonJuegos" onAction="#GoToGames" text="Botón 2" />
                     </children>
                 </VBox>
 
@@ -72,8 +76,7 @@
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <!-- Botón movido más abajo -->
-                        <Button fx:id="botonDesarrolladores" onAction="#GoToDevs" text="Botón 3" layoutY="20.0"/>
+                        <Button fx:id="botonDesarrolladores" onAction="#GoToDevs" text="Botón 3" />
                     </children>
                 </VBox>
             </children>
