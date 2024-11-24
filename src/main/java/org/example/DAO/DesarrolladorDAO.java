@@ -12,6 +12,7 @@ import java.sql.Statement;
 public class DesarrolladorDAO {
     private final static String INSERTE ="INSERT INTO Desarrollador(nombre,pais) VALUES (?, ?)";
     private final static String FINDBYID = "SELECT d.* FROM Desarrollador AS d WHERE d.id_desarrollador=?";
+    private final static String DELETE = "DELETE FROM desarrollador WHERE id_desarrollador";
 
     public Desarrollador save(Desarrollador entity){
         Desarrollador result = entity;
@@ -51,5 +52,18 @@ public class DesarrolladorDAO {
         }
 
         return result;
+    }
+    //Se tiene que cambiar la accion que hace en la base de datos
+    public Desarrollador delete(Desarrollador entity){
+        if (entity != null){
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(DELETE)){
+                pst.setInt(1,entity.getId_desarrollador());
+                pst.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                entity = null;
+            }
+        }
+        return entity;
     }
 }
