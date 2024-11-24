@@ -9,6 +9,9 @@ public class Videojuego {
     private float precio;
     private Desarrollador desarrollador;
 
+    public Videojuego() {
+    }
+
     public Videojuego(String nombre, String descripcion, float precio, Desarrollador desarrollador) {
         this.nombre = nombre;
         this.descripcion = descripcion;
