@@ -8,9 +8,13 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import org.example.App;
 
 public class PrimaryController extends Controller implements Initializable {
+
+    @FXML
+    Button button;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -23,7 +27,13 @@ public class PrimaryController extends Controller implements Initializable {
     }
     @FXML
     public void GoLogin() throws IOException {
-        App.currentController.changeScene(Scenes.SECONDARY, null);
+
+        App.currentController.changeScene(Scenes.INICIOSESION, null);
+    }
+    @FXML
+    public void IrARegistrar() throws IOException {
+        App.currentController.changeScene(Scenes.REGISTRAR,null);
+
     }
 
 }

@@ -1,0 +1,29 @@
+.button {
+    -fx-background-color: transparent; /* Fondo transparente */
+    -fx-text-fill: white; /* Texto blanco */
+    -fx-border-width: 0; /* Sin bordes visibles */
+    -fx-font-size: 14px; /* Tamaño de fuente ajustado */
+    -fx-padding: 10px 20px; /* Espaciado interno */
+    -fx-effect: none; /* Sin efectos por defecto */
+    -fx-transition: -fx-background-color 0.5s ease, -fx-text-fill 0.5s ease, -fx-effect 0.3s ease; /* Transiciones suaves */
+}
+
+/* Estilo cuando el ratón pasa sobre el botón */
+.button:hover {
+    -fx-background-color: #ff6600; /* Fondo anaranjado */
+    -fx-text-fill: black; /* Texto negro */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz amarilla */
+}
+
+/* Estilo para la imagen de flecha */
+.image-arrow {
+    -fx-background-color: transparent; /* Fondo transparente */
+    -fx-cursor: hand; /* Cambiar el cursor al pasar el ratón */
+    -fx-effect: none; /* Sin efectos por defecto */
+    -fx-transition: -fx-effect 0.3s ease; /* Transición suave para el efecto */
+}
+
+/* Estilo cuando el ratón pasa sobre la imagen de flecha */
+.image-arrow:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz amarilla */
+}
