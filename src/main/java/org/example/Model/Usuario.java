@@ -1,6 +1,8 @@
 package org.example.Model;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Usuario {
    private int id_usuario;
@@ -78,6 +80,13 @@ public class Usuario {
       if (o == null || getClass() != o.getClass()) return false;
       Usuario usuario = (Usuario) o;
       return Objects.equals(email, usuario.email);
+   }
+
+   public static boolean isAdministrator(String email) {
+      String regex = "^[a-zA-Z0-9._%+-]+@pixelstore\\.[a-zA-Z]{2,}$";
+      Pattern pattern = Pattern.compile(regex);
+      Matcher matcher = pattern.matcher(email);
+      return matcher.matches();
    }
 
    @Override
