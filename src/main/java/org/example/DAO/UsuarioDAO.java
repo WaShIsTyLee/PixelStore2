@@ -3,15 +3,16 @@ package org.example.DAO;
 import org.example.BaseDatos.ConnectionDB;
 import org.example.Model.Usuario;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UsuarioDAO {
     private final static String DELETE = "DELETE FROM usuario  WHERE id_usuario = ?";
     private final static String INSERT = "INSERT INTO usuario( nombre, email, contrasena, administrador) VALUES (?,?,?,?) ";
     private final static String FINDBYEMAIL = "SELECT * FROM usuario WHERE email = ?";
+    private final static String FINDALLEMAILS = "SELECT email FROM usuario";
 
     public Usuario delete(Usuario usuario) {
         if (usuario != null || usuario.getId_usuario() > 0) {
@@ -25,6 +26,21 @@ public class UsuarioDAO {
         return usuario;
     }
 
+    public ArrayList<Usuario> findAllEmails() {
+        ArrayList<Usuario> emails = new ArrayList<>();
+        try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDALLEMAILS)) {
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    emails.add(new Usuario(rs.getString("email")));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return emails;
+    }
+
+
     public Usuario insert(Usuario usuario) {
         if (usuario != null || usuario.getId_usuario() > 0) {
             try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(INSERT)) {
@@ -35,7 +51,7 @@ public class UsuarioDAO {
                 pst.setBoolean(4, usuario.isAdministrador());
                 pst.executeUpdate();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
         return usuario;
@@ -46,10 +62,7 @@ public class UsuarioDAO {
         Usuario usuarioAux = null;
 
         if (usuario != null && usuario.getEmail() != null) {
-            try (
-                    Connection conn = ConnectionDB.getConnection();
-                    PreparedStatement pst = conn.prepareStatement(FINDBYEMAIL)
-            ) {
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDBYEMAIL)) {
                 pst.setString(1, usuario.getEmail());
 
                 try (ResultSet rs = pst.executeQuery()) {
@@ -60,15 +73,14 @@ public class UsuarioDAO {
                         usuarioAux.setEmail(rs.getString("email"));
                         usuarioAux.setContrasena(rs.getString("contrasena"));
                         usuarioAux.setAdministrador(rs.getBoolean("administrador"));
-
                     }
                 }
             } catch (SQLException e) {
-                throw new RuntimeException("Error al buscar el usuario por ID", e);
+                throw new RuntimeException("Error al buscar el usuario por email", e);
             }
         }
-
         return usuarioAux;
     }
+
 
 }

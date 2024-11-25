@@ -2,8 +2,13 @@ package org.example.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import org.example.App;
+import org.example.DAO.UsuarioDAO;
+import org.example.Model.Usuario;
+import org.example.Utils.Sesion;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,6 +17,11 @@ import java.util.ResourceBundle;
 public class InicioSesionController extends Controller implements Initializable {
     @FXML
     ImageView imageFlechaAtras;
+    @FXML
+    TextField email;
+    @FXML
+    PasswordField contraseña;
+
 
     @FXML
     ImageView imageFlechaRegistrar;
@@ -23,17 +33,52 @@ public class InicioSesionController extends Controller implements Initializable 
 
     @Override
     public void onOpen(Object input) throws IOException {
+    }
+
+    public Usuario recogerDatos() throws IOException {
+        Usuario usuario = new Usuario();
+        usuario.setEmail(email.getText());
+        usuario.setContrasena(contraseña.getText());
+        return usuario;
+    }
+
+    public void logIn() throws IOException {
+        Usuario usuarioRecogido = recogerDatos();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        Usuario encontrado = usuarioDAO.findByEmail(usuarioRecogido);
+        if (encontrado == null) {
+            System.out.println("El usuario no existe");
+        }else{
+            if (usuarioRecogido.getContrasena().equals(encontrado.getContrasena()) && usuarioRecogido.getEmail().equals(encontrado.getEmail())) {
+                usuarioRecogido = encontrado;
+                Sesion.getInstancia().logIn(usuarioRecogido);
+                if (usuarioRecogido.isAdministrador()) {
+                    System.out.println("Sesion iniciada como admin");
+                    irAPantallaPrincipalAdmin();
+                } else {
+                    //CAMBIAR A PANTALLA PRINCIPAL DE NORMAL
+                    System.out.println("Sesion iniciada como usuario normal");
+                }
+            }else {
+                System.out.println("Los credenciales no coinciden");
+            }
+        }
 
     }
 
     @FXML
-    public void IrAPrimary () throws IOException {
-        App.currentController.changeScene(Scenes.PRIMARY,null);
+    public void IrAPrimary() throws IOException {
+        App.currentController.changeScene(Scenes.PRIMARY, null);
     }
 
     @FXML
-    public void IrARegistrar () throws IOException {
-        App.currentController.changeScene(Scenes.REGISTRAR,null);
+    public void IrARegistrar() throws IOException {
+        App.currentController.changeScene(Scenes.REGISTRAR, null);
+    }
+
+    @FXML
+    public void irAPantallaPrincipalAdmin() throws IOException {
+        App.currentController.changeScene(Scenes.PANTALLAADMIN, null);
     }
 
 

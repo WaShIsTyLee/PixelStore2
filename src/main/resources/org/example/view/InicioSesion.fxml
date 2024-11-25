@@ -42,11 +42,11 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField layoutX="338.0" layoutY="338.0" prefHeight="38.0" prefWidth="228.0" promptText="Email">
+      <TextField fx:id="email" layoutX="338.0" layoutY="338.0" prefHeight="38.0" prefWidth="228.0" promptText="Email">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <Button layoutX="389.0" layoutY="495.0" mnemonicParsing="false" text="Iniciar Sesión">
+      <Button layoutX="389.0" layoutY="495.0" mnemonicParsing="false" onAction="#logIn" text="Iniciar Sesión">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -60,6 +60,6 @@
       </ImageView>
 
       <Text fill="#ff6600" layoutX="789.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrate gratis" textAlignment="CENTER" wrappingWidth="69.8359375" />
-      <PasswordField layoutX="335.0" layoutY="432.0" prefHeight="38.0" prefWidth="228.0" promptText="Contraseña" />
+      <PasswordField fx:id="contraseña" layoutX="335.0" layoutY="432.0" prefHeight="38.0" prefWidth="228.0" promptText="Contraseña" />
    </children>
 </AnchorPane>
