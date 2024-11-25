@@ -12,6 +12,7 @@ import org.example.Model.Usuario;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RegistrarController extends Controller implements Initializable {
@@ -53,16 +54,35 @@ public class RegistrarController extends Controller implements Initializable {
     }
 
     public boolean comprobacionCampos() {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
         if (name.getText().isEmpty() || password.getText().isEmpty() || email.getText().isEmpty()) {
             return false;
         }
         return true;
     }
 
+    public boolean comprobarBD(Usuario usuario) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        ArrayList <Usuario> usuariosregistrados = usuarioDAO.findAllEmails();
+        for (Usuario usuario1 : usuariosregistrados){
+            if (usuario1.getEmail().equals(usuario.getEmail())) {
+                return false;
+            }
+        }
+            return true;
+    }
+
     public void registrar() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         Usuario usuario = recogerUsurio();
-        usuarioDAO.insert(usuario);
+        if (usuario == null) {
+            System.out.println("ERROR alguno de los campos esta vacio");
+        }else if (!comprobarBD(usuario)){
+            //ALERTA
+            System.out.println("Error email ya registrado");
+        } else {
+            usuarioDAO.insert(usuario);
+        }
     }
 
     @Override
