@@ -1,80 +1,45 @@
-/* Archivo: styles.css */
 
-/* Estilo base del botón */
-.button {
+/* Estilo para StackPane */
+.stackpane-hover {
     -fx-background-color: transparent; /* Fondo transparente */
-    -fx-text-fill: white; /* Texto blanco */
-    -fx-border-width: 2px; /* Borde fino */
+    -fx-border-width: 2px; /* Borde visible */
+    -fx-border-color: transparent; /* Inicialmente sin borde visible */
+    -fx-transition: -fx-border-color 0.3s ease, -fx-effect 0.3s ease; /* Transiciones suaves */
+}
+
+/* Efecto en hover para StackPane */
+.stackpane-hover:hover {
     -fx-border-color: #ff6600; /* Borde naranja */
-    -fx-font-size: 14px; /* Tamaño de fuente */
-    -fx-padding: 10px 20px; /* Espaciado interno */
-    -fx-font-family: "Arial", sans-serif; /* Fuente limpia */
-    -fx-effect: none; /* Sin efectos por defecto */
-    -fx-transition: -fx-background-color 0.3s ease, -fx-text-fill 0.3s ease, -fx-border-color 0.3s ease, -fx-shadow 0.3s ease; /* Transiciones suaves */
-    -fx-cursor: hand; /* Cambiar el cursor cuando se pasa sobre el botón */
+    -fx-effect: dropshadow(gaussian, rgba(255, 102, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz naranja */
 }
 
-/* Estilo cuando el ratón pasa sobre el botón */
-.button:hover {
-    -fx-background-color: #ff6600; /* Fondo naranja intenso */
-    -fx-text-fill: black; /* Texto negro */
-    -fx-border-color: #ffd700; /* Borde amarillo brillante */
-    -fx-effect: dropshadow(gaussian, rgba(255, 255, 0, 0.5), 10, 0.8, 0, 0); /* Efecto de luz amarilla */
-    -fx-shadow: rgba(255, 255, 255, 0.3) 0px 0px 10px 5px; /* Brillo suave alrededor del botón */
+/* Estilo para ImageView */
+.stackpane-hover .imageview-hover {
+    -fx-effect: none; /* Sin efecto por defecto */
+    -fx-transition: -fx-effect 0.3s ease; /* Transición suave */
 }
 
-/* Estilo base para el ImageView */
-.image-view {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0.5, 0, 0); /* Sombra detrás de la imagen */
-    -fx-padding: 10; /* Espaciado interno */
-    -fx-clip: smooth; /* Redondear las esquinas de las imágenes */
+.stackpane-hover:hover .imageview-hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 102, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz naranja */
 }
 
-/* Estilo para el VBox que contiene cada imagen y botón */
-.vbox {
-    -fx-background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
-    -fx-border-radius: 10px; /* Bordes redondeados */
-    -fx-padding: 15; /* Espaciado interno */
-    -fx-alignment: center; /* Alineación centrada */
-    -fx-spacing: 15; /* Espaciado entre los elementos dentro de cada VBox */
+/* Estilo para Text */
+.stackpane-hover .text-hover {
+    -fx-effect: none; /* Sin efecto por defecto */
+    -fx-transition: -fx-effect 0.3s ease; /* Transición suave */
 }
 
-/* Ajustar el AnchorPane principal (pantalla) */
-.anchor-pane {
-    -fx-background-color: #030212; /* Fondo oscuro */
+.stackpane-hover:hover .text-hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 102, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz naranja */
 }
 
-/* Sombra general para el contenedor de imágenes */
-.hbox {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 15, 0.7, 0, 0); /* Sombra en todo el contenedor */
+/* Estilo para ImageView */
+.imageview-hover {
+    -fx-effect: none; /* Sin efecto por defecto */
+    -fx-transition: -fx-effect 0.3s ease; /* Transición suave para el efecto */
 }
 
-/* Estilo para el marco de las imágenes (rectángulo) */
-.rectangle {
-    -fx-fill: transparent; /* Sin color de fondo */
-    -fx-stroke: #ff6600; /* Borde naranja */
-    -fx-stroke-width: 4; /* Grosor del borde */
-    -fx-arc-width: 15; /* Bordes redondeados */
-    -fx-arc-height: 15; /* Bordes redondeados */
-}
-
-/* Estilo adicional para la escena */
-.scene {
-    -fx-background-color: #030212; /* Fondo oscuro */
-}
-
-/* Estilo del botón de la aplicación cuando está centrado */
-.center-button {
-    -fx-background-color: #ff6600; /* Fondo naranja */
-    -fx-text-fill: white; /* Texto blanco */
-    -fx-font-size: 16px; /* Tamaño de la fuente */
-    -fx-padding: 15px 30px; /* Espaciado interno */
-    -fx-border-radius: 8px; /* Bordes redondeados */
-    -fx-border-color: #ffd700; /* Borde dorado */
-}
-
-/* Transición suave para el marco de las imágenes */
-.rectangle:hover {
-    -fx-stroke: #ffd700; /* Borde dorado al pasar el ratón */
-    -fx-stroke-width: 5px; /* Grosor del borde al pasar el ratón */
+.imageview-hover:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 102, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz naranja (#ff6600) */
+    -fx-cursor: hand; /* Cambiar el cursor a estilo de mano */
 }
