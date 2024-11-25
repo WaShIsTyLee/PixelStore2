@@ -21,7 +21,7 @@
 
         <VBox layoutX="114.0" layoutY="185.0" prefHeight="290.0" prefWidth="200.0">
             <children>
-                <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="stackpane-hover">
+                <StackPane fx:id="stackPaneJuego" onMouseClicked="#GoToGames" prefHeight="150.0" prefWidth="200.0" styleClass="stackpane-hover">
                     <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030212" height="290.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
                         <ImageView fx:id="imageJuegos" fitHeight="118.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview-hover">
@@ -29,7 +29,7 @@
                                 <Image url="@Fotos/mando.png" />
                             </image>
                         </ImageView>
-                        <Text fx:id="textJuegos" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="JUEGOS" StackPane.alignment="BOTTOM_CENTER" styleClass="text-hover">
+                        <Text fx:id="textJuegos" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-hover" text="JUEGOS" StackPane.alignment="BOTTOM_CENTER">
                             <StackPane.margin>
                                 <Insets bottom="30.0" />
                             </StackPane.margin>
@@ -42,7 +42,7 @@
             </children>
         </VBox>
 
-        <StackPane layoutX="358.0" layoutY="185.0" prefHeight="150.0" prefWidth="200.0" styleClass="stackpane-hover">
+        <StackPane fx:id="stackPaneTienda" layoutX="358.0" layoutY="185.0" onMouseClicked="#GoToShops" prefHeight="150.0" prefWidth="200.0" styleClass="stackpane-hover">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030212" height="290.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
                 <ImageView fx:id="imageTiendas" fitHeight="150.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview-hover">
@@ -50,7 +50,7 @@
                         <Image url="@Fotos/tienda.png" />
                     </image>
                 </ImageView>
-                <Text fx:id="textTiendas" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TIENDAS" StackPane.alignment="BOTTOM_CENTER" styleClass="text-hover">
+                <Text fx:id="textTiendas" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-hover" text="TIENDAS" StackPane.alignment="BOTTOM_CENTER">
                     <StackPane.margin>
                         <Insets bottom="30.0" />
                     </StackPane.margin>
@@ -61,7 +61,7 @@
             </children>
         </StackPane>
 
-        <StackPane layoutX="607.0" layoutY="185.0" prefHeight="150.0" prefWidth="200.0" styleClass="stackpane-hover">
+        <StackPane fx:id="stackPaneDesarrollador" layoutX="607.0" layoutY="185.0" onMouseClicked="#GoToDevs" prefHeight="150.0" prefWidth="200.0" styleClass="stackpane-hover">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030212" height="290.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
                 <ImageView fx:id="imageDesarrollador" fitHeight="142.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview-hover">
@@ -69,7 +69,7 @@
                         <Image url="@Fotos/Desarrollador.png" />
                     </image>
                 </ImageView>
-                <Text fx:id="textDesarrollador" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="DESARROLLADOR" StackPane.alignment="BOTTOM_CENTER" styleClass="text-hover">
+                <Text fx:id="textDesarrollador" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-hover" text="DESARROLLADOR" StackPane.alignment="BOTTOM_CENTER">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -92,7 +92,7 @@
             </image>
         </ImageView>
 
-        <ImageView fx:id="imageLogout" fitHeight="43.0" fitWidth="43.0" layoutX="837.0" layoutY="24.0" styleClass="imageview-hover">
+        <ImageView fx:id="salir" fitHeight="43.0" fitWidth="43.0" layoutX="837.0" layoutY="24.0" onMouseClicked="#GoToInicioSesionRegistrar" styleClass="imageview-hover">
             <image>
                 <Image url="@Fotos/logout.png" />
             </image>

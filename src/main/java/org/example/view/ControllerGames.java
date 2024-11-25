@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import org.example.App;
 import org.example.DAO.VideojuegoDAO;
@@ -20,6 +21,8 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class ControllerGames extends Controller implements Initializable {
+    @FXML
+    private ImageView atras;
     @FXML
     private ListView<Videojuego> videojuegos;
     @FXML
@@ -73,5 +76,10 @@ public class ControllerGames extends Controller implements Initializable {
     @FXML
     private void addGame() throws Exception {
         App.currentController.openModalv(Scenes.INSERTGAMES,"Añadiendo Videojuego",this,null);
+    }
+
+    @FXML
+    private void atras() throws Exception {
+        App.currentController.changeScene(Scenes.PANTALLAADMIN,null);
     }
 }
