@@ -11,15 +11,20 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Games.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ControllerGames">
    <children>
       <ListView fx:id="videojuegos" layoutX="25.0" layoutY="129.0" prefHeight="441.0" prefWidth="850.0" />
-      <Text fill="WHITE" layoutX="299.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Videojuegos" textAlignment="CENTER" wrappingWidth="277.0946350097656">
+      <Text fill="WHITE" layoutX="163.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Videojuegos" textAlignment="CENTER" wrappingWidth="277.0946350097656">
          <font>
             <Font name="Tw Cen MT Condensed" size="48.0" />
          </font>
       </Text>
-      <TextField layoutX="703.0" layoutY="65.0" promptText="Buscar" />
-      <ImageView fitHeight="94.0" fitWidth="83.0" layoutX="60.0" layoutY="18.0">
+      <TextField fx:id="buscador" layoutX="520.0" layoutY="65.0" onKeyPressed="#buscar" promptText="Buscar" />
+      <ImageView fitHeight="94.0" fitWidth="83.0" layoutX="25.0" layoutY="18.0">
          <image>
             <Image url="@Fotos/Logo_PixelStore.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="45.0" layoutX="821.0" layoutY="23.0" onMouseClicked="#addGame" rotate="-45.0">
+         <image>
+            <Image url="@Fotos/cerrarVentana.png" />
          </image>
       </ImageView>
    </children>
