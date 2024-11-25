@@ -8,11 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VideojuegoDAO {
     private final static String INSERTE ="INSERT INTO videojuego(nombre,precio,descripcion,id_desarrollador) VALUES (?, ?, ?, ?)";
     private final static String DELETE ="DELETE FROM videojuego WHERE id_videojuego=?";
     private final static String FINDBYID ="SELECT v.id_videojuego,v.nombre,v.precio,v.descripcion,v.id_desarrollador FROM videojuego AS v WHERE v.id_videojuego=?";
+    private final static String LISTGAMES = "SELECT v.nombre,v.precio,v.descripcion FROM videojuego AS v";
     public Videojuego save(Videojuego entity){
         Videojuego result = entity;
         if (entity == null) return result;
@@ -66,5 +69,21 @@ public class VideojuegoDAO {
             }
         }
         return entity;
+    }
+    public List<Videojuego> gameList(){
+        List<Videojuego> result = new ArrayList<>();
+        try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(LISTGAMES)) {
+            ResultSet res = pst.executeQuery();
+            while (res.next()){
+                Videojuego v = new Videojuego();
+                v.setNombre(res.getString("nombre"));
+                v.setPrecio(res.getFloat("precio"));
+                v.setDescripcion(res.getString("descripcion"));
+                result.add(v);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
