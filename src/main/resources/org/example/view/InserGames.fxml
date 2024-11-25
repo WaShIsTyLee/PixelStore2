@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Games.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ControllerSaveGames">
+   <children>
+      <ImageView fitHeight="126.0" fitWidth="109.0" layoutX="26.0" layoutY="14.0">
+         <image>
+            <Image url="@Fotos/Logo_PixelStore.jpg" />
+         </image>
+      </ImageView>
+      <TextField layoutX="375.0" layoutY="204.0" />
+      <TextField layoutX="375.0" layoutY="268.0" />
+      <TextField layoutX="376.0" layoutY="332.0" />
+   </children>
+</AnchorPane>

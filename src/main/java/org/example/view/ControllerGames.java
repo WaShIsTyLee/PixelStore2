@@ -7,7 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import org.example.App;
 import org.example.DAO.VideojuegoDAO;
 import org.example.Model.Videojuego;
 
@@ -15,10 +17,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ControllerGames extends Controller implements Initializable {
     @FXML
     private ListView<Videojuego> videojuegos;
+    @FXML
+    private TextField buscador;
     private ObservableList<Videojuego> games;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -57,5 +62,16 @@ public class ControllerGames extends Controller implements Initializable {
         this.games = FXCollections.observableArrayList(gameList);
         videojuegos.setItems(this.games);
     }
-
+    @FXML
+    public void buscar(){
+        ObservableList<Videojuego> filteGame = games.stream()
+                .filter(game -> game.getNombre().toLowerCase().contains(buscador.getText()))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+        videojuegos.setItems(filteGame);
+        videojuegos.refresh();
+    }
+    @FXML
+    private void addGame() throws Exception {
+        App.currentController.openModalv(Scenes.INSERTGAMES,"Añadiendo Videojuego",this,null);
+    }
 }
