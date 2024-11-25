@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="210.0" fitWidth="177.0" layoutX="363.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Logo_PixelStore.jpg" />
+            <Image url="@Fotos/Logo_PixelStore.jpg" />
          </image>
       </ImageView>
       <TextField fx:id="name" layoutX="336.0" layoutY="319.0" prefHeight="38.0" prefWidth="228.0" promptText="Nombre">
@@ -51,7 +51,7 @@
       </Text>
        <ImageView fx:id="imageFlechaAtras" fitHeight="52.0" fitWidth="51.0" layoutX="23.0" layoutY="14.0" onMouseClicked="#IrAPrimary" pickOnBounds="true" preserveRatio="true" styleClass="image-arrow">
            <image>
-               <Image url="@flechaAtras.png" />
+               <Image url="@Fotos/flechaAtras.png" />
            </image>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -59,7 +59,7 @@
        </ImageView>
       <ImageView fx:id="imageFlechaIncioSesión" fitHeight="130.0" fitWidth="111.0" layoutY="264.0" onMouseClicked="#IrAInicioSesion" pickOnBounds="true" preserveRatio="true" styleClass="image-arrow">
          <image>
-            <Image url="@flechaInicioSesion.png" />
+            <Image url="@Fotos/flechaInicioSesion.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />

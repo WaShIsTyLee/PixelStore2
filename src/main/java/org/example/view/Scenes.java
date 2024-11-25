@@ -2,7 +2,7 @@ package org.example.view;
 
 public enum Scenes {
     ROOT("/org/example/view/Layout.fxml"),
-    PRIMARY("/org/example/view/primary.fxml"),
+    PRIMARY("/org/example/view/InicioSesionRegistrar.fxml"),
     SECONDARY("/org/example/view/secondary.fxml"),
     GAMES("/org/example/view/Games.fxml"),
     REGISTRAR("/org/example/view/Registrar.fxml"),
