@@ -19,7 +19,7 @@
       <TextField layoutX="703.0" layoutY="65.0" promptText="Buscar" />
       <ImageView fitHeight="94.0" fitWidth="83.0" layoutX="60.0" layoutY="18.0">
          <image>
-            <Image url="@Logo_PixelStore.jpg" />
+            <Image url="@Fotos/Logo_PixelStore.jpg" />
          </image>
       </ImageView>
    </children>

@@ -10,7 +10,7 @@
    <children>
       <ImageView fitHeight="200.0" fitWidth="168.0" layoutX="216.0" layoutY="24.0">
          <image>
-            <Image url="@Logo_PixelStore.jpg" />
+            <Image url="@Fotos/Logo_PixelStore.jpg" />
          </image>
       </ImageView>
       <Button layoutX="190.0" layoutY="270.0" mnemonicParsing="false" onAction="#GoLogin" text="Iniciar" />

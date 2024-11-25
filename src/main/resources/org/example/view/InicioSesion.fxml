@@ -14,12 +14,12 @@
    <children>
       <ImageView fitHeight="210.0" fitWidth="177.0" layoutX="363.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Logo_PixelStore.jpg" />
+            <Image url="@Fotos/Logo_PixelStore.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="imageFlechaAtras" fitHeight="52.0" fitWidth="51.0" layoutX="23.0" layoutY="14.0" onMouseClicked="#IrAPrimary" pickOnBounds="true" preserveRatio="true" styleClass="image-arrow">
          <image>
-            <Image url="@flechaAtras.png" />
+            <Image url="@Fotos/flechaAtras.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -52,7 +52,7 @@
          </cursor></Button>
       <ImageView fx:id="imageFlechaRegistrar" fitHeight="130.0" fitWidth="111.0" layoutX="781.0" layoutY="255.0" onMouseClicked="#IrARegistrar" pickOnBounds="true" preserveRatio="true" styleClass="image-arrow">
          <image>
-            <Image url="@FlechaRegistrarse.png" />
+            <Image url="@Fotos/FlechaRegistrarse.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
