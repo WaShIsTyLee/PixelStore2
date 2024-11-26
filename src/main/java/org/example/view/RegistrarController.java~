@@ -36,7 +36,7 @@ public class RegistrarController extends Controller implements Initializable {
 
     public Usuario recogerUsurio() {
         Usuario usuarioaux = new Usuario();
-        if (comprobacionCampos() && Usuario.isValidEmail(email.getText())) {
+        if (comprobacionCampos()) {
             usuarioaux.setNombre(name.getText());
             usuarioaux.setContrasena(password.getText());
             usuarioaux.setEmail(email.getText());

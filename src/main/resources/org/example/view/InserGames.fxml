@@ -18,20 +18,20 @@
             <Image url="@Fotos/Logo_PixelStore.jpg" />
          </image>
       </ImageView>
-      <TextField layoutX="135.0" layoutY="170.0" />
-      <TextArea layoutX="135.0" layoutY="340.0" prefHeight="200.0" prefWidth="200.0" />
-      <TextField layoutX="136.0" layoutY="255.0" />
+      <TextField fx:id="nombreJuego" layoutX="135.0" layoutY="170.0" />
+      <TextArea fx:id="DescripcionJuego" layoutX="135.0" layoutY="340.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="precioJuego" layoutX="136.0" layoutY="255.0" />
       <Label layoutX="136.0" layoutY="140.0" text="Nombre" textFill="#ff6600" />
       <Label layoutX="136.0" layoutY="222.0" text="Precio" textFill="#ff6600" />
       <Label layoutX="136.0" layoutY="310.0" text="Descripcion" textFill="#ff6600" />
-      <ComboBox layoutX="335.0" layoutY="173.0" prefWidth="150.0" />
+      <ComboBox fx:id="comboBoxDesarrollador" layoutX="335.0" layoutY="173.0" prefWidth="150.0" />
       <Label layoutX="335.0" layoutY="140.0" text="Desarrollador" textFill="#ff6600" />
       <Text fill="#ff6600" layoutX="169.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Videojuego" wrappingWidth="185.40069580078125">
          <font>
             <Font size="31.0" />
          </font>
       </Text>
-      <Button layoutX="381.0" layoutY="515.0" mnemonicParsing="false" text="Añadir" />
+      <Button fx:id="buttonGuardar" layoutX="381.0" layoutY="515.0" mnemonicParsing="false" text="Añadir" />
       <ImageView fitHeight="338.0" fitWidth="324.0" layoutX="523.0" layoutY="186.0">
          <image>
             <Image url="@Fotos/Portada.jpg" />

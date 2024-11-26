@@ -38,6 +38,7 @@ public class ControllerSaveGames extends Controller implements Initializable {
             desarrolladoresString.add(desarrollador.getNombre());
         }
         ObservableList<String> desarrolladoresList = FXCollections.observableArrayList(desarrolladoresString);
+        comboBoxDesarrollador.setDe
         comboBoxDesarrollador.setItems(desarrolladoresList);
     }
 
