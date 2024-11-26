@@ -50,6 +50,13 @@ public class Desarrollador {
         this.pais = pais;
     }
 
+    public ArrayList<Videojuego> getVideojuegos() {
+        return videojuegos;
+    }
+    public void setVideojuegos(ArrayList<Videojuego> videojuegos) {
+        this.videojuegos = videojuegos;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
