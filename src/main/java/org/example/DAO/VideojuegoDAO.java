@@ -15,8 +15,9 @@ public class VideojuegoDAO {
     private final static String INSERTE = "INSERT INTO videojuego(nombre,precio,descripcion,id_desarrollador) VALUES (?, ?, ?, ?)";
     private final static String DELETE = "DELETE FROM videojuego WHERE id_videojuego=?";
     private final static String FINDBYID = "SELECT v.id_videojuego,v.nombre,v.precio,v.descripcion,v.id_desarrollador FROM videojuego AS v WHERE v.id_videojuego=?";
-    private final static String LISTGAMES = "SELECT v.nombre,v.precio,v.descripcion, v.id_desarrollador FROM videojuego AS v";
+    private final static String LISTGAMES = "SELECT v.id_videojuego, v.nombre,v.precio,v.descripcion, v.id_desarrollador FROM videojuego AS v";
     private final static String FINDALLNAMES = "SELECT v.nombre FROM videojuego AS v";
+    private final static String UPDATE = "UPDATE videojuego SET nombre=?, precio=?, descripcion=?, id_desarrollador=? WHERE id_videojuego=?";
 
 
     public Videojuego save(Videojuego entity) {
@@ -96,6 +97,7 @@ public class VideojuegoDAO {
             while (res.next()){
                 DesarrolladorDAO dao = new DesarrolladorDAO();
                 Videojuego v = new Videojuego();
+                v.setId_videojuego(res.getInt("id_videojuego"));
                 v.setNombre(res.getString("nombre"));
                 v.setPrecio(res.getFloat("precio"));
                 v.setDescripcion(res.getString("descripcion"));
@@ -107,5 +109,35 @@ public class VideojuegoDAO {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public void update(Videojuego entity) {
+        if (entity != null) {
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(UPDATE)) {
+                // Configurar los parámetros del PreparedStatement
+                pst.setString(1, entity.getNombre());
+                pst.setFloat(2, entity.getPrecio());
+                pst.setString(3, entity.getDescripcion());
+                pst.setInt(4, entity.getDesarrollador().getId_desarrollador());
+                pst.setInt(5, entity.getId_videojuego());
+
+                // Ejecutar la actualización
+                int filasActualizadas = pst.executeUpdate();
+
+                // Validar si se actualizó correctamente
+                if (filasActualizadas > 0) {
+                    System.out.println("Éxito: Videojuego actualizado correctamente.");
+                } else {
+                    System.out.println("Advertencia: No se encontró el videojuego para actualizar.");
+                }
+            } catch (SQLException e) {
+                // Manejar la excepción
+                System.err.println("Error durante la actualización: " + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Error: La entidad proporcionada es nula.");
+        }
+
     }
 }
