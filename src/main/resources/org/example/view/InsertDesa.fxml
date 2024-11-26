@@ -16,11 +16,13 @@
             <Image url="@Fotos/Logo_PixelStore.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="nombreDesa" layoutX="180.0" layoutY="221.0" onAction="#insertar" />
-      <TextField fx:id="pais" layoutX="180.0" layoutY="318.0" onAction="#insertar" />
-      <Label layoutX="179.0" layoutY="178.0" text="Nombre" textFill="#ff6600" />
-      <Label layoutX="180.0" layoutY="276.0" text="Pais" textFill="#ff6600" />
-      <Text fill="#ff6600" layoutX="180.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Desarrollador" wrappingWidth="348.40069580078125">
+
+      <TextField fx:id="nombreDesa" layoutX="135.0" layoutY="170.0" onAction="#insertar" />
+      <TextField fx:id="pais" layoutX="136.0" layoutY="255.0" onAction="#insertar" />
+      <Label layoutX="136.0" layoutY="140.0" text="Nombre" textFill="#ff6600" />
+      <Label layoutX="136.0" layoutY="222.0" text="Pais" textFill="#ff6600" />
+      <Text fill="#ff6600" layoutX="169.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos Desarrollador" wrappingWidth="185.40069580078125">
+
          <font>
             <Font size="31.0" />
          </font>

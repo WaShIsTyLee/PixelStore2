@@ -77,7 +77,7 @@ public class ControllerDesarrollador extends Controller implements Initializable
     }
     @FXML
     private void addDesarrollador() throws Exception {
-        App.currentController.openModalv(Scenes.ADDDESARROLLADOR,"Añadiendo Desarrollador",this,null);
+        App.currentController.openModalv(Scenes.ADDDESARROLLADOR,"Guardando Desarrollador",this,null);
     }
     @FXML
     private void modifyDesa() throws Exception {
