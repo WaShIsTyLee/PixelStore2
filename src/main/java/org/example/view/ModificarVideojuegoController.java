@@ -60,22 +60,24 @@ public class ModificarVideojuegoController extends Controller implements Initial
         cmbDesarrolador.setItems(string);
 
     }
-
-    public boolean comprobacionCampos() {
-
+    public boolean validarNombreParaUpdate() {
         VideojuegoDAO dao = new VideojuegoDAO();
         ArrayList<String> namesVideojuegos = dao.findAllNames();
+        String nombreIngresado = tfNombre.getText();
 
         for (String name : namesVideojuegos) {
-            if (name.equalsIgnoreCase(tfNombre.getText())) { // Comparación insensible a mayúsculas
-                // ALERTA: El nombre del juego ya existe
-                System.out.println("Error: El nombre del videojuego ya existe.");
-                return false;
-            }else {
-
+            if (name.equalsIgnoreCase(nombreIngresado)) {
+                if (!name.equalsIgnoreCase(videojuegoCapturado.getNombre())) {
+                    // ALERTA: El nombre ya pertenece a otro videojuego
+                    System.out.println("Error: El nombre ingresado ya existe para otro videojuego.");
+                    return false;
+                }
             }
         }
+        return true; // Nombre válido (es el mismo que tenía o no existe en la base)
+    }
 
+    public boolean validarCampos() {
         if (cmbDesarrolador.getValue() == null || tfNombre.getText().isEmpty() ||
                 tfPrecio.getText().isEmpty() || tfDescripcion.getText().isEmpty()) {
             // ALERTA: Campos vacíos
@@ -83,22 +85,53 @@ public class ModificarVideojuegoController extends Controller implements Initial
             return false;
         }
 
+        try {
+            Float.parseFloat(tfPrecio.getText());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: El precio debe ser un número válido.");
+            return false;
+        }
+
         return true;
     }
-    public void recogerDatos(){
+
+    public boolean comprobacionCampos() {
+        // Combina ambas validaciones
+        return validarNombreParaUpdate() && validarCampos();
+    }
+
+    public Videojuego recogerDatos() {
+        if (!comprobacionCampos()) {
+            // Si la validación falla, no se recoge ni actualiza
+            System.out.println("Error: No se puede procesar debido a validaciones fallidas.");
+            return null;
+        }
+
+        // Recoge los datos para la actualización
         Videojuego videojuego = new Videojuego();
         videojuego.setNombre(tfNombre.getText());
         videojuego.setDescripcion(tfDescripcion.getText());
         videojuego.setPrecio(Float.parseFloat(tfPrecio.getText()));
         videojuego.setDesarrollador(videojuegoCapturado.getDesarrollador());
-        modificarJuego(videojuego);
+        videojuego.setId_videojuego(videojuegoCapturado.getId_videojuego());
+        return videojuego;
     }
+
     @FXML
-    public void modificarJuego(Videojuego videojuego) {
-        VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
-        if (comprobacionCampos()) {
-            videojuegoDAO.update(videojuego);
-            //alerta videojuego modificado
+    public void modificarJuego2() {
+        // Validar y recoger los datos
+        Videojuego videojuegoActualizado = recogerDatos();
+
+        if (videojuegoActualizado == null) {
+            // Si la validación falla, detener el proceso
+            System.out.println("Error: No se puede modificar el videojuego debido a errores de validación.");
+            return;
         }
+
+        // Realizar el update en la base de datos
+        VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
+        videojuegoDAO.update(videojuegoActualizado);
+
     }
+
 }

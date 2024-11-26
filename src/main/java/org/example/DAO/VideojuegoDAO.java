@@ -111,17 +111,32 @@ public class VideojuegoDAO {
         return result;
     }
 
-    public void update (Videojuego entity){
-        if (entity !=null){
+    public void update(Videojuego entity) {
+        if (entity != null) {
             try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(UPDATE)) {
+                // Configurar los parámetros del PreparedStatement
                 pst.setString(1, entity.getNombre());
                 pst.setFloat(2, entity.getPrecio());
                 pst.setString(3, entity.getDescripcion());
                 pst.setInt(4, entity.getDesarrollador().getId_desarrollador());
                 pst.setInt(5, entity.getId_videojuego());
+
+                // Ejecutar la actualización
+                int filasActualizadas = pst.executeUpdate();
+
+                // Validar si se actualizó correctamente
+                if (filasActualizadas > 0) {
+                    System.out.println("Éxito: Videojuego actualizado correctamente.");
+                } else {
+                    System.out.println("Advertencia: No se encontró el videojuego para actualizar.");
+                }
             } catch (SQLException e) {
+                // Manejar la excepción
+                System.err.println("Error durante la actualización: " + e.getMessage());
                 throw new RuntimeException(e);
             }
+        } else {
+            System.out.println("Error: La entidad proporcionada es nula.");
         }
 
     }
