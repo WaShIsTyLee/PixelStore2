@@ -16,8 +16,8 @@
             <Image url="@Fotos/Logo_PixelStore.jpg" />
          </image>
       </ImageView>
-      <TextField layoutX="135.0" layoutY="170.0" />
-      <TextField layoutX="136.0" layoutY="255.0" />
+      <TextField fx:id="nombreDesa" layoutX="135.0" layoutY="170.0" onAction="#insertar" />
+      <TextField fx:id="pais" layoutX="136.0" layoutY="255.0" onAction="#insertar" />
       <Label layoutX="136.0" layoutY="140.0" text="Nombre" textFill="#ff6600" />
       <Label layoutX="136.0" layoutY="222.0" text="Pais" textFill="#ff6600" />
       <Text fill="#ff6600" layoutX="169.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Desarrollador" wrappingWidth="185.40069580078125">
@@ -25,7 +25,7 @@
             <Font size="31.0" />
          </font>
       </Text>
-      <Button layoutX="169.0" layoutY="373.0" mnemonicParsing="false" text="Añadir" />
+      <Button fx:id="Añadir" layoutX="169.0" layoutY="373.0" mnemonicParsing="false" onAction="#AddDesarrollador" onMouseClicked="#closeWindow" text="Añadir" />
       <ImageView fitHeight="338.0" fitWidth="324.0" layoutX="450.0" layoutY="149.0">
          <image>
             <Image url="@Fotos/Portada.jpg" />
