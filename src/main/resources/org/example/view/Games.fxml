@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Games.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ControllerGames">
    <children>
-      <ListView fx:id="videojuegos" layoutX="25.0" layoutY="129.0" prefHeight="441.0" prefWidth="850.0" />
+      <ListView fx:id="videojuegos" layoutX="25.0" layoutY="129.0" onMouseClicked="#GoToModifyDeleteGames" prefHeight="441.0" prefWidth="850.0" />
       <Text fill="WHITE" layoutX="163.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Videojuegos" textAlignment="CENTER" wrappingWidth="277.0946350097656">
          <font>
             <Font name="Tw Cen MT Condensed" size="48.0" />
