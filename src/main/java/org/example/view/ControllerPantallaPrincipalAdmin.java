@@ -49,7 +49,7 @@ public class ControllerPantallaPrincipalAdmin extends Controller implements Init
     }
     @FXML
     public void GoToDevs() throws IOException {
-        App.currentController.changeScene(Scenes.SECONDARY, null);
+        App.currentController.changeScene(Scenes.DESARROLLADORES, null);
     }
     @FXML
     public void GoToGames() throws IOException {
