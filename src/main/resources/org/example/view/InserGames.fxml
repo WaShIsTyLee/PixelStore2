@@ -31,7 +31,7 @@
             <Font size="31.0" />
          </font>
       </Text>
-      <Button fx:id="buttonGuardar" layoutX="381.0" layoutY="515.0" mnemonicParsing="false" text="Añadir" />
+      <Button fx:id="buttonGuardar" layoutX="381.0" layoutY="515.0" mnemonicParsing="false" onAction="#añadiJuegoBD" text="Añadir" />
       <ImageView fitHeight="338.0" fitWidth="324.0" layoutX="523.0" layoutY="186.0">
          <image>
             <Image url="@Fotos/Portada.jpg" />

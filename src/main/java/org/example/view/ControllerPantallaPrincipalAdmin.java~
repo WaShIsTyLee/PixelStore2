@@ -33,7 +33,12 @@ public class ControllerPantallaPrincipalAdmin extends Controller implements Init
 
     @Override
     public void onOpen(Object input) throws IOException {
-       texto.setText(Sesion.getInstancia().getUsuarioIniciado().getNombre());
+        if (Sesion.getInstancia().getUsuarioIniciado().isAdministrador()){
+            texto.setText("Bienvenido, " + Sesion.getInstancia().getUsuarioIniciado().getNombre() +
+                    " has inciado sesion como Administrador");
+        }else{
+            texto.setText("Bienvenido, " + Sesion.getInstancia().getUsuarioIniciado().getNombre());
+        }
     }
 
 
