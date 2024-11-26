@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Games.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ControllerDesarrollador">
+   <children>
+      <ListView layoutX="25.0" layoutY="129.0" prefHeight="441.0" prefWidth="850.0" />
+      <Text fill="WHITE" layoutX="162.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desarrollador" textAlignment="CENTER" wrappingWidth="287.4946594238281">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="48.0" />
+         </font>
+      </Text>
+      <TextField layoutX="501.0" layoutY="55.0" promptText="Buscar">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <ImageView fitHeight="94.0" fitWidth="83.0" layoutX="25.0" layoutY="18.0">
+         <image>
+            <Image url="@Fotos/Logo_PixelStore.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="45.0" layoutX="831.0" layoutY="42.0" rotate="-45.0" styleClass="highlight">
+         <image>
+            <Image url="@Fotos/cerrarVentana.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="45.0" layoutX="770.0" layoutY="44.0" styleClass="highlight">
+         <image>
+            <Image url="@Fotos/flechaAtras.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>
