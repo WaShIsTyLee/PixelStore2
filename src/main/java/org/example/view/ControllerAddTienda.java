@@ -1,0 +1,51 @@
+package org.example.view;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+import org.example.DAO.TiendaDAO;
+import org.example.Model.Tienda;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ControllerAddTienda extends Controller implements Initializable {
+    @FXML
+    TextField telefono;
+
+    @FXML
+    TextField direccion;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
+
+    @Override
+    public void onOpen(Object input) throws IOException {
+    }
+
+    public Tienda recogerDatos() {
+        Tienda tiendaAux = new Tienda();
+        if (comprobarDatos()) {
+            tiendaAux.setUbicacion(direccion.getText());
+            tiendaAux.setTelefono(telefono.getText());
+            return tiendaAux;
+        }
+        return null;
+    }
+
+    public boolean comprobarDatos() {
+        if (direccion.getText().isEmpty() || telefono.getText().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+    public void insertarTiendaBD(){
+        TiendaDAO tdao = new TiendaDAO();
+        Tienda tienda = recogerDatos();
+        tdao.insert(tienda);
+    }
+}

@@ -46,6 +46,7 @@ public class ControllerDesaAdd extends Controller implements Initializable {
             if (!exisDesa(nombreD) && !paisD.trim().isEmpty()){
                 nwDesa.setNombre(nombreD);
                 nwDesa.setPais(paisD);
+
             }
         }else {
             if (!nombreD.trim().isEmpty()){
