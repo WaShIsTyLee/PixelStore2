@@ -48,7 +48,7 @@
             <Image url="@Fotos/Portada.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="664.0" layoutY="512.0" mnemonicParsing="false" style="-fx-background-color: #ff6600;" stylesheets="@styles/primary.css" text="Eliminar">
+      <Button fx:id="btnBorrar" layoutX="664.0" layoutY="512.0" mnemonicParsing="false" onAction="#borrarJuego" style="-fx-background-color: #ff6600;" stylesheets="@styles/primary.css" text="Eliminar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

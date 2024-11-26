@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import org.example.App;
 import org.example.DAO.DesarrolladorDAO;
 import org.example.DAO.VideojuegoDAO;
 import org.example.Model.Desarrollador;
@@ -31,6 +33,10 @@ public class ModificarVideojuegoController extends Controller implements Initial
     ComboBox cmbDesarrolador;
     @FXML
     Button btnGuardar;
+
+    @FXML
+    Button btnBorrar;
+
 
     Videojuego videojuegoCapturado = new Videojuego();
 
@@ -118,7 +124,7 @@ public class ModificarVideojuegoController extends Controller implements Initial
     }
 
     @FXML
-    public void modificarJuego2() {
+    public void modificarJuego2() throws IOException {
         // Validar y recoger los datos
         Videojuego videojuegoActualizado = recogerDatos();
 
@@ -131,7 +137,18 @@ public class ModificarVideojuegoController extends Controller implements Initial
         // Realizar el update en la base de datos
         VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
         videojuegoDAO.update(videojuegoActualizado);
+        Stage currentStage = (Stage) btnGuardar.getScene().getWindow();
+        currentStage.close();
 
+    }
+
+    @FXML
+    public void borrarJuego() throws IOException {
+        VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
+        videojuegoDAO.delete(videojuegoCapturado);
+        Stage currentStage = (Stage) btnBorrar.getScene().getWindow();
+        currentStage.close();
+        App.currentController.changeScene(Scenes.GAMES,null);
     }
 
 }
