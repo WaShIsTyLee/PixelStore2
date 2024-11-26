@@ -94,4 +94,6 @@ public class ControllerGames extends Controller implements Initializable {
         Videojuego videojuegoCapturado = videojuegos.getSelectionModel().getSelectedItem();
         App.currentController.openModalv(Scenes.MODIFICARVIDEOJUEGO,"Modificar Videojuego",this,videojuegoCapturado);
     }
+
+
 }
