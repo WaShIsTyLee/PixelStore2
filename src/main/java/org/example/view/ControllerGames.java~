@@ -27,9 +27,6 @@ public class ControllerGames extends Controller implements Initializable {
     private ListView<Videojuego> videojuegos;
     @FXML
     private TextField buscador;
-
-
-
     private ObservableList<Videojuego> games;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,10 +46,9 @@ public class ControllerGames extends Controller implements Initializable {
                     Label nombre = new Label("Nombre: " + item.getNombre());
                     Label precio = new Label("Precio: $" + String.format("%.2f", item.getPrecio()));
                     Label descripcion = new Label("Descripción: " + item.getDescripcion());
-                    Label desarrollador = new Label("Desarrollador: " + item.getDesarrollador().getNombre());
                     descripcion.setWrapText(true);
 
-                    container.getChildren().addAll(nombre, precio, descripcion,desarrollador);
+                    container.getChildren().addAll(nombre, precio, descripcion);
 
                     setGraphic(container);
                 }
@@ -85,13 +81,5 @@ public class ControllerGames extends Controller implements Initializable {
     @FXML
     private void atras() throws Exception {
         App.currentController.changeScene(Scenes.PANTALLAADMIN,null);
-    }
-
-
-
-    @FXML
-    private void GoToModifyDeleteGames() throws Exception {
-        Videojuego videojuegoCapturado = videojuegos.getSelectionModel().getSelectedItem();
-        App.currentController.openModalv(Scenes.MODIFICARVIDEOJUEGO,"Modificar Videojuego",this,videojuegoCapturado);
     }
 }
