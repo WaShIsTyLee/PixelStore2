@@ -20,7 +20,7 @@
       <TextField fx:id="pais" layoutX="136.0" layoutY="255.0" onAction="#insertar" />
       <Label layoutX="136.0" layoutY="140.0" text="Nombre" textFill="#ff6600" />
       <Label layoutX="136.0" layoutY="222.0" text="Pais" textFill="#ff6600" />
-      <Text fill="#ff6600" layoutX="169.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Desarrollador" wrappingWidth="185.40069580078125">
+      <Text fill="#ff6600" layoutX="169.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos Desarrollador" wrappingWidth="185.40069580078125">
          <font>
             <Font size="31.0" />
          </font>

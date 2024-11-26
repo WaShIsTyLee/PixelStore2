@@ -42,9 +42,9 @@ public class ControllerDesaAdd extends Controller implements Initializable {
         String paisD = pais.getText();
         if (developer == null){
             if (!exisDesa(nombreD) && !paisD.trim().isEmpty()){
+                nwDesa = new Desarrollador();
                 nwDesa.setNombre(nombreD);
                 nwDesa.setPais(paisD);
-
             }
         }else {
             if (!nombreD.trim().isEmpty()){
@@ -52,7 +52,7 @@ public class ControllerDesaAdd extends Controller implements Initializable {
             }if (!paisD.trim().isEmpty()) {
                 developer.setPais(paisD);
             }
-             nwDesa=developer;
+             nwDesa = developer;
         }
 
         return nwDesa;
