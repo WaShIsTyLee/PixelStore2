@@ -139,6 +139,8 @@ public class ModificarVideojuegoController extends Controller implements Initial
         videojuegoDAO.update(videojuegoActualizado);
         Stage currentStage = (Stage) btnGuardar.getScene().getWindow();
         currentStage.close();
+        App.currentController.changeScene(Scenes.GAMES,null);
+
 
     }
 
