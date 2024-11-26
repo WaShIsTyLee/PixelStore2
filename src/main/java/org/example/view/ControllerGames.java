@@ -27,6 +27,9 @@ public class ControllerGames extends Controller implements Initializable {
     private ListView<Videojuego> videojuegos;
     @FXML
     private TextField buscador;
+
+
+
     private ObservableList<Videojuego> games;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -82,5 +85,13 @@ public class ControllerGames extends Controller implements Initializable {
     @FXML
     private void atras() throws Exception {
         App.currentController.changeScene(Scenes.PANTALLAADMIN,null);
+    }
+
+
+
+    @FXML
+    private void GoToModifyDeleteGames() throws Exception {
+        Videojuego videojuegoCapturado = videojuegos.getSelectionModel().getSelectedItem();
+        App.currentController.openModalv(Scenes.MODIFICARVIDEOJUEGO,"Modificar Videojuego",this,videojuegoCapturado);
     }
 }

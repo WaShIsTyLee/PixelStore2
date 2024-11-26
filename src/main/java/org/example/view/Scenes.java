@@ -9,8 +9,12 @@ public enum Scenes {
     INICIOSESION("/org/example/view/InicioSesion.fxml"),
     PANTALLAADMIN("/org/example/view/PantallaPrincipalAdmin.fxml"),
     INSERTGAMES("/org/example/view/InserGames.fxml"),
+
+    MODIFICARVIDEOJUEGO("/org/example/view/ModificarVideoJuego.fxml"),
+ 
     DESARROLLADORES("/org/example/view/Desarrolladores.fxml"),
     ADDDESARROLLADOR("/org/example/view/InsertDesa.fxml");
+
 
     private String url;
 
