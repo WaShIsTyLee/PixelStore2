@@ -42,7 +42,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="email" layoutX="338.0" layoutY="338.0" prefHeight="38.0" prefWidth="228.0" promptText="Email">
+      <TextField fx:id="email" layoutX="338.0" layoutY="338.0" prefHeight="38.0" prefWidth="228.0" promptText="Email" text="a@pixelstore.com">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
@@ -60,6 +60,6 @@
       </ImageView>
 
       <Text fill="#ff6600" layoutX="789.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrate gratis" textAlignment="CENTER" wrappingWidth="69.8359375" />
-      <PasswordField fx:id="contraseña" layoutX="335.0" layoutY="432.0" prefHeight="38.0" prefWidth="228.0" promptText="Contraseña" />
+      <PasswordField fx:id="contraseña" layoutX="335.0" layoutY="432.0" prefHeight="38.0" prefWidth="228.0" promptText="Contraseña" text="a" />
    </children>
 </AnchorPane>

@@ -15,6 +15,7 @@ public class DesarrolladorDAO {
     private final static String FINDBYID = "SELECT d.* FROM Desarrollador AS d WHERE d.id_desarrollador=?";
     private final static String DELETE = "DELETE FROM desarrollador WHERE id_desarrollador";
     private final static String FINDALL = "SELECT * FROM Desarrollador";
+    private final static String FINDBYNAME = "SELECT d.* FROM Desarrollador AS d WHERE d.nombre=?";
 
     public Desarrollador save(Desarrollador entity){
         Desarrollador result = entity;
@@ -55,6 +56,29 @@ public class DesarrolladorDAO {
 
         return result;
     }
+    public Desarrollador findByName(String name){
+        Desarrollador result = null;
+        if (name != null){
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDBYNAME)) {
+                pst.setString(1, name);
+                try(ResultSet res = pst.executeQuery()) {
+                    if (res.next()){
+                        Desarrollador d = new Desarrollador();
+                        d.setId_desarrollador(res.getInt("id_desarrollador"));
+                        d.setNombre(res.getString("nombre"));
+                        d.setPais(res.getString("pais"));
+
+                        result = d;
+                    }
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+        return result;
+    }
+
 
     public ArrayList<Desarrollador> findAll(){
         ArrayList<Desarrollador> result = new ArrayList<>();

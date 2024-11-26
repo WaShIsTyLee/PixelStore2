@@ -46,10 +46,9 @@ public class ControllerGames extends Controller implements Initializable {
                     Label nombre = new Label("Nombre: " + item.getNombre());
                     Label precio = new Label("Precio: $" + String.format("%.2f", item.getPrecio()));
                     Label descripcion = new Label("Descripción: " + item.getDescripcion());
-                    Label desarrollador = new Label("Desarrollador: " + item.getDesarrollador().getNombre());
                     descripcion.setWrapText(true);
 
-                    container.getChildren().addAll(nombre, precio, descripcion,desarrollador);
+                    container.getChildren().addAll(nombre, precio, descripcion);
 
                     setGraphic(container);
                 }
