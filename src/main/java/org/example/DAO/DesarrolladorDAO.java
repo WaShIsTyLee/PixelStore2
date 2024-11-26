@@ -8,11 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DesarrolladorDAO {
     private final static String INSERTE ="INSERT INTO Desarrollador(nombre,pais) VALUES (?, ?)";
     private final static String FINDBYID = "SELECT d.* FROM Desarrollador AS d WHERE d.id_desarrollador=?";
     private final static String DELETE = "DELETE FROM desarrollador WHERE id_desarrollador";
+    private final static String FINDALL = "SELECT * FROM Desarrollador";
 
     public Desarrollador save(Desarrollador entity){
         Desarrollador result = entity;
@@ -53,6 +55,25 @@ public class DesarrolladorDAO {
 
         return result;
     }
+
+    public ArrayList<Desarrollador> findAll(){
+        ArrayList<Desarrollador> result = new ArrayList<>();
+        try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDALL)){
+            try (ResultSet res = pst.executeQuery()){
+                while (res.next()){
+                    Desarrollador d = new Desarrollador();
+                    d.setId_desarrollador(res.getInt("id_desarrollador"));
+                    d.setNombre(res.getString("nombre"));
+                    d.setPais(res.getString("pais"));
+                    result.add(d);
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     //Se tiene que cambiar la accion que hace en la base de datos
     public Desarrollador delete(Desarrollador entity){
         if (entity != null){
