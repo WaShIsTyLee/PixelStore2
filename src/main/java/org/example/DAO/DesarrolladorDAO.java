@@ -16,6 +16,7 @@ public class DesarrolladorDAO {
     private final static String DELETE = "DELETE FROM desarrollador WHERE id_desarrollador";
     private final static String FINDALL = "SELECT * FROM Desarrollador";
     private final static String FINDBYNAME = "SELECT d.* FROM Desarrollador AS d WHERE d.nombre=?";
+    private final static String UPDATE = "UPDATE Desarrollador SET nombre=?, pais=? WHERE id_desarrollador=?";
 
     public Desarrollador save(Desarrollador entity){
         Desarrollador result = entity;
@@ -30,7 +31,14 @@ public class DesarrolladorDAO {
                 e.printStackTrace();
             }
         }else {
-            //update que lo busca por id
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(UPDATE)){
+                pst.setString(1,entity.getNombre());
+                pst.setString(2,entity.getPais());
+                pst.setInt(3,entity.getId_desarrollador());
+                pst.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return result;
     }

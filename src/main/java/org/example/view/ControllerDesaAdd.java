@@ -23,7 +23,9 @@ public class ControllerDesaAdd extends Controller implements Initializable {
     @FXML
     TextField pais;
     @FXML
-    Button Añadir;
+    Button save;
+
+    private Desarrollador developer =null;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -31,30 +33,40 @@ public class ControllerDesaAdd extends Controller implements Initializable {
 
     @Override
     public void onOpen(Object input) throws IOException {
-
+        developer = (Desarrollador) input;
     }
     @FXML
     private Desarrollador insertar(){
-        Desarrollador nwDesa = new Desarrollador();
+        Desarrollador nwDesa = null;
         String nombreD = nombreDesa.getText();
         String paisD = pais.getText();
-        if (!exisDesa(nombreD) && paisD!=null){
-            nwDesa.setNombre(nombreD);
-            nwDesa.setPais(paisD);
+        if (developer == null){
+            if (!exisDesa(nombreD) && !paisD.trim().isEmpty()){
+                nwDesa.setNombre(nombreD);
+                nwDesa.setPais(paisD);
 
+            }
         }else {
-            nwDesa = null;
+            if (!nombreD.trim().isEmpty()){
+                developer.setNombre(nombreD);
+            }if (!paisD.trim().isEmpty()) {
+                developer.setPais(paisD);
+            }
+             nwDesa=developer;
         }
+
         return nwDesa;
     }
     private boolean exisDesa(String desarrollador){
         boolean result = false;
-        if (desarrollador !=null && !desarrollador.trim().isEmpty()){
-            DesarrolladorDAO desarr = new DesarrolladorDAO();
-            ArrayList<Desarrollador> desarrolladors = desarr.findAll();
-            for(Desarrollador d : desarrolladors){
-                if (d.getNombre() == desarrollador){
-                    result = true;
+        if (desarrollador !=null){
+            if (!desarrollador.trim().isEmpty()){
+                DesarrolladorDAO desarr = new DesarrolladorDAO();
+                ArrayList<Desarrollador> desarrolladors = desarr.findAll();
+                for(Desarrollador d : desarrolladors){
+                    if (d.getNombre() == desarrollador){
+                        result = true;
+                    }
                 }
             }
         }
@@ -62,9 +74,9 @@ public class ControllerDesaAdd extends Controller implements Initializable {
     }
     @FXML
     private void AddDesarrollador() throws IOException {
-        Desarrollador newDesarrollador = new Desarrollador();
+        Desarrollador newDesarrollador = insertar();
         DesarrolladorDAO saveDesa = new DesarrolladorDAO();
-        if (insertar() == null){
+        if (newDesarrollador == null){
             System.out.println("ERROR al añadir El desarrollador");
         }else {
             newDesarrollador =insertar();
