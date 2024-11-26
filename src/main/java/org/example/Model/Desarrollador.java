@@ -1,11 +1,13 @@
 package org.example.Model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Desarrollador {
     private int id_desarrollador;
     private String nombre;
     private String pais;
+    private ArrayList<Videojuego> videojuegos;
 
     public Desarrollador(String nombre, String pais) {
         this.nombre = nombre;

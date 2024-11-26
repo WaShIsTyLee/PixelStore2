@@ -26,7 +26,7 @@
             <Image url="@Fotos/Logo_PixelStore.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="46.0" fitWidth="45.0" layoutX="831.0" layoutY="42.0" onMouseClicked="#addGame" rotate="-45.0">
+      <ImageView fitHeight="46.0" fitWidth="45.0" layoutX="831.0" layoutY="42.0" onMouseClicked="#addGame" rotate="-45.0" styleClass="highlight">
          <image>
             <Image url="@Fotos/cerrarVentana.png" />
          </image>
@@ -34,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="atras" fitHeight="43.0" fitWidth="45.0" layoutX="770.0" layoutY="44.0" onMouseClicked="#atras">
+      <ImageView fx:id="atras" fitHeight="43.0" fitWidth="45.0" layoutX="770.0" layoutY="44.0" onMouseClicked="#atras" styleClass="highlight">
          <image>
             <Image url="@Fotos/flechaAtras.png" />
          </image>
