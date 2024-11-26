@@ -1,15 +1,14 @@
-
-ImageView {
+ImageView.highlight {
     -fx-effect: null;
     -fx-cursor: hand;
 }
 
-ImageView:hover {
+/* Efecto de iluminación cuando se pasa el ratón */
+ImageView.highlight:hover {
     -fx-effect: dropshadow(gaussian, orange, 20, 0.5, 0, 0);
 }
 
-
-TextField {
+TextField, TextArea, .combo-box {
     -fx-background-color: #FFFFFF;
     -fx-border-color: transparent;
     -fx-border-width: 2px;
@@ -19,8 +18,26 @@ TextField {
     -fx-text-fill: #000000;
 }
 
-TextField:hover {
+TextField:hover, TextArea:hover, .combo-box:hover,
+TextField:focused, TextArea:focused, .combo-box:focused {
     -fx-background-color: #f4f4f4;
     -fx-border-color: orange;
     -fx-effect: dropshadow(gaussian, orange, 10, 0.5, 0, 0);
+}
+
+.button {
+    -fx-background-color: transparent; /* Fondo transparente */
+    -fx-text-fill: white; /* Texto blanco */
+    -fx-border-width: 0; /* Sin bordes visibles */
+    -fx-font-size: 14px; /* Tamaño de fuente ajustado */
+    -fx-padding: 10px 20px; /* Espaciado interno */
+    -fx-effect: none; /* Sin efectos por defecto */
+    -fx-transition: -fx-background-color 0.5s ease, -fx-text-fill 0.5s ease, -fx-effect 0.3s ease; /* Transiciones suaves */
+}
+
+/* Estilo cuando el ratón pasa sobre el botón */
+.button:hover {
+    -fx-background-color: #ff6600; /* Fondo anaranjado */
+    -fx-text-fill: black; /* Texto negro */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz amarilla */
 }
