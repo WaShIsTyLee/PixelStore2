@@ -87,7 +87,7 @@ public class ShopMenuController extends Controller implements Initializable {
     @FXML
     private void addStore() throws Exception {
         // Método para abrir un modal y añadir una tienda
-         App.currentController.openModalv(Scenes.ADDTIENDA, "Añadiendo Tienda", this, null);
+        App.currentController.openModalv(Scenes.ADDTIENDA, "Añadiendo Tienda", this, null);
     }
 
     @FXML
@@ -101,6 +101,7 @@ public class ShopMenuController extends Controller implements Initializable {
         // Obtener la tienda seleccionada y abrir un modal para modificarla o eliminarla
         Tienda tiendaSeleccionada = tiendas.getSelectionModel().getSelectedItem();
         System.out.println(tiendaSeleccionada.toString());
-        // App.currentController.openModalv(Scenes.MODIFICARTIENDA, "Modificar Tienda", this, tiendaSeleccionada);
+        App.currentController.openModalv(Scenes.MODIFICARTIENDA, "Modificar Tienda", this, tiendaSeleccionada);
+
     }
 }
