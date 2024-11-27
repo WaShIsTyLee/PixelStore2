@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class InicioSesionController extends Controller implements Initializable {
+public class LogInController extends Controller implements Initializable {
     @FXML
     ImageView imageFlechaAtras;
     @FXML
