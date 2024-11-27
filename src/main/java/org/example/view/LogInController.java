@@ -58,6 +58,7 @@ public class LogInController extends Controller implements Initializable {
                 } else {
                     //CAMBIAR A PANTALLA PRINCIPAL DE NORMAL
                     System.out.println("Sesion iniciada como usuario normal");
+                    irAPantallaPrincipal();
                 }
             }else {
                 System.out.println("Los credenciales no coinciden");
@@ -79,6 +80,10 @@ public class LogInController extends Controller implements Initializable {
     @FXML
     public void irAPantallaPrincipalAdmin() throws IOException {
         App.currentController.changeScene(Scenes.PANTALLAADMIN, null);
+    }
+
+    public void irAPantallaPrincipal() throws IOException {
+        App.currentController.changeScene(Scenes.PANTALLAUSER, null);
     }
 
 
