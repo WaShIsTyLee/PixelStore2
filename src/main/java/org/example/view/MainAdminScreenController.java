@@ -2,7 +2,6 @@ package org.example.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -13,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerPantallaPrincipalAdmin extends Controller implements Initializable {
+public class MainAdminScreenController extends Controller implements Initializable {
     @FXML
     StackPane stackPaneTienda;
     @FXML
@@ -33,19 +32,14 @@ public class ControllerPantallaPrincipalAdmin extends Controller implements Init
 
     @Override
     public void onOpen(Object input) throws IOException {
-        if (Sesion.getInstancia().getUsuarioIniciado().isAdministrador()){
-            texto.setText("Bienvenido, " + Sesion.getInstancia().getUsuarioIniciado().getNombre() +
-                    " has inciado sesion como Administrador");
-        }else{
-            texto.setText("Bienvenido, " + Sesion.getInstancia().getUsuarioIniciado().getNombre());
-        }
+       texto.setText(Sesion.getInstancia().getUsuarioIniciado().getNombre());
     }
 
 
 
     @FXML
     public void GoToShops() throws IOException {
-        App.currentController.changeScene(Scenes.SECONDARY, null);
+        App.currentController.changeScene(Scenes.TIENDAS, null);
     }
     @FXML
     public void GoToDevs() throws IOException {

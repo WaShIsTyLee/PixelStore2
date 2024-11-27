@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class RegistrarController extends Controller implements Initializable {
+public class RegisterController extends Controller implements Initializable {
     @FXML
     ImageView imageFlechaAtras;
     @FXML

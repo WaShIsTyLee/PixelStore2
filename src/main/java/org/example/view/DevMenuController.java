@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class ControllerDesarrollador extends Controller implements Initializable {
+public class DevMenuController extends Controller implements Initializable {
     @FXML
     private ListView<Desarrollador> des;
     @FXML

@@ -7,11 +7,31 @@ import org.example.Model.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TiendaDAO {
     private final static String DELETE = "DELETE FROM tienda  WHERE id_tienda = ?";
     private final static String INSERT = "INSERT INTO tienda (ubicacion,telefono) VALUES (?,?)";
     private final static String GETBYID = "SELECT * FROM tienda WHERE id_tienda = ?";
+    private final static String FINDALL = "SELECT * FROM tienda";
+
+    public ArrayList<Tienda> findAll() {
+        ArrayList<Tienda> tiendas = new ArrayList<>();
+        try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDALL)) {
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    Tienda tienda = new Tienda();
+                    tienda.setId_tienda(rs.getInt("id_tienda"));
+                    tienda.setUbicacion(rs.getString("ubicacion"));
+                    tienda.setTelefono(rs.getString("telefono"));
+                    tiendas.add(tienda);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tiendas;
+    }
 
     public Tienda delete(Tienda tienda) {
         if (tienda != null || tienda.getId_tienda() > 0) {

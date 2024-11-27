@@ -2,6 +2,7 @@ package org.example.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.DAO.TiendaDAO;
 import org.example.Model.Tienda;
@@ -10,7 +11,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerAddTienda extends Controller implements Initializable {
+public class AddShopModalController extends Controller implements Initializable {
+
+    @FXML
+    Button butonAñadir;
     @FXML
     TextField telefono;
 

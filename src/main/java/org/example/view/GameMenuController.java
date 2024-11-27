@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class ControllerGames extends Controller implements Initializable {
+public class GameMenuController extends Controller implements Initializable {
     @FXML
     private ImageView atras;
     @FXML

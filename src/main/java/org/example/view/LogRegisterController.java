@@ -4,14 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import org.example.App;
 
-public class PrimaryController extends Controller implements Initializable {
+public class LogRegisterController extends Controller implements Initializable {
 
     @FXML
     Button button;
