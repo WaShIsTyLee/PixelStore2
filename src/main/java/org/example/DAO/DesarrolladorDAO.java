@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class DesarrolladorDAO {
     private final static String INSERTE ="INSERT INTO Desarrollador(nombre,pais) VALUES (?, ?)";
     private final static String FINDBYID = "SELECT d.* FROM Desarrollador AS d WHERE d.id_desarrollador=?";
-    private final static String DELETE = "DELETE FROM desarrollador WHERE id_desarrollador";
+    private final static String DELETE = "DELETE FROM desarrollador WHERE id_desarrollador =?";
     private final static String FINDALL = "SELECT * FROM Desarrollador";
     private final static String FINDBYNAME = "SELECT d.* FROM Desarrollador AS d WHERE d.nombre=?";
     private final static String UPDATE = "UPDATE Desarrollador SET nombre=?, pais=? WHERE id_desarrollador=?";

@@ -29,12 +29,14 @@ public class AddDevModalController extends Controller implements Initializable {
     TextField pais;
     @FXML
     Button save;
+    @FXML
+    Button Eliminar;
 
     private Desarrollador developer =null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        Eliminar.setVisible(false);
     }
 
     @Override
@@ -44,9 +46,10 @@ public class AddDevModalController extends Controller implements Initializable {
         if (developer != null){
             nombreDesa.setText(developer.getNombre());
             pais.setText(developer.getPais());
+            Eliminar.setVisible(true); // Muestra el botón si hay un desarrollador
+        } else {
+            Eliminar.setVisible(false); // Oculta el botón si no hay un desarrollador
         }
-
-
     }
     @FXML
     private Desarrollador insertar(){
@@ -61,7 +64,9 @@ public class AddDevModalController extends Controller implements Initializable {
             }
         }else {
             if (!nombreD.trim().isEmpty()){
-                developer.setNombre(nombreD);
+                if (!exisDesa(nombreD)){
+                    developer.setNombre(nombreD);
+                }
             }if (!paisD.trim().isEmpty()) {
                 developer.setPais(paisD);
             }
@@ -78,8 +83,9 @@ public class AddDevModalController extends Controller implements Initializable {
                 DesarrolladorDAO desarr = new DesarrolladorDAO();
                 ArrayList<Desarrollador> desarrolladors = desarr.findAll();
                 for(Desarrollador d : desarrolladors){
-                    if (d.getNombre() == desarrollador){
+                    if (d.getNombre().equals(desarrollador)){
                         result = true;
+                        break;
                     }
                 }
             }
@@ -100,6 +106,12 @@ public class AddDevModalController extends Controller implements Initializable {
             saveDesa.save(newDesarrollador);
             App.currentController.changeScene(Scenes.DESARROLLADORES, null);
         }
+    }
+    @FXML
+    private void deleteDesarrollador() throws IOException {
+        DesarrolladorDAO delete = new DesarrolladorDAO();
+        delete.delete(developer);
+        App.currentController.changeScene(Scenes.DESARROLLADORES, null);
     }
     @FXML
     private void closeWindow(Event event){
