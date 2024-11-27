@@ -46,8 +46,7 @@ public class AddDevModalController extends Controller implements Initializable {
         if (developer != null){
             nombreDesa.setText(developer.getNombre());
             pais.setText(developer.getPais());
-            Eliminar.setVisible(true);
-            save.setText("Actualizar");// Muestra el botón si hay un desarrollador
+            Eliminar.setVisible(true); // Muestra el botón si hay un desarrollador
         } else {
             Eliminar.setVisible(false); // Oculta el botón si no hay un desarrollador
         }

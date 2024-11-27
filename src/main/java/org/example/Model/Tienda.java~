@@ -1,28 +1,11 @@
 package org.example.Model;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Tienda {
     private int id_tienda;
     private String ubicacion;
     private String telefono;
-    private ArrayList<Videojuego> videojuegos = new ArrayList<Videojuego>();
-
-    public Tienda(int id_tienda, String ubicacion, String telefono, ArrayList<Videojuego> videojuegos) {
-        this.id_tienda = id_tienda;
-        this.ubicacion = ubicacion;
-        this.telefono = telefono;
-        this.videojuegos = videojuegos;
-    }
-
-    public ArrayList<Videojuego> getVideojuegos() {
-        return videojuegos;
-    }
-
-    public void setVideojuegos(ArrayList<Videojuego> videojuegos) {
-        this.videojuegos = videojuegos;
-    }
 
     public Tienda(int id_tienda, String ubicacion, String telefono) {
         this.id_tienda = id_tienda;

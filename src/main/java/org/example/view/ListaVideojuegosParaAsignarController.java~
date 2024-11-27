@@ -124,7 +124,7 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
             }
             }
         if (!aux){
-            tiendSeleccionada.setVideojuegos(juegosSeleccionados);
+            tiendSeleccionada.setVideojuegos(videojuegosActuales);
             tiendaDAO.insertarTiendaVideojuego(tiendSeleccionada);
         }
 
