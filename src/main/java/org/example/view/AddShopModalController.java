@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import org.example.App;
 import org.example.DAO.TiendaDAO;
 import org.example.Model.Tienda;
 
@@ -47,9 +49,17 @@ public class AddShopModalController extends Controller implements Initializable 
         return true;
     }
 
-    public void insertarTiendaBD(){
+    public void insertarTiendaBD() throws IOException {
         TiendaDAO tdao = new TiendaDAO();
         Tienda tienda = recogerDatos();
         tdao.insert(tienda);
+
+        Stage currentStage = (Stage) butonAñadir.getScene().getWindow();
+        currentStage.close();
+
+
+        App.currentController.changeScene(Scenes.TIENDAS, null);
     }
+
+
 }

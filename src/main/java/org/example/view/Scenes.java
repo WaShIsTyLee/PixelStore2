@@ -13,6 +13,7 @@ public enum Scenes {
     ADDTIENDA("/org/example/view/AddTienda.fxml"),
     MODIFICARVIDEOJUEGO("/org/example/view/ModificarVideoJuego.fxml"),
     DESARROLLADORES("/org/example/view/Desarrolladores.fxml"),
+    MODIFICARTIENDA("/org/example/view/UpdatearTiendaAsignarVideojuego.fxml"),
     ADDDESARROLLADOR("/org/example/view/InsertDesa.fxml");
 
 
