@@ -15,6 +15,7 @@ public class TiendaDAO {
     private final static String GETBYID = "SELECT * FROM tienda WHERE id_tienda = ?";
     private final static String FINDALL = "SELECT * FROM tienda";
 
+
     public ArrayList<Tienda> findAll() {
         ArrayList<Tienda> tiendas = new ArrayList<>();
         try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDALL)) {
