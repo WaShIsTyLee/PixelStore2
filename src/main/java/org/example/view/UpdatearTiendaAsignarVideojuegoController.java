@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.example.App;
 import org.example.DAO.TiendaDAO;
 import org.example.Model.Tienda;
@@ -27,6 +28,10 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
     private ObservableList<Videojuego> games = FXCollections.observableArrayList(); // Inicializar como ObservableList
     @FXML
     Button botonAsignar;
+    @FXML
+    Button botonEliminar;
+    @FXML
+    Button botonModificar;
 
     Tienda tiendaseleccionada;
 
@@ -99,5 +104,15 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
     @FXML
     public void imprimirVideojuegosTienda() {
         // Implementar lógica de impresión de videojuegos
+    }
+
+    @FXML
+    public void eliminarTienda() throws IOException {
+        TiendaDAO tdao = new TiendaDAO();
+        tdao.delete(tiendaseleccionada);
+
+        Stage currentStage = (Stage) botonEliminar.getScene().getWindow();
+        currentStage.close();
+        App.currentController.changeScene(Scenes.TIENDAS,null);
     }
 }
