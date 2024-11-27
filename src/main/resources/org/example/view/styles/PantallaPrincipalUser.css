@@ -1,0 +1,44 @@
+/* Estilo para StackPane */
+.stackpane-hover {
+    -fx-background-color: transparent; /* Fondo transparente */
+    -fx-border-width: 2px; /* Borde visible */
+    -fx-border-color: white; /* Borde blanco por defecto */
+    -fx-transition: -fx-border-color 0.3s ease, -fx-effect 0.3s ease; /* Transiciones suaves */
+}
+
+/* Efecto en hover para StackPane */
+.stackpane-hover:hover {
+    -fx-border-color: #ff6600; /* Cambiar el borde a naranja */
+    -fx-effect: dropshadow(gaussian, rgba(255, 102, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz naranja */
+}
+
+/* Estilo para ImageView */
+.stackpane-hover .imageview-hover {
+    -fx-effect: none; /* Sin efecto por defecto */
+    -fx-transition: -fx-effect 0.3s ease; /* Transición suave */
+}
+
+.stackpane-hover:hover .imageview-hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 102, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz naranja */
+}
+
+/* Estilo para Text */
+.stackpane-hover .text-hover {
+    -fx-effect: none; /* Sin efecto por defecto */
+    -fx-transition: -fx-effect 0.3s ease; /* Transición suave */
+}
+
+.stackpane-hover:hover .text-hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 102, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz naranja */
+}
+
+/* Estilo para ImageView */
+.imageview-hover {
+    -fx-effect: none; /* Sin efecto por defecto */
+    -fx-transition: -fx-effect 0.3s ease; /* Transición suave para el efecto */
+}
+
+.imageview-hover:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 102, 0, 0.6), 10, 0.8, 0, 0); /* Efecto de luz naranja (#ff6600) */
+    -fx-cursor: hand; /* Cambiar el cursor a estilo de mano */
+}
