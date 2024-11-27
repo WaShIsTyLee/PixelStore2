@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import org.example.App;
 import org.example.DAO.TiendaDAO;
 import org.example.DAO.VideojuegoDAO;
 import org.example.Model.Tienda;
@@ -25,6 +27,8 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
     private ListView<Videojuego> videojuegos;
     @FXML
     private TextField buscador;
+    @FXML
+    private Button botonInsertar;
 
     private ObservableList<Videojuego> games;
     Tienda tiendSeleccionada;
@@ -108,7 +112,7 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
         return seleccionados;
     }
 
-    public void añadirBD() {
+    public void añadirBD() throws Exception {
         TiendaDAO tiendaDAO = new TiendaDAO();
         ArrayList<Videojuego> videojuegosActuales = tiendaDAO.buscarJuegosDeTienda(tiendSeleccionada);
         ArrayList<Videojuego> juegosSeleccionados = getSeleccionados();
@@ -126,9 +130,15 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
         if (!aux){
             tiendSeleccionada.setVideojuegos(juegosSeleccionados);
             tiendaDAO.insertarTiendaVideojuego(tiendSeleccionada);
+
+            Stage currentStage = (Stage) botonInsertar.getScene().getWindow();
+            currentStage.close();
+            App.currentController.openModalv(Scenes.MODIFICARTIENDA,"modificar tienda",this, tiendSeleccionada);
         }
 
     }
+
+
 
 
 
