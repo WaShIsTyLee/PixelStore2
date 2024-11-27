@@ -10,7 +10,6 @@ public enum Scenes {
     PANTALLAADMIN("/org/example/view/PantallaPrincipalAdmin.fxml"),
     INSERTGAMES("/org/example/view/InserGames.fxml"),
     TIENDAS("/org/example/view/TiendaAdmin.fxml"),
-    ADDTIENDA("/org/example/view/AddTienda.fxml"),
     MODIFICARVIDEOJUEGO("/org/example/view/ModificarVideoJuego.fxml"),
     DESARROLLADORES("/org/example/view/Desarrolladores.fxml"),
     ADDDESARROLLADOR("/org/example/view/InsertDesa.fxml");
