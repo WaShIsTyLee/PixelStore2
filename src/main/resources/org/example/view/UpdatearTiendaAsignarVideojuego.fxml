@@ -32,8 +32,8 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <ListView layoutX="133.0" layoutY="279.0" prefHeight="220.0" prefWidth="662.0" />
-      <Button layoutX="637.0" layoutY="231.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="157.0" text="Añadir videojuego">
+      <ListView fx:id="listViewVideojuegos" layoutX="133.0" layoutY="279.0" prefHeight="220.0" prefWidth="662.0" />
+      <Button fx:id="botonAsignar" layoutX="637.0" layoutY="231.0" mnemonicParsing="false" onMouseClicked="#AsignarVideojuego" prefHeight="31.0" prefWidth="157.0" text="Añadir videojuego">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

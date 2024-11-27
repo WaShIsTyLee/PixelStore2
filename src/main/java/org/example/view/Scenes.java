@@ -14,7 +14,9 @@ public enum Scenes {
     MODIFICARVIDEOJUEGO("/org/example/view/ModificarVideoJuego.fxml"),
     DESARROLLADORES("/org/example/view/Desarrolladores.fxml"),
     MODIFICARTIENDA("/org/example/view/UpdatearTiendaAsignarVideojuego.fxml"),
+    ASIGNARVIDEOJUEGO("/org/example/view/ListaVideojuegosParaAsignar.fxml"),
     ADDDESARROLLADOR("/org/example/view/InsertDesa.fxml");
+
 
 
     private String url;
