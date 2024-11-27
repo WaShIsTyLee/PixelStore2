@@ -19,7 +19,9 @@ import java.util.ResourceBundle;
 
 
 
+
 public class AddDevModalController extends Controller implements Initializable {
+
 
     @FXML
     TextField nombreDesa;
@@ -40,6 +42,7 @@ public class AddDevModalController extends Controller implements Initializable {
     @Override
     public void onOpen(Object input) throws IOException {
         developer = (Desarrollador) input;
+
         if (developer != null){
             nombreDesa.setText(developer.getNombre());
             pais.setText(developer.getPais());
@@ -94,7 +97,9 @@ public class AddDevModalController extends Controller implements Initializable {
         Desarrollador newDesarrollador = insertar();
         DesarrolladorDAO saveDesa = new DesarrolladorDAO();
         if (newDesarrollador == null){
+
             //faltan poner alertas
+
             System.out.println("ERROR al añadir El desarrollador");
         }else {
             newDesarrollador =insertar();
