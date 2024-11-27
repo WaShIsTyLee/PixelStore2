@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class InsertGamesModalController extends Controller implements Initializable {
+public class AddGamesModalController extends Controller implements Initializable {
 
     @FXML
     TextField nombreJuego;
