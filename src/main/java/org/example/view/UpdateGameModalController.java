@@ -18,10 +18,9 @@ import org.example.Model.Videojuego;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Observer;
 import java.util.ResourceBundle;
 
-public class ModificarVideojuegoController extends Controller implements Initializable{
+public class UpdateGameModalController extends Controller implements Initializable{
 
     @FXML
     TextField tfNombre;

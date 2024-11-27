@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ControllerDesaAdd extends Controller implements Initializable {
+public class AddDevModalController extends Controller implements Initializable {
     @FXML
     TextField nombreDesa;
     @FXML

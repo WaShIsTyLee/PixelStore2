@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Games.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.AddTienda">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Games.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.AddShopModalController">
    <children>
       <ImageView fitHeight="126.0" fitWidth="109.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -24,17 +23,17 @@
       </Text>
       <Text fill="#ff6600" layoutX="204.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localización" />
       <Text fill="#ff6600" layoutX="200.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono" />
-      <TextField layoutX="198.0" layoutY="232.0" prefHeight="32.0" prefWidth="149.0">
+      <TextField fx:id="direccion" layoutX="198.0" layoutY="232.0" prefHeight="32.0" prefWidth="149.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField layoutX="198.0" layoutY="356.0" prefHeight="32.0" prefWidth="149.0">
+      <TextField fx:id="telefono" layoutX="198.0" layoutY="356.0" prefHeight="32.0" prefWidth="149.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Button layoutX="227.0" layoutY="443.0" mnemonicParsing="false" text="Añadir">
+      <Button fx:id="butonAñadir" layoutX="227.0" layoutY="443.0" mnemonicParsing="false" onAction="#insertarTiendaBD" text="Añadir">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
