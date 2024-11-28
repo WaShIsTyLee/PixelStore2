@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class TiendaDAO {
     private final static String DELETE = "DELETE FROM tienda  WHERE id_tienda = ?";
     private final static String INSERT = "INSERT INTO tienda (ubicacion,telefono) VALUES (?,?)";
+    private final static String GETBYID = "SELECT * FROM tienda WHERE id_tienda = ?";
     private final static String FINDALL = "SELECT * FROM tienda";
     private final static String FINDALLNAMES = "SELECT t.ubicacion FROM tienda as t ";
 
