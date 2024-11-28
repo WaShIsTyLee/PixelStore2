@@ -47,9 +47,9 @@ public class AddDevModalController extends Controller implements Initializable {
             nombreDesa.setText(developer.getNombre());
             pais.setText(developer.getPais());
             Eliminar.setVisible(true);
-            save.setText("Actualizar");// Muestra el botón si hay un desarrollador
+            save.setText("Actualizar");
         } else {
-            Eliminar.setVisible(false); // Oculta el botón si no hay un desarrollador
+            Eliminar.setVisible(false);
         }
     }
     @FXML
@@ -58,17 +58,19 @@ public class AddDevModalController extends Controller implements Initializable {
         String nombreD = nombreDesa.getText();
         String paisD = pais.getText();
         if (developer == null){
-            if (!exisDesa(nombreD) && !paisD.trim().isEmpty()){
+            if (!exisDesa(nombreD) && !paisD.trim().isEmpty() && validarNombrePais(paisD)){
                 nwDesa = new Desarrollador();
                 nwDesa.setNombre(nombreD);
                 nwDesa.setPais(paisD);
+            }else {
+                System.out.println("Los datos son incorrectos");
             }
         }else {
             if (!nombreD.trim().isEmpty()){
                 if (!exisDesa(nombreD)){
                     developer.setNombre(nombreD);
                 }
-            }if (!paisD.trim().isEmpty()) {
+            }if (!paisD.trim().isEmpty()&& validarNombrePais(paisD)) {
                 developer.setPais(paisD);
             }
              nwDesa = developer;
@@ -91,6 +93,16 @@ public class AddDevModalController extends Controller implements Initializable {
                 }
             }
         }
+        return result;
+    }
+    private boolean validarNombrePais(String pais){
+        boolean result = false;
+        if (pais == null || pais.isEmpty()) {
+            return false;
+        }
+        String regex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$";
+        result = pais.matches(regex);
+
         return result;
     }
     @FXML
@@ -118,4 +130,5 @@ public class AddDevModalController extends Controller implements Initializable {
     private void closeWindow(Event event){
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
+
 }
