@@ -2,6 +2,7 @@ package org.example.DAO;
 
 import org.example.BaseDatos.ConnectionDB;
 import org.example.Model.Desarrollador;
+import org.example.Model.Videojuego;
 
 
 import java.sql.PreparedStatement;
@@ -9,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DesarrolladorDAO {
     private final static String INSERTE ="INSERT INTO Desarrollador(nombre,pais) VALUES (?, ?)";
@@ -17,6 +19,7 @@ public class DesarrolladorDAO {
     private final static String FINDALL = "SELECT * FROM Desarrollador";
     private final static String FINDBYNAME = "SELECT d.* FROM Desarrollador AS d WHERE d.nombre=?";
     private final static String UPDATE = "UPDATE Desarrollador SET nombre=?, pais=? WHERE id_desarrollador=?";
+    private final static String FINDGAMES = "SELECT v.* FROM desarrollador v JOIN videojuego v ON v.id_desarrollador = d.id_desarrollador WHERE d.id_desarrollador=?";
 
     public Desarrollador save(Desarrollador entity){
         Desarrollador result = entity;
@@ -119,4 +122,7 @@ public class DesarrolladorDAO {
         }
         return entity;
     }
+    /*public ArrayList<Videojuego> gamesDesarrollador(Desarrollador desarrollador){
+
+    }*/
 }

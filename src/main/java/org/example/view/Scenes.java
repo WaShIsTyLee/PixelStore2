@@ -16,7 +16,8 @@ public enum Scenes {
     MODIFICARTIENDA("/org/example/view/UpdatearTiendaAsignarVideojuego.fxml"),
     ASIGNARVIDEOJUEGO("/org/example/view/ListaVideojuegosParaAsignar.fxml"),
     PANTALLAUSER("/org/example/view/PantallaPrincipalUser.fxml"),
-    ADDDESARROLLADOR("/org/example/view/InsertDesa.fxml");
+    ADDDESARROLLADOR("/org/example/view/InsertDesa.fxml"),
+    SHOWDESARROLLADOR("/org/example/view/UserDesarrolladores.fxml");
 
 
 
