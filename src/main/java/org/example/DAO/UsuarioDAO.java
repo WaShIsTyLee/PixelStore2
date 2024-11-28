@@ -15,25 +15,45 @@ public class UsuarioDAO {
     private final static String INSERT = "INSERT INTO usuario( nombre, email, contrasena, administrador) VALUES (?,?,?,?) ";
     private final static String FINDBYEMAIL = "SELECT * FROM usuario WHERE email = ?";
     private final static String FINDALLEMAILS = "SELECT email FROM usuario";
-    private final static String ADDTOCARRITO = "INSERT INTO usuariovideojuego (id_usuario, id_videojuego, fecha_compra) VALUES (?,?,?)";
+    private final static String ADDTOCARRITO = "INSERT INTO usuariovideojuego (id_usuario, id_videojuego, fecha_compra) VALUES (?, ?, ?)";
 
-    public void InsertarVideojuegosEnCarrito(Usuario usuario, ArrayList<Videojuego> videojuegos) {
-        String ADDTOCARRITO = "INSERT INTO usuariovideojuego (id_usuario, id_videojuego, fecha_compra) VALUES (?,?,?)";
-        try (Connection conn = ConnectionDB.getConnection()) {
-            for (Videojuego videojuego : videojuegos) {
-                try (PreparedStatement pst = conn.prepareStatement(ADDTOCARRITO)) {
-                    pst.setInt(1, usuario.getId_usuario());
-                    pst.setInt(2, videojuego.getId_videojuego());
-                    pst.setDate(3, new java.sql.Date(System.currentTimeMillis()));
-                    pst.executeUpdate();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public boolean insertarVideojuegosEnCarrito(Usuario usuario, Videojuego videojuego) {
+        boolean success = false;
+
+        // Validamos que los parámetros no sean nulos
+        if (usuario == null || videojuego == null) {
+            System.out.println("Error: Usuario o Videojuego nulos.");
+            return false;
         }
+
+        // Sentencia SQL para insertar un videojuego en el carrito
+        String ADDTOCARRITO = "INSERT INTO usuariovideojuego (id_usuario, id_videojuego, fecha_compra) VALUES (?, ?, ?)";
+
+        // Usamos try-with-resources para asegurar el cierre de recursos (PreparedStatement)
+        try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(ADDTOCARRITO)) {
+            // Establecemos los parámetros de la sentencia SQL
+            pst.setInt(1, usuario.getId_usuario());
+            pst.setInt(2, videojuego.getId_videojuego());
+            pst.setDate(3, new java.sql.Date(System.currentTimeMillis())); // Fecha actual
+
+            // Ejecutamos la inserción y verificamos cuántas filas fueron afectadas
+            int rowsAffected = pst.executeUpdate();
+
+            // Si la inserción fue exitosa, retornamos true
+            if (rowsAffected > 0) {
+                success = true;
+                System.out.println("Videojuego agregado al carrito con éxito.");
+            } else {
+                System.out.println("No se pudo agregar el videojuego al carrito.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace(); // Imprimir la traza del error en caso de excepción
+        }
+
+        return success;
     }
+
 
 
     public Usuario delete(Usuario usuario) {
