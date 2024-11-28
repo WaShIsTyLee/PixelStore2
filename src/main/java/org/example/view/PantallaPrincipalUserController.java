@@ -44,4 +44,8 @@ public class PantallaPrincipalUserController extends Controller implements Initi
     public void goShowGames() throws IOException {
         App.currentController.changeScene(Scenes.VIDEOJUEGOSUSUARIO, null);
     }
+    @FXML
+    public void goShowShop() throws IOException {
+        App.currentController.changeScene(Scenes.TIENDAUSER, null);
+    }
 }

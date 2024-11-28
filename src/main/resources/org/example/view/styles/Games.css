@@ -1,3 +1,4 @@
+/* Estilo para las imágenes destacadas */
 ImageView.highlight {
     -fx-effect: null;
     -fx-cursor: hand;
@@ -8,6 +9,7 @@ ImageView.highlight:hover {
     -fx-effect: dropshadow(gaussian, orange, 20, 0.5, 0, 0);
 }
 
+/* Estilo para campos de texto y área de texto */
 TextField, TextArea, .combo-box {
     -fx-background-color: #FFFFFF;
     -fx-border-color: transparent;
@@ -25,11 +27,12 @@ TextField:focused, TextArea:focused, .combo-box:focused {
     -fx-effect: dropshadow(gaussian, orange, 10, 0.5, 0, 0);
 }
 
+/* Estilo para botones */
 .button {
     -fx-background-color: transparent; /* Fondo transparente */
     -fx-text-fill: white; /* Texto blanco */
     -fx-border-width: 0; /* Sin bordes visibles */
-    -fx-font-size: 14px; /* Tamaño de fuente ajustado */
+    -fx-font-size: 32px; /* Tamaño de fuente ajustado */
     -fx-padding: 10px 20px; /* Espaciado interno */
     -fx-effect: none; /* Sin efectos por defecto */
     -fx-transition: -fx-background-color 0.5s ease, -fx-text-fill 0.5s ease, -fx-effect 0.3s ease; /* Transiciones suaves */
