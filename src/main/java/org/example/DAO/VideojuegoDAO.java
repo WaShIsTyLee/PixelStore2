@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PrimitiveIterator;
 
 public class VideojuegoDAO {
     private final static String INSERTE = "INSERT INTO videojuego(nombre,precio,descripcion,id_desarrollador) VALUES (?, ?, ?, ?)";
@@ -18,6 +19,7 @@ public class VideojuegoDAO {
     private final static String LISTGAMES = "SELECT v.id_videojuego, v.nombre,v.precio,v.descripcion, v.id_desarrollador FROM videojuego AS v";
     private final static String FINDALLNAMES = "SELECT v.nombre FROM videojuego AS v";
     private final static String UPDATE = "UPDATE videojuego SET nombre=?, precio=?, descripcion=?, id_desarrollador=? WHERE id_videojuego=?";
+
 
 
     public Videojuego save(Videojuego entity) {
