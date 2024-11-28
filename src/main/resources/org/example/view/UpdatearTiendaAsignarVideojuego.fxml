@@ -53,5 +53,10 @@
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
+      <Button fx:id="botonEliminarJuego" layoutX="702.0" layoutY="521.0" mnemonicParsing="false" onAction="#eliminarJuegos" style="-fx-background-color: #ff6600;" text="Eliminar juegos" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
