@@ -14,12 +14,47 @@ public class TiendaDAO {
     private final static String INSERT = "INSERT INTO tienda (ubicacion,telefono) VALUES (?,?)";
     private final static String GETBYID = "SELECT * FROM tienda WHERE id_tienda = ?";
     private final static String FINDALL = "SELECT * FROM tienda";
+    private final static String FINDALLNAMES = "SELECT t.ubicacion FROM tienda as t ";
     private final static String ADDTOGAMESSHOPS = "INSERT INTO tiendavideojuego (id_videojuego, id_tienda) VALUES (?,?)";
     private final static String GETFROMGAMESSHOPS =
             "SELECT v.id_videojuego, v.nombre, v.precio, v.descripcion, v.id_desarrollador " +
                     "FROM tiendavideojuego tv " +
                     "JOIN videojuego v ON tv.id_videojuego = v.id_videojuego " +
                     "WHERE tv.id_tienda = ?";
+    private final static String UPDATE = "UPDATE tienda SET ubicacion=?, telefono=? WHERE id_tienda=?";
+
+
+    public void update(Tienda entity) {
+        if (entity != null) {
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(UPDATE)) {
+                // Configurar los parámetros del PreparedStatement
+                pst.setString(1, entity.getUbicacion());
+                pst.setString(2, entity.getTelefono());
+                pst.setInt(3, entity.getId_tienda());
+
+                // Ejecutar la actualización
+                int filasActualizadas = pst.executeUpdate();
+
+                // Validar si se actualizó correctamente
+                if (filasActualizadas > 0) {
+                    System.out.println("Éxito: Tienda actualizada correctamente.");
+                } else {
+                    System.out.println("Advertencia: No se encontró la tienda para actualizar.");
+                }
+            } catch (SQLException e) {
+                // Manejar la excepción
+                System.err.println("Error durante la actualización: " + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Error: La entidad proporcionada es nula.");
+        }
+
+    }
+
+
+
+
 
         public ArrayList<Videojuego> buscarJuegosDeTienda(Tienda tienda) {
             ArrayList<Videojuego> videojuegos = new ArrayList<>();
@@ -82,6 +117,20 @@ public class TiendaDAO {
                 }
                 return tiendas;
             }
+
+    public ArrayList<String> findAllNames() {
+        ArrayList<String> result = new ArrayList<>();
+        try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDALLNAMES)) {
+            try (ResultSet res = pst.executeQuery()) {
+                while (res.next()) {
+                    result.add(res.getString("ubicacion"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
             public Tienda delete (Tienda tienda){
                 if (tienda != null || tienda.getId_tienda() > 0) {
