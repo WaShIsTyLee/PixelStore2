@@ -19,7 +19,7 @@ public class DesarrolladorDAO {
     private final static String FINDALL = "SELECT * FROM Desarrollador";
     private final static String FINDBYNAME = "SELECT d.* FROM Desarrollador AS d WHERE d.nombre=?";
     private final static String UPDATE = "UPDATE Desarrollador SET nombre=?, pais=? WHERE id_desarrollador=?";
-    private final static String FINDGAMES = "SELECT v.* FROM desarrollador v JOIN videojuego v ON v.id_desarrollador = d.id_desarrollador WHERE d.id_desarrollador=?";
+    private final static String FINDGAMES = "SELECT v.* FROM desarrollador d JOIN videojuego v ON v.id_desarrollador = d.id_desarrollador WHERE d.id_desarrollador=?";
 
     public Desarrollador save(Desarrollador entity){
         Desarrollador result = entity;
@@ -122,7 +122,26 @@ public class DesarrolladorDAO {
         }
         return entity;
     }
-    /*public ArrayList<Videojuego> gamesDesarrollador(Desarrollador desarrollador){
-
-    }*/
+    public ArrayList<Videojuego> gamesDesarrollador(Desarrollador desarrollador){
+        ArrayList<Videojuego> result = new ArrayList<>();
+        if (desarrollador != null){
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDGAMES)){
+                pst.setInt(1, desarrollador.getId_desarrollador());
+                try (ResultSet res = pst.executeQuery()) {
+                    while (res.next()){
+                     Videojuego v = new Videojuego();
+                     v.setId_videojuego(res.getInt("id_videojuego"));
+                     v.setNombre(res.getString("nombre"));
+                     v.setPrecio(res.getFloat("precio"));
+                     v.setDescripcion(res.getString("descripcion"));
+                     v.setDesarrollador(desarrollador);
+                     result.add(v);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
 }
