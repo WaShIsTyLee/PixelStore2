@@ -54,21 +54,9 @@ public class TiendaDAO {
         }
 
     }
-    public ArrayList<String> findAllNames() {
-        ArrayList<String> result = new ArrayList<>();
-        try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDALLNAMES)) {
-            try (ResultSet res = pst.executeQuery()) {
-                while (res.next()) {
-                    result.add(res.getString("ubicacion"));
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
 
-        public void eliminarJuegosDeTienda(Tienda tienda, ArrayList<Videojuego> videojuegosAEliminar) {
+
+    public void eliminarJuegosDeTienda(Tienda tienda, ArrayList<Videojuego> videojuegosAEliminar) {
         if (tienda != null && tienda.getId_tienda() > 0) {
             for (Videojuego videojuego : videojuegosAEliminar) {
                 try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(DELETEFROMGAMESHOPS)) {
@@ -85,28 +73,28 @@ public class TiendaDAO {
     }
 
 
-        public ArrayList<Videojuego> buscarJuegosDeTienda(Tienda tienda) {
-            ArrayList<Videojuego> videojuegos = new ArrayList<>();
-            if (tienda != null && tienda.getId_tienda() > 0) {
-                try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(GETFROMGAMESSHOPS)) {
-                    pst.setInt(1, tienda.getId_tienda());
-                    try (ResultSet rs = pst.executeQuery()) {
-                        while (rs.next()) {
-                            Videojuego videojuego = new Videojuego();
-                            videojuego.setId_videojuego(rs.getInt("id_videojuego"));
-                            videojuego.setNombre(rs.getString("nombre"));
-                            videojuego.setPrecio(rs.getFloat("precio"));
-                            videojuego.setDescripcion(rs.getString("descripcion"));
-                            videojuego.setDesarrollador(new DesarrolladorDAO().findByID(rs.getInt("id_desarrollador")));
-                            videojuegos.add(videojuego);
-                        }
+    public ArrayList<Videojuego> buscarJuegosDeTienda(Tienda tienda) {
+        ArrayList<Videojuego> videojuegos = new ArrayList<>();
+        if (tienda != null && tienda.getId_tienda() > 0) {
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(GETFROMGAMESSHOPS)) {
+                pst.setInt(1, tienda.getId_tienda());
+                try (ResultSet rs = pst.executeQuery()) {
+                    while (rs.next()) {
+                        Videojuego videojuego = new Videojuego();
+                        videojuego.setId_videojuego(rs.getInt("id_videojuego"));
+                        videojuego.setNombre(rs.getString("nombre"));
+                        videojuego.setPrecio(rs.getFloat("precio"));
+                        videojuego.setDescripcion(rs.getString("descripcion"));
+                        videojuego.setDesarrollador(new DesarrolladorDAO().findByID(rs.getInt("id_desarrollador")));
+                        videojuegos.add(videojuego);
                     }
-                } catch (SQLException e) {
-                    System.err.println("Error al buscar juegos de tienda: " + e.getMessage());
                 }
+            } catch (SQLException e) {
+                System.err.println("Error al buscar juegos de tienda: " + e.getMessage());
             }
-            return videojuegos; // Devuelve la lista de videojuegos.
         }
+        return videojuegos; // Devuelve la lista de videojuegos.
+    }
 
     public Tienda insertarTiendaVideojuego(Tienda tienda) {
         if (tienda != null && tienda.getId_tienda() > 0) {
@@ -128,24 +116,25 @@ public class TiendaDAO {
     }
 
 
-
-            public ArrayList<Tienda> findAll () {
-                ArrayList<Tienda> tiendas = new ArrayList<>();
-                try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDALL)) {
-                    try (ResultSet rs = pst.executeQuery()) {
-                        while (rs.next()) {
-                            Tienda tienda = new Tienda();
-                            tienda.setId_tienda(rs.getInt("id_tienda"));
-                            tienda.setUbicacion(rs.getString("ubicacion"));
-                            tienda.setTelefono(rs.getString("telefono"));
-                            tiendas.add(tienda);
-                        }
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
+    public ArrayList<Tienda> findAll() {
+        ArrayList<Tienda> tiendas = new ArrayList<>();
+        try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDALL)) {
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    Tienda tienda = new Tienda();
+                    tienda.setId_tienda(rs.getInt("id_tienda"));
+                    tienda.setUbicacion(rs.getString("ubicacion"));
+                    tienda.setTelefono(rs.getString("telefono"));
+                    tiendas.add(tienda);
                 }
-                return tiendas;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tiendas;
+    }
+
+
 
     public ArrayList<String> findAllNames() {
         ArrayList<String> result = new ArrayList<>();
