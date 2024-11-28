@@ -133,7 +133,7 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
 
             Stage currentStage = (Stage) botonInsertar.getScene().getWindow();
             currentStage.close();
-            App.currentController.openModalv(Scenes.MODIFICARTIENDA,"modificar tienda",this, tiendSeleccionada);
+            App.currentController.changeScene(Scenes.MODIFICARTIENDA, tiendSeleccionada);
         }
 
     }

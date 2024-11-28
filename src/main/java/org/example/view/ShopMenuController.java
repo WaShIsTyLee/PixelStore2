@@ -101,7 +101,7 @@ public class ShopMenuController extends Controller implements Initializable {
         // Obtener la tienda seleccionada y abrir un modal para modificarla o eliminarla
         Tienda tiendaSeleccionada = tiendas.getSelectionModel().getSelectedItem();
         System.out.println(tiendaSeleccionada.toString());
-        App.currentController.openModalv(Scenes.MODIFICARTIENDA, "Modificar Tienda", this, tiendaSeleccionada);
+        App.currentController.changeScene(Scenes.MODIFICARTIENDA, tiendaSeleccionada);
 
     }
 }

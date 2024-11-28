@@ -114,6 +114,9 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
     public void eliminarTienda() throws IOException {
         TiendaDAO tdao = new TiendaDAO();
         tdao.delete(tiendaseleccionada);
+
+        Stage currentStage = (Stage) botonEliminar.getScene().getWindow();
+        currentStage.close();
         App.currentController.changeScene(Scenes.TIENDAS,null);
     }
 }
