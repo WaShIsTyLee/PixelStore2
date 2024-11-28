@@ -118,17 +118,80 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
         App.currentController.openModalv(Scenes.ASIGNARVIDEOJUEGO, "asignarVideojuego", this, tiendaseleccionada);
     }
 
-
     public void Modificar() throws Exception {
-        App.currentController.changeScene(Scenes.TIENDAS, tiendaseleccionada);
+        modificaTienda();
+        App.currentController.changeScene(Scenes.TIENDAS,  tiendaseleccionada);
     }
 
     @FXML
     public void eliminarTienda() throws IOException {
         TiendaDAO tdao = new TiendaDAO();
         tdao.delete(tiendaseleccionada);
-        App.currentController.changeScene(Scenes.TIENDAS, null);
+        App.currentController.changeScene(Scenes.TIENDAS,null);
     }
+
+    public boolean validarDatos(){
+        if (textFieldLocalizacion.getText().isEmpty() || textFieldTelefono.getText().isEmpty()) {
+            System.out.println("Por favor rellene todos los campos para realizar la operación");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarNombreParaUpdate() {
+        TiendaDAO tdao = new TiendaDAO();
+        ArrayList<String> namesTiendas = tdao.findAllNames();
+        String ubicacionIngresada = textFieldLocalizacion.getText();
+
+        for (String ubicacion : namesTiendas) {
+            if (ubicacion.equals(ubicacionIngresada)) {
+                if (!ubicacion.equalsIgnoreCase(tiendaseleccionada.getUbicacion())){
+                    System.out.println("ERROR: La ubicación ingresada ya existe para otra tienda");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean comprobacionCampos() {
+        // Combina ambas validaciones
+        return validarNombreParaUpdate() && validarDatos();
+    }
+
+
+    public Tienda recogerDatos(){
+        if (!comprobacionCampos()) {
+            // Si la validación falla, no se recoge ni actualiza
+            System.out.println("Error: No se puede procesar debido a validaciones fallidas.");
+            return null;
+        }
+
+        Tienda tienda = new Tienda();
+        tienda.setUbicacion(textFieldLocalizacion.getText());
+        tienda.setTelefono(textFieldTelefono.getText());
+
+        return tienda;
+    }
+
+    @FXML
+    public void modificaTienda() throws Exception {
+        Tienda tiendaActualizada = recogerDatos();
+        tiendaActualizada.setId_tienda(tiendaseleccionada.getId_tienda());
+        if (tiendaActualizada == null) {
+            // Si la validación falla, detener el proceso
+            System.out.println("Error: No se puede modificar el tienda debido a errores de validación.");
+            return;
+        }
+
+        TiendaDAO tdao = new TiendaDAO();
+        tdao.update(tiendaActualizada);
+
+
+    }
+
+
+
 
     public void eliminarJuegos() throws IOException {
         TiendaDAO tdao = new TiendaDAO();

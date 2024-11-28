@@ -51,19 +51,6 @@ public class TiendaDAO {
         }
 
     }
-    public ArrayList<String> findAllNames() {
-        ArrayList<String> result = new ArrayList<>();
-        try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDALLNAMES)) {
-            try (ResultSet res = pst.executeQuery()) {
-                while (res.next()) {
-                    result.add(res.getString("ubicacion"));
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
 
         public void eliminarJuegosDeTienda(Tienda tienda, ArrayList<Videojuego> videojuegosAEliminar) {
         if (tienda != null && tienda.getId_tienda() > 0) {
