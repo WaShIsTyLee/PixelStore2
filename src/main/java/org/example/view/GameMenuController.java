@@ -71,8 +71,9 @@ public class GameMenuController extends Controller implements Initializable {
     }
     @FXML
     public void buscar(){
+        String palabra = buscador.getText().toLowerCase();
         ObservableList<Videojuego> filteGame = games.stream()
-                .filter(game -> game.getNombre().toLowerCase().contains(buscador.getText()))
+                .filter(game -> game.getNombre().toLowerCase().contains(palabra))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
         videojuegos.setItems(filteGame);
         videojuegos.refresh();

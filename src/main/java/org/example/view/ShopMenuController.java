@@ -76,9 +76,9 @@ public class ShopMenuController extends Controller implements Initializable {
 
     @FXML
     public void buscar() {
-
+        String palabra = buscador.getText().toLowerCase();
         ObservableList<Tienda> filteredTiendas = tiendasOA.stream()
-                .filter(tienda -> tienda.getUbicacion().toLowerCase().contains(buscador.getText().toLowerCase()))
+                .filter(tienda -> tienda.getUbicacion().toLowerCase().contains(palabra))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
         tiendas.setItems(filteredTiendas);
         tiendas.refresh();
