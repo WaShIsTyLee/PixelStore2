@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Games.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ShopMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Games.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ShopMenuController">
    <children>
       <Text fill="WHITE" layoutX="163.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiendas">
          <font>
@@ -26,7 +26,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ListView>
-      <TextField layoutX="475.0" layoutY="57.0" promptText="Buscar">
+      <TextField fx:id="buscador" layoutX="475.0" layoutY="57.0" onAction="#buscar" promptText="Buscar">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>

@@ -65,8 +65,9 @@ public class DevMenuController extends Controller implements Initializable {
     }
     @FXML
     public void buscar(){
+        String palabra = buscador.getText().toLowerCase();
         ObservableList<Desarrollador> filteGame = desarrolladors.stream()
-                .filter(desa -> desa.getNombre().toLowerCase().contains(buscador.getText()))
+                .filter(desa -> desa.getNombre().toLowerCase().contains(palabra))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
         des.setItems(filteGame);
         des.refresh();
