@@ -39,7 +39,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ListView>
-      <ImageView fx:id="carro" fitHeight="43.0" fitWidth="45.0" layoutX="718.0" layoutY="50.0" onMouseClicked="#añadirACarrito">
+      <ImageView fx:id="carro" fitHeight="43.0" fitWidth="45.0" layoutX="718.0" layoutY="50.0" onMouseClicked="#añadirACarrito" styleClass="highlight">
          <image>
             <Image url="@Fotos/carrito.png" />
          </image>
