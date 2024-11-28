@@ -15,7 +15,9 @@ public class TiendaDAO {
     private final static String GETBYID = "SELECT * FROM tienda WHERE id_tienda = ?";
     private final static String FINDALL = "SELECT * FROM tienda";
     private final static String FINDALLNAMES = "SELECT t.ubicacion FROM tienda as t ";
+
     private final static String UPDATE = "UPDATE tienda SET ubicacion=?, telefono=? WHERE id_tienda=?";
+
     private final static String ADDTOGAMESSHOPS = "INSERT INTO tiendavideojuego (id_videojuego, id_tienda) VALUES (?,?)";
     private final static String GETFROMGAMESSHOPS =
             "SELECT v.id_videojuego, v.nombre, v.precio, v.descripcion, v.id_desarrollador " +
@@ -23,6 +25,7 @@ public class TiendaDAO {
                     "JOIN videojuego v ON tv.id_videojuego = v.id_videojuego " +
                     "WHERE tv.id_tienda = ?";
     private final static String DELETEFROMGAMESHOPS = "DELETE FROM tiendavideojuego WHERE id_videojuego = ?";
+
 
     public void update(Tienda entity) {
         if (entity != null) {
@@ -80,6 +83,7 @@ public class TiendaDAO {
             System.err.println("La tienda es nula o tiene un ID inválido.");
         }
     }
+
 
         public ArrayList<Videojuego> buscarJuegosDeTienda(Tienda tienda) {
             ArrayList<Videojuego> videojuegos = new ArrayList<>();
@@ -142,6 +146,20 @@ public class TiendaDAO {
                 }
                 return tiendas;
             }
+
+    public ArrayList<String> findAllNames() {
+        ArrayList<String> result = new ArrayList<>();
+        try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDALLNAMES)) {
+            try (ResultSet res = pst.executeQuery()) {
+                while (res.next()) {
+                    result.add(res.getString("ubicacion"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
             public Tienda delete (Tienda tienda){
                 if (tienda != null || tienda.getId_tienda() > 0) {

@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.example.App;
 import org.example.DAO.TiendaDAO;
+import org.example.DAO.VideojuegoDAO;
 import org.example.Model.Tienda;
 import org.example.Model.Videojuego;
 
@@ -190,13 +191,11 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
 
     }
 
-
-
-
     public void eliminarJuegos() throws IOException {
         TiendaDAO tdao = new TiendaDAO();
         tdao.eliminarJuegosDeTienda(tiendaseleccionada, obtenerVideojuegosSeleccionados());
         App.currentController.changeScene(Scenes.TIENDAS, null);
 
     }
+
 }
