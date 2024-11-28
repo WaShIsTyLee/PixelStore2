@@ -2,7 +2,9 @@ package org.example.DAO;
 
 import org.example.BaseDatos.ConnectionDB;
 import org.example.Model.Usuario;
+import org.example.Model.Videojuego;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +15,26 @@ public class UsuarioDAO {
     private final static String INSERT = "INSERT INTO usuario( nombre, email, contrasena, administrador) VALUES (?,?,?,?) ";
     private final static String FINDBYEMAIL = "SELECT * FROM usuario WHERE email = ?";
     private final static String FINDALLEMAILS = "SELECT email FROM usuario";
+    private final static String ADDTOCARRITO = "INSERT INTO usuariovideojuego (id_usuario, id_videojuego, fecha_compra) VALUES (?,?,?)";
+
+    public void InsertarVideojuegosEnCarrito(Usuario usuario, ArrayList<Videojuego> videojuegos) {
+        String ADDTOCARRITO = "INSERT INTO usuariovideojuego (id_usuario, id_videojuego, fecha_compra) VALUES (?,?,?)";
+        try (Connection conn = ConnectionDB.getConnection()) {
+            for (Videojuego videojuego : videojuegos) {
+                try (PreparedStatement pst = conn.prepareStatement(ADDTOCARRITO)) {
+                    pst.setInt(1, usuario.getId_usuario());
+                    pst.setInt(2, videojuego.getId_videojuego());
+                    pst.setDate(3, new java.sql.Date(System.currentTimeMillis()));
+                    pst.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public Usuario delete(Usuario usuario) {
         if (usuario != null || usuario.getId_usuario() > 0) {

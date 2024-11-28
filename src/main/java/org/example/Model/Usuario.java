@@ -1,5 +1,6 @@
 package org.example.Model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,6 +11,24 @@ public class Usuario {
    private String email;
    private String contrasena;
    private boolean administrador;
+   public ArrayList<Videojuego> carrito = new ArrayList<>();
+
+   public Usuario(int id_usuario, String nombre, String email, String contrasena, boolean administrador, ArrayList<Videojuego> carrito) {
+      this.id_usuario = id_usuario;
+      this.nombre = nombre;
+      this.email = email;
+      this.contrasena = contrasena;
+      this.administrador = administrador;
+      this.carrito = carrito;
+   }
+
+   public ArrayList<Videojuego> getCarrito() {
+      return carrito;
+   }
+
+   public void setCarrito(ArrayList<Videojuego> carrito) {
+      this.carrito = carrito;
+   }
 
    public Usuario(int id_usuario, String nombre, String email, String contrasena, boolean administrador) {
       this.id_usuario = id_usuario;

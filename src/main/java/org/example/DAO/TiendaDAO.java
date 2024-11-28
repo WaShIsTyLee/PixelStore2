@@ -20,6 +20,25 @@ public class TiendaDAO {
                     "FROM tiendavideojuego tv " +
                     "JOIN videojuego v ON tv.id_videojuego = v.id_videojuego " +
                     "WHERE tv.id_tienda = ?";
+    private final static String DELETEFROMGAMESHOPS = "DELETE FROM tiendavideojuego WHERE id_videojuego = ?";
+
+
+
+    public void eliminarJuegosDeTienda(Tienda tienda, ArrayList<Videojuego> videojuegosAEliminar) {
+        if (tienda != null && tienda.getId_tienda() > 0) {
+            for (Videojuego videojuego : videojuegosAEliminar) {
+                try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(DELETEFROMGAMESHOPS)) {
+                    pst.setInt(1, videojuego.getId_videojuego());
+                    pst.executeUpdate();
+                } catch (SQLException e) {
+                    System.err.println("Error al eliminar el videojuego con ID: " + videojuego.getId_videojuego());
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            System.err.println("La tienda es nula o tiene un ID inválido.");
+        }
+    }
 
         public ArrayList<Videojuego> buscarJuegosDeTienda(Tienda tienda) {
             ArrayList<Videojuego> videojuegos = new ArrayList<>();

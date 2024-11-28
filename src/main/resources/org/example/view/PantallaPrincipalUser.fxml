@@ -27,7 +27,7 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <StackPane layoutX="120.0" layoutY="195.0" prefHeight="81.0" prefWidth="664.0" styleClass="stackpane-hover">
+      <StackPane layoutX="120.0" layoutY="195.0" onMouseClicked="#goShowGames" prefHeight="81.0" prefWidth="664.0" styleClass="stackpane-hover">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030212" height="82.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="664.0" />
             <ImageView fitHeight="82.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview-hover" StackPane.alignment="TOP_LEFT">
