@@ -81,6 +81,8 @@ public class Videojuego {
         this.desarrollador = desarrollador;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -102,6 +104,7 @@ public class Videojuego {
                 ", descripcion='" + descripcion + '\'' +
                 ", precio=" + precio +
                 ", desarrollador=" + desarrollador +
+                ", rutaImagen='" + rutaImagen + '\'' +
                 '}';
     }
 }

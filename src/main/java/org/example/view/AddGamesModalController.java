@@ -94,7 +94,8 @@ public class AddGamesModalController extends Controller implements Initializable
             if (imageUrl != null) {
                 videojuego.setRutaImagen(imageUrl);
             }else {
-                videojuego.setRutaImagen("C:\\Users\\Washi\\IdeaProjects\\PixelStore2\\src\\main\\resources\\org\\example\\view\\Fotos\\Portada.jpg"); //METER FOTO EN ESPECIFICO
+                String rutaImagen = getClass().getResource("/org/example/view/Fotos/Portada.jpg").toExternalForm();
+                videojuego.setRutaImagen(rutaImagen); //METER FOTO EN ESPECIFICO
             }
 
 

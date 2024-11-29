@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.App;
 import org.example.DAO.DesarrolladorDAO;
@@ -15,56 +18,69 @@ import org.example.DAO.VideojuegoDAO;
 import org.example.Model.Desarrollador;
 import org.example.Model.Videojuego;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class UpdateGameModalController extends Controller implements Initializable{
+public class UpdateGameModalController extends Controller implements Initializable {
 
     @FXML
-    TextField tfNombre;
+    private TextField tfNombre;
     @FXML
-    TextArea tfDescripcion;
+    private TextArea tfDescripcion;
     @FXML
-    TextField tfPrecio;
+    private TextField tfPrecio;
     @FXML
-    ComboBox cmbDesarrolador;
+    private ComboBox<String> cmbDesarrolador;
     @FXML
-    Button btnGuardar;
+    private Button btnGuardar;
+    @FXML
+    private ImageView imagenGame;
+    @FXML
+    private Button btnBorrar;
+    @FXML
+    private Button cambiarImagen;
 
-    @FXML
-    Button btnBorrar;
+    private File view;
+    private String imageUrl;
 
-
-    Videojuego videojuegoCapturado = new Videojuego();
+    private Videojuego videojuegoCapturado = new Videojuego();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // No es necesario código inicial adicional
     }
 
     @Override
     public void onOpen(Object input) throws IOException {
-       videojuegoCapturado = (Videojuego) input;
+        videojuegoCapturado = (Videojuego) input;
+
+        // Configurar campos con los datos del videojuego
         tfNombre.setText(videojuegoCapturado.getNombre());
         tfDescripcion.setText(videojuegoCapturado.getDescripcion());
         Float precio = videojuegoCapturado.getPrecio();
         tfPrecio.setText(precio.toString());
 
-        // Obtén la lista de desarrolladores y conviértela en un ObservableList
+        // Configurar la imagen
+        if (videojuegoCapturado.getRutaImagen() != null) {
+            Image image = new Image(videojuegoCapturado.getRutaImagen());
+            imagenGame.setImage(image);
+        }
+
+        // Poblar el ComboBox con los desarrolladores
         DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
-        ArrayList <Desarrollador> desarrolladores = desarrolladorDAO.findAll();
+        ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.findAll();
         ArrayList<String> nombresDesarroladores = new ArrayList<>();
-        for(Desarrollador desarrolador : desarrolladores){
+        for (Desarrollador desarrolador : desarrolladores) {
             nombresDesarroladores.add(desarrolador.getNombre());
         }
-        ObservableList <String> string = FXCollections.observableArrayList(nombresDesarroladores);
-        // Establece los elementos del ComboBox
+        ObservableList<String> string = FXCollections.observableArrayList(nombresDesarroladores);
         cmbDesarrolador.setValue(videojuegoCapturado.getDesarrollador().getNombre());
         cmbDesarrolador.setItems(string);
-
     }
+
     public boolean validarNombreParaUpdate() {
         VideojuegoDAO dao = new VideojuegoDAO();
         ArrayList<String> namesVideojuegos = dao.findAllNames();
@@ -119,6 +135,13 @@ public class UpdateGameModalController extends Controller implements Initializab
         videojuego.setPrecio(Float.parseFloat(tfPrecio.getText()));
         videojuego.setDesarrollador(videojuegoCapturado.getDesarrollador());
         videojuego.setId_videojuego(videojuegoCapturado.getId_videojuego());
+
+        // Usar la ruta de la nueva imagen si fue seleccionada; de lo contrario, mantener la original
+        if (imageUrl != null) {
+            videojuego.setRutaImagen(imageUrl);
+        } else {
+            videojuego.setRutaImagen(videojuegoCapturado.getRutaImagen());
+        }
         return videojuego;
     }
 
@@ -136,11 +159,11 @@ public class UpdateGameModalController extends Controller implements Initializab
         // Realizar el update en la base de datos
         VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
         videojuegoDAO.update(videojuegoActualizado);
+
+        // Cerrar la ventana actual y volver a la lista de videojuegos
         Stage currentStage = (Stage) btnGuardar.getScene().getWindow();
         currentStage.close();
-        App.currentController.changeScene(Scenes.GAMES,null);
-
-
+        App.currentController.changeScene(Scenes.GAMES, null);
     }
 
     @FXML
@@ -149,7 +172,27 @@ public class UpdateGameModalController extends Controller implements Initializab
         videojuegoDAO.delete(videojuegoCapturado);
         Stage currentStage = (Stage) btnBorrar.getScene().getWindow();
         currentStage.close();
-        App.currentController.changeScene(Scenes.GAMES,null);
+        App.currentController.changeScene(Scenes.GAMES, null);
     }
 
+    @FXML
+    private void chooseView() {
+        FileChooser file = new FileChooser();
+        file.setTitle("Selecciona el archivo");
+        file.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+        File select = file.showOpenDialog(cambiarImagen.getScene().getWindow());
+        if (select != null) {
+            view = select;
+
+            // Obtener la URL de la imagen seleccionada
+            imageUrl = select.getAbsolutePath().toString(); // Cambiar a URI para que funcione en JavaFX
+            System.out.println("URL de la imagen seleccionada: " + imageUrl);
+
+            // Cargar la imagen en el ImageView
+            Image image = new Image(imageUrl);
+            imagenGame.setImage(image);
+        }
+    }
 }

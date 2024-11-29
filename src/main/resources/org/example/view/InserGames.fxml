@@ -48,7 +48,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="buttonSeleccionarImagen" layoutX="572.0" layoutY="507.0" mnemonicParsing="false" onAction="#chooseView" text="Añadir Imagen" />
+      <Button fx:id="buttonSeleccionarImagen" layoutX="566.0" layoutY="515.0" mnemonicParsing="false" onAction="#chooseView" prefHeight="68.0" prefWidth="255.0" text="Añadir Imagen" />
       <ImageView fx:id="imagenJuego" fitHeight="339.0" fitWidth="315.0" layoutX="549.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
