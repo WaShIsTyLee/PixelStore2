@@ -94,7 +94,7 @@ public class UGamesController extends Controller implements Initializable {
         name.setStyle("-fx-text-fill: white;");
 
         // Etiqueta con el precio del videojuego
-        Label price = new Label("€" + String.format("%.2f", game.getPrecio()));
+        Label price = new Label( String.format("%.2f", game.getPrecio()) + " €");
         price.setStyle("-fx-text-fill: #50fa7b; -fx-font-size: 14;");
 
         // Etiqueta con el nombre del desarrollador
