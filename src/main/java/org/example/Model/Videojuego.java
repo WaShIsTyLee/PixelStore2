@@ -1,5 +1,6 @@
 package org.example.Model;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class Videojuego {
@@ -9,6 +10,15 @@ public class Videojuego {
     private float precio;
     private Desarrollador desarrollador;
     private String rutaImagen;
+    private Date fechaCompra;
+
+    public Date getFechaCompra() {
+        return fechaCompra;
+    }
+
+    public void setFechaCompra(Date fechaCompra) {
+        this.fechaCompra = fechaCompra;
+    }
 
     public Videojuego(String rutaImagen) {
         this.rutaImagen = rutaImagen;
@@ -29,6 +39,13 @@ public class Videojuego {
         this.precio = precio;
         this.desarrollador = desarrollador;
         this.rutaImagen = rutaImagen;
+    }
+
+    public Videojuego(String nombre, float precio, String rutaImagen, Date fechaCompra) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.rutaImagen = rutaImagen;
+        this.fechaCompra = fechaCompra;
     }
 
     public Videojuego() {

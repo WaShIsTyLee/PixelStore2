@@ -15,7 +15,7 @@ public class UsuarioDAO {
     private final static String INSERT = "INSERT INTO usuario( nombre, email, contrasena, administrador) VALUES (?,?,?,?) ";
     private final static String FINDBYEMAIL = "SELECT * FROM usuario WHERE email = ?";
     private final static String FINDALLEMAILS = "SELECT email FROM usuario";
-    private final static String ADDTOCARRITO = "INSERT INTO usuariovideojuego (id_usuario, id_videojuego, fecha_compra) VALUES (?, ?, ?)";
+    private final static String FINDGAMEUSER = "SELECT v.nombre AS nombre, v.precio, v.foto, uv.fecha_compra  FROM videojuego v  JOIN usuariovideojuego uv ON v.id_videojuego = uv.id_videojuego  JOIN usuario u ON uv.id_usuario = u.id_usuario  WHERE u.id_usuario = ? ";
 
     public boolean insertarVideojuegosEnCarrito(Usuario usuario, Videojuego videojuego) {
         boolean success = false;
@@ -123,6 +123,26 @@ public class UsuarioDAO {
         }
         return usuarioAux;
     }
-
+    public ArrayList<Videojuego> gammerUser(Usuario usuario){
+        ArrayList<Videojuego> result = new ArrayList<>();
+        if (usuario != null){
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDGAMEUSER)) {
+                pst.setInt(1,usuario.getId_usuario());
+                try (ResultSet res = pst.executeQuery()){
+                    while (res.next()){
+                        Videojuego v = new Videojuego();
+                        v.setNombre(res.getString("nombre"));
+                        v.setPrecio(res.getFloat("precio"));
+                        v.setRutaImagen(res.getString("foto"));
+                        v.setFechaCompra(res.getDate("fecha_compra"));
+                        result.add(v);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
 
 }

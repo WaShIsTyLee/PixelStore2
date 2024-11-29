@@ -19,7 +19,7 @@ public class TiendaDAO {
 
     private final static String ADDTOGAMESSHOPS = "INSERT INTO tiendavideojuego (id_videojuego, id_tienda) VALUES (?,?)";
     private final static String GETFROMGAMESSHOPS =
-            "SELECT v.id_videojuego, v.nombre, v.precio, v.descripcion, v.id_desarrollador " +
+            "SELECT v.id_videojuego, v.nombre, v.precio, v.descripcion, v.id_desarrollador, v.foto " +
                     "FROM tiendavideojuego tv " +
                     "JOIN videojuego v ON tv.id_videojuego = v.id_videojuego " +
                     "WHERE tv.id_tienda = ?";
@@ -85,6 +85,8 @@ public class TiendaDAO {
                         videojuego.setPrecio(rs.getFloat("precio"));
                         videojuego.setDescripcion(rs.getString("descripcion"));
                         videojuego.setDesarrollador(new DesarrolladorDAO().findByID(rs.getInt("id_desarrollador")));
+                        videojuego.setRutaImagen(rs.getString("foto"));
+
                         videojuegos.add(videojuego);
                     }
                 }

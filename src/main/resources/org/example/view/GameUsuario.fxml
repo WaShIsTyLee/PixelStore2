@@ -35,11 +35,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="carro" fitHeight="43.0" fitWidth="45.0" layoutX="718.0" layoutY="50.0" styleClass="highlight">
-         <image>
-            <Image url="@Fotos/carrito.png" />
-         </image>
-      </ImageView>
       <!-- ScrollPane que envuelve al TilePane -->
       <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="6.0" layoutY="144.0" prefHeight="438.0" prefWidth="888.0" vbarPolicy="AS_NEEDED">
          <content>

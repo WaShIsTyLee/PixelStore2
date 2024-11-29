@@ -5,7 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import org.example.App;
 import org.example.DAO.TiendaDAO;
@@ -19,6 +23,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class UpdatearTiendaAsignarVideojuegoController extends Controller implements Initializable {
+    @FXML
+    ImageView volver;
     @FXML
     TextField textFieldLocalizacion;
     @FXML
@@ -41,7 +47,7 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Configuración de la celda de ListView
-        listViewVideojuegos.setCellFactory(lv -> new ListCell<>() {
+        listViewVideojuegos.setCellFactory(lv -> new ListCell<Videojuego>() {
             @Override
             protected void updateItem(Videojuego item, boolean empty) {
                 super.updateItem(item, empty);
@@ -49,17 +55,33 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Contenedor principal para cada celda
+                    // Crear un diseño horizontal (HBox) para cada celda
                     HBox container = new HBox();
                     container.setSpacing(10);
                     container.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: lightgray;");
+                    container.setMaxWidth(Double.MAX_VALUE);  // Asegura que el HBox ocupe todo el espacio disponible
 
-                    // Etiquetas de información del videojuego
+                    // Crear los labels con la información del videojuego
+                    VBox labels = new VBox();
+                    labels.setSpacing(5);
+                    labels.setMaxWidth(Double.MAX_VALUE);  // Hacer que el VBox ocupe todo el ancho disponible
+                    labels.setStyle("-fx-hgap: 10;");
+
                     Label nombre = new Label("Nombre: " + item.getNombre());
                     Label precio = new Label("Precio: $" + String.format("%.2f", item.getPrecio()));
                     Label descripcion = new Label("Descripción: " + item.getDescripcion());
                     Label desarrollador = new Label("Desarrollador: " + item.getDesarrollador().getNombre());
-                    descripcion.setWrapText(true);
+                    descripcion.setWrapText(true);  // Ajuste de texto para que se vea correctamente
+
+                    labels.getChildren().addAll(nombre, precio, descripcion, desarrollador);
+
+                    // Crear un ImageView para mostrar la imagen
+                    ImageView imagen = new ImageView();
+                    if (item.getRutaImagen() != null && !item.getRutaImagen().isEmpty()) {
+                        imagen.setImage(new Image(item.getRutaImagen()));  // Establecer la imagen
+                        imagen.setFitHeight(100);  // Ajustar el tamaño de la imagen
+                        imagen.setPreserveRatio(true);  // Mantener las proporciones
+                    }
 
                     // Checkbox para seleccionar el videojuego
                     CheckBox checkbox = new CheckBox();
@@ -74,12 +96,16 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
                         }
                     });
 
-                    // Contenedor para la información del videojuego
-                    VBox infoContainer = new VBox(nombre, precio, descripcion, desarrollador);
+                    // Crear un contenedor para la información
+                    VBox infoContainer = new VBox(labels);
                     infoContainer.setSpacing(5);
 
-                    // Agregar checkbox y la información al contenedor principal
-                    container.getChildren().addAll(checkbox, infoContainer);
+                    // Crear un Region vacío para empujar la imagen a la derecha
+                    Region espacioVacío = new Region();
+                    HBox.setHgrow(espacioVacío, Priority.ALWAYS);  // Hace que el espacio vacío ocupe todo el espacio disponible
+
+                    // Añadir el checkbox, la información y la imagen al contenedor principal
+                    container.getChildren().addAll(checkbox, infoContainer, espacioVacío, imagen);
 
                     // Configurar el gráfico de la celda
                     setGraphic(container);
@@ -87,7 +113,7 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
             }
         });
 
-        // Asignar la lista de videojuegos a la ListView
+// Asignar la lista de videojuegos a la ListView
         listViewVideojuegos.setItems(this.games);
     }
 
@@ -196,6 +222,10 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
         tdao.eliminarJuegosDeTienda(tiendaseleccionada, obtenerVideojuegosSeleccionados());
         App.currentController.changeScene(Scenes.TIENDAS, null);
 
+    }
+    @FXML
+    public void goToshops() throws IOException {
+        App.currentController.changeScene(Scenes.TIENDAS,null);
     }
 
 }
