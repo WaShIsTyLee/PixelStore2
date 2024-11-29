@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.App;
 import org.example.DAO.DesarrolladorDAO;
@@ -15,6 +18,7 @@ import org.example.DAO.VideojuegoDAO;
 import org.example.Model.Desarrollador;
 import org.example.Model.Videojuego;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -32,9 +36,42 @@ public class AddGamesModalController extends Controller implements Initializable
     TextArea DescripcionJuego;
     @FXML
     Button buttonGuardar;
+    @FXML
+    Button buttonSeleccionarImagen;
+    @FXML
+    ImageView imagenJuego;
+
+    // Archivo seleccionado
+    private File view;
+
+    // URL de la imagen seleccionada
+    private String imageUrl;
+
+    @FXML
+    private void chooseView() {
+        FileChooser file = new FileChooser();
+        file.setTitle("Selecciona el archivo");
+        file.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+        File select = file.showOpenDialog(buttonSeleccionarImagen.getScene().getWindow());
+        if (select != null) {
+            view = select;
+
+            // Obtener la URL de la imagen seleccionada
+            imageUrl = select.getAbsolutePath().toString();
+            System.out.println("URL de la imagen seleccionada: " + imageUrl);
+
+            // Cargar la imagen en el ImageView
+            Image image = new Image(imageUrl);
+            imagenJuego.setImage(image);
+
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Cargar los desarrolladores en el ComboBox
         DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
         ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.findAll();
         ArrayList<String> desarrolladoresString = new ArrayList<>();
@@ -49,26 +86,31 @@ public class AddGamesModalController extends Controller implements Initializable
         Videojuego videojuego = new Videojuego();
         DesarrolladorDAO dao = new DesarrolladorDAO();
         if (comprobacionCampos()) {
-            Desarrollador dearroladorSeleccionado = dao.findByName(comboBoxDesarrollador.getValue());
+            Desarrollador desarrolladorSeleccionado = dao.findByName(comboBoxDesarrollador.getValue());
             videojuego.setNombre(nombreJuego.getText());
             videojuego.setPrecio(Float.parseFloat(precioJuego.getText()));
             videojuego.setDescripcion(DescripcionJuego.getText());
-            videojuego.setDesarrollador(dearroladorSeleccionado);
+            videojuego.setDesarrollador(desarrolladorSeleccionado);
+            if (imageUrl != null) {
+                videojuego.setRutaImagen(imageUrl);
+            }else {
+                videojuego.setRutaImagen("C:\\Users\\Washi\\IdeaProjects\\PixelStore2\\src\\main\\resources\\org\\example\\view\\Fotos\\Portada.jpg"); //METER FOTO EN ESPECIFICO
+            }
+
+
             return videojuego;
-        }else{
+        } else {
             System.out.println("Error en los campos");
         }
         return null;
     }
 
     public boolean comprobacionCampos() {
-
         VideojuegoDAO dao = new VideojuegoDAO();
         ArrayList<String> namesVideojuegos = dao.findAllNames();
 
         for (String name : namesVideojuegos) {
             if (name.equalsIgnoreCase(nombreJuego.getText())) { // Comparación insensible a mayúsculas
-                // ALERTA: El nombre del juego ya existe
                 System.out.println("Error: El nombre del videojuego ya existe.");
                 return false;
             }
@@ -76,7 +118,6 @@ public class AddGamesModalController extends Controller implements Initializable
 
         if (comboBoxDesarrollador.getValue() == null || nombreJuego.getText().isEmpty() ||
                 precioJuego.getText().isEmpty() || DescripcionJuego.getText().isEmpty()) {
-            // ALERTA: Campos vacíos
             System.out.println("Error: Hay campos vacíos que deben ser completados.");
             return false;
         }
@@ -84,28 +125,25 @@ public class AddGamesModalController extends Controller implements Initializable
         return true;
     }
 
-
     public void añadiJuegoBD() {
         VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
         if (comprobacionCampos()) {
             try {
                 videojuegoDAO.save(recogerVideojuego());
 
+                // Cerrar la ventana actual
                 Stage currentStage = (Stage) buttonGuardar.getScene().getWindow();
                 currentStage.close();
 
-
+                // Cambiar la escena a la lista de juegos
                 App.currentController.changeScene(Scenes.GAMES, null);
             } catch (Exception e) {
-                //mostrarAlerta("Error al guardar el videojuego: " + e.getMessage());
                 e.printStackTrace();
             }
         } else {
-            System.out.println("error");
-            //mostrarAlerta("Por favor, verifica los campos. Hay errores o información incompleta.");
+            System.out.println("Error: Por favor, verifica los campos.");
         }
     }
-
 
     @Override
     public void onOpen(Object input) throws IOException {
