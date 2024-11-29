@@ -8,28 +8,6 @@ public class Videojuego {
     private String descripcion;
     private float precio;
     private Desarrollador desarrollador;
-    private String rutaImagen;
-
-    public Videojuego(String rutaImagen) {
-        this.rutaImagen = rutaImagen;
-    }
-
-    public String getRutaImagen() {
-        return rutaImagen;
-    }
-
-    public void setRutaImagen(String rutaImagen) {
-        this.rutaImagen = rutaImagen;
-    }
-
-    public Videojuego(int id_videojuego, String nombre, String descripcion, float precio, Desarrollador desarrollador, String rutaImagen) {
-        this.id_videojuego = id_videojuego;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.desarrollador = desarrollador;
-        this.rutaImagen = rutaImagen;
-    }
 
     public Videojuego() {
     }
