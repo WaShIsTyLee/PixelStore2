@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Games.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.UpdatearTiendaAsignarVideojuegoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/Games.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.UpdatearTiendaAsignarVideojuegoController">
    <children>
       <ImageView fitHeight="126.0" fitWidth="109.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -33,18 +33,24 @@
          </font>
       </Text>
       <ListView fx:id="listViewVideojuegos" layoutX="72.0" layoutY="199.0" prefHeight="300.0" prefWidth="761.0" />
-      <Button fx:id="botonAsignar" layoutX="676.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#AsignarVideojuego" prefHeight="31.0" prefWidth="157.0" text="Añadir videojuego">
+      <Button fx:id="botonAsignar" layoutX="552.0" layoutY="135.0" mnemonicParsing="false" onMouseClicked="#AsignarVideojuego" prefHeight="68.0" prefWidth="299.0" text="Añadir videojuego">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button fx:id="botonModificar" layoutX="72.0" layoutY="518.0" mnemonicParsing="false" onAction="#Modificar" onMouseClicked="#modificaTienda" prefHeight="68.0" prefWidth="178.0" text="Modificar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="botonModificar" layoutX="225.0" layoutY="521.0" mnemonicParsing="false" onAction="#Modificar" onMouseClicked="#modificaTienda" text="Modificar">
+      <Button fx:id="botonEliminar" layoutX="280.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#eliminarTienda" prefHeight="32.0" prefWidth="255.0" style="-fx-background-color: #ff6600;" text="Eliminar tienda" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Button fx:id="botonEliminar" layoutX="544.0" layoutY="521.0" mnemonicParsing="false" onMouseClicked="#eliminarTienda" style="-fx-background-color: #ff6600;" text="Eliminar tienda" textFill="WHITE">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+         <font>
+            <Font size="11.0" />
+         </font></Button>
       <TextField fx:id="textFieldLocalizacion" layoutX="200.0" layoutY="95.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
@@ -53,7 +59,7 @@
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <Button fx:id="botonEliminarJuego" layoutX="702.0" layoutY="521.0" mnemonicParsing="false" onAction="#eliminarJuegos" style="-fx-background-color: #ff6600;" text="Eliminar juegos" textFill="WHITE">
+      <Button fx:id="botonEliminarJuego" layoutX="578.0" layoutY="518.0" mnemonicParsing="false" onAction="#eliminarJuegos" prefHeight="68.0" prefWidth="255.0" style="-fx-background-color: #ff6600;" text="Eliminar juegos" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

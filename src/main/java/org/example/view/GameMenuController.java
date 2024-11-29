@@ -120,6 +120,7 @@ public class GameMenuController extends Controller implements Initializable {
     @FXML
     private void GoToModifyDeleteGames() throws Exception {
         Videojuego videojuegoCapturado = videojuegos.getSelectionModel().getSelectedItem();
+        //videojuegoCapturado.setRutaImagen();
         System.out.println(videojuegoCapturado.toString());
         App.currentController.openModalv(Scenes.MODIFICARVIDEOJUEGO,"Modificar Videojuego",this,videojuegoCapturado);
     }

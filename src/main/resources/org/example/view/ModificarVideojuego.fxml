@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.UpdateGameModalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.UpdateGameModalController">
    <children>
       <ImageView fitHeight="126.0" fitWidth="109.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -43,12 +43,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ComboBox>
-      <ImageView fitHeight="297.0" fitWidth="288.0" layoutX="565.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Fotos/Portada.jpg" />
-         </image>
-      </ImageView>
-      <Button fx:id="btnBorrar" layoutX="664.0" layoutY="512.0" mnemonicParsing="false" onAction="#borrarJuego" style="-fx-background-color: #ff6600;" stylesheets="@styles/primary.css" text="Eliminar">
+      <Button fx:id="btnBorrar" layoutX="416.0" layoutY="432.0" mnemonicParsing="false" onAction="#borrarJuego" style="-fx-background-color: #ff6600;" stylesheets="@styles/primary.css" text="Eliminar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -56,5 +51,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <ImageView fx:id="imagenGame" fitHeight="258.0" fitWidth="245.0" layoutX="586.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="cambiarImagen" layoutX="683.0" layoutY="499.0" mnemonicParsing="false" onAction="#chooseView" text="Cambiar Foto" stylesheets="@styles/primary.css"/>
    </children>
 </AnchorPane>
