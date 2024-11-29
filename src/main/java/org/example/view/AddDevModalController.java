@@ -29,14 +29,12 @@ public class AddDevModalController extends Controller implements Initializable {
     TextField pais;
     @FXML
     Button save;
-    @FXML
-    Button Eliminar;
 
     private Desarrollador developer =null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Eliminar.setVisible(false);
+
     }
 
     @Override
@@ -46,10 +44,7 @@ public class AddDevModalController extends Controller implements Initializable {
         if (developer != null){
             nombreDesa.setText(developer.getNombre());
             pais.setText(developer.getPais());
-            Eliminar.setVisible(true);
             save.setText("Actualizar");
-        } else {
-            Eliminar.setVisible(false);
         }
     }
     @FXML

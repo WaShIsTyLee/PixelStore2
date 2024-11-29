@@ -5,7 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.App;
@@ -50,8 +54,9 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
                     HBox container = new HBox();
                     container.setSpacing(10);
                     container.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: lightgray;");
+                    container.setMaxWidth(Double.MAX_VALUE);  // Asegura que el HBox ocupe todo el espacio disponible
 
-                    // Crear CheckBox
+                    // Crear el CheckBox
                     CheckBox checkBox = new CheckBox();
                     checkBox.setOnAction(event -> {
                         if (checkBox.isSelected()) {
@@ -63,18 +68,32 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
                         }
                     });
 
+                    // Crear las etiquetas con la información del videojuego
                     Label nombre = new Label("Nombre: " + item.getNombre());
                     Label precio = new Label("Precio: $" + String.format("%.2f", item.getPrecio()));
                     Label descripcion = new Label("Descripción: " + item.getDescripcion());
                     Label desarrollador = new Label("Desarrollador: " + item.getDesarrollador().getNombre());
-                    descripcion.setWrapText(true);
+                    descripcion.setWrapText(true);  // Ajuste de texto para que se vea correctamente
 
-                    // Agregar etiquetas a un VBox
+                    // Agregar las etiquetas a un VBox
                     VBox infoContainer = new VBox(nombre, precio, descripcion, desarrollador);
                     infoContainer.setSpacing(5);
+                    infoContainer.setMaxWidth(Double.MAX_VALUE);  // Hacer que el VBox ocupe todo el ancho disponible
 
-                    // Agregar CheckBox y VBox al contenedor principal
-                    container.getChildren().addAll(checkBox, infoContainer);
+                    // Crear el ImageView para mostrar la imagen
+                    ImageView imagen = new ImageView();
+                    if (item.getRutaImagen() != null && !item.getRutaImagen().isEmpty()) {
+                        imagen.setImage(new Image(item.getRutaImagen()));  // Establecer la imagen
+                        imagen.setFitHeight(100);  // Ajustar el tamaño de la imagen
+                        imagen.setPreserveRatio(true);  // Mantener las proporciones
+                    }
+
+                    // Crear un Region vacío para empujar la imagen a la derecha
+                    Region espacioVacío = new Region();
+                    HBox.setHgrow(espacioVacío, Priority.ALWAYS);  // Hace que el espacio vacío ocupe todo el espacio disponible
+
+                    // Añadir el CheckBox, el contenedor de la información y la imagen al contenedor principal
+                    container.getChildren().addAll(checkBox, infoContainer, espacioVacío, imagen);
 
                     // Configurar el gráfico de la celda
                     setGraphic(container);
@@ -82,8 +101,10 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
             }
         });
 
+        // Asignar la lista de videojuegos a la ListView
         videojuegos.setItems(this.games);
     }
+
 
     @Override
     public void onOpen(Object input) throws IOException {
@@ -96,8 +117,9 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
 
     @FXML
     public void buscar() {
+        String palabra = buscador.getText().toLowerCase();
         ObservableList<Videojuego> filteGame = games.stream()
-                .filter(game -> game.getNombre().toLowerCase().contains(buscador.getText()))
+                .filter(game -> game.getNombre().toLowerCase().contains(palabra))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
         videojuegos.setItems(filteGame);
         videojuegos.refresh();

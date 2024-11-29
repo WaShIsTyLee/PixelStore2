@@ -6,13 +6,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/primary.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ListaVideojuegosParaAsignarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #030212;" stylesheets="@styles/primary.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ListaVideojuegosParaAsignarController">
    <children>
       <ListView fx:id="videojuegos" layoutX="47.0" layoutY="82.0" prefHeight="485.0" prefWidth="802.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ListView>
-      <TextField fx:id="buscador" layoutX="699.0" layoutY="33.0" promptText="Buscar" />
+      <TextField fx:id="buscador" layoutX="699.0" layoutY="33.0" onAction="#buscar" promptText="Buscar" />
       <Button fx:id="botonInsertar" layoutX="572.0" layoutY="26.0" mnemonicParsing="false" onAction="#añadirBD" text="Insertar">
          <cursor>
             <Cursor fx:constant="HAND" />

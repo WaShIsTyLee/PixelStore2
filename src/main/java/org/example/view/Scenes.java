@@ -19,7 +19,8 @@ public enum Scenes {
     PANTALLAUSER("/org/example/view/PantallaPrincipalUser.fxml"),
     ADDDESARROLLADOR("/org/example/view/InsertDesa.fxml"),
     TIENDAUSER("/org/example/view/TiendasUser.fxml"),
-    SHOWDESARROLLADOR("/org/example/view/UserDesarrolladores.fxml");
+    SHOWDESARROLLADOR("/org/example/view/UserDesarrolladores.fxml"),
+    SHOWKART("/org/example/view/GamesUser.fxml");
 
 
 

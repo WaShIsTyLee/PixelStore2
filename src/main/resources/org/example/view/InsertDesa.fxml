@@ -33,6 +33,5 @@
             <Image url="@Fotos/Portada.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="Eliminar" layoutX="206.0" layoutY="460.0" mnemonicParsing="false" onAction="#deleteDesarrollador" onMouseClicked="#closeWindow" text="Eliminar" />
    </children>
 </AnchorPane>
