@@ -143,7 +143,8 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
         for (Videojuego videojuego : videojuegosActuales){
             for (Videojuego juegoSeleccionado : juegosSeleccionados){
                 if (videojuego.getId_videojuego() == juegoSeleccionado.getId_videojuego()){
-                    System.out.println("ya esta insertado");
+                    AppController.showVideojuegoExistenteEnTienda();
+
                     aux = true;
                     break;
                 }

@@ -89,8 +89,7 @@ public class UpdateGameModalController extends Controller implements Initializab
         for (String name : namesVideojuegos) {
             if (name.equalsIgnoreCase(nombreIngresado)) {
                 if (!name.equalsIgnoreCase(videojuegoCapturado.getNombre())) {
-                    // ALERTA: El nombre ya pertenece a otro videojuego
-                    System.out.println("Error: El nombre ingresado ya existe para otro videojuego.");
+                    AppController.showNombreVideojuegoExistente();
                     return false;
                 }
             }
@@ -101,15 +100,14 @@ public class UpdateGameModalController extends Controller implements Initializab
     public boolean validarCampos() {
         if (cmbDesarrolador.getValue() == null || tfNombre.getText().isEmpty() ||
                 tfPrecio.getText().isEmpty() || tfDescripcion.getText().isEmpty()) {
-            // ALERTA: Campos vacíos
-            System.out.println("Error: Hay campos vacíos que deben ser completados.");
+           AppController.showCamposIncompletos();
             return false;
         }
 
         try {
             Float.parseFloat(tfPrecio.getText());
         } catch (NumberFormatException e) {
-            System.out.println("Error: El precio debe ser un número válido.");
+            AppController.showPrecioValido();
             return false;
         }
 
@@ -123,7 +121,7 @@ public class UpdateGameModalController extends Controller implements Initializab
 
     public Videojuego recogerDatos() {
         if (!comprobacionCampos()) {
-            // Si la validación falla, no se recoge ni actualiza
+            AppController.showVerificaCampos();
             System.out.println("Error: No se puede procesar debido a validaciones fallidas.");
             return null;
         }
@@ -151,8 +149,7 @@ public class UpdateGameModalController extends Controller implements Initializab
         Videojuego videojuegoActualizado = recogerDatos();
 
         if (videojuegoActualizado == null) {
-            // Si la validación falla, detener el proceso
-            System.out.println("Error: No se puede modificar el videojuego debido a errores de validación.");
+            AppController.showVerificaCampos();
             return;
         }
 

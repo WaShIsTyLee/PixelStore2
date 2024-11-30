@@ -47,8 +47,7 @@ public class RegisterController extends Controller implements Initializable {
             }
             return usuarioaux;
         } else {
-            System.out.println("Error al registrar usuario");
-            //ALERTA DE EROOR
+            AppController.showRegistrarUsuario();
         }
         return null;
     }
@@ -76,10 +75,9 @@ public class RegisterController extends Controller implements Initializable {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         Usuario usuario = recogerUsurio();
         if (usuario == null) {
-            System.out.println("ERROR alguno de los campos esta vacio");
+            AppController.showCamposIncompletos();
         }else if (!comprobarBD(usuario)){
-            //ALERTA
-            System.out.println("Error email ya registrado");
+            AppController.showEmailRegistrado();
         } else {
             usuarioDAO.insert(usuario);
         }

@@ -159,7 +159,7 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
 
     public boolean validarDatos(){
         if (textFieldLocalizacion.getText().isEmpty() || textFieldTelefono.getText().isEmpty()) {
-            System.out.println("Por favor rellene todos los campos para realizar la operación");
+            AppController.showCamposIncompletos();
             return false;
         }
         return true;
@@ -173,7 +173,7 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
         for (String ubicacion : namesTiendas) {
             if (ubicacion.equals(ubicacionIngresada)) {
                 if (!ubicacion.equalsIgnoreCase(tiendaseleccionada.getUbicacion())){
-                    System.out.println("ERROR: La ubicación ingresada ya existe para otra tienda");
+                    AppController.showUbicacionExistente();
                     return false;
                 }
             }
@@ -189,7 +189,7 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
 
     public Tienda recogerDatos(){
         if (!comprobacionCampos()) {
-            // Si la validación falla, no se recoge ni actualiza
+            AppController.showVerificaCampos();
             System.out.println("Error: No se puede procesar debido a validaciones fallidas.");
             return null;
         }
@@ -206,8 +206,7 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
         Tienda tiendaActualizada = recogerDatos();
         tiendaActualizada.setId_tienda(tiendaseleccionada.getId_tienda());
         if (tiendaActualizada == null) {
-            // Si la validación falla, detener el proceso
-            System.out.println("Error: No se puede modificar el tienda debido a errores de validación.");
+            AppController.showVerificaCampos();
             return;
         }
 

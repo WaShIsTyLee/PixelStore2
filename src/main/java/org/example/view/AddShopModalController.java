@@ -49,6 +49,7 @@ public class AddShopModalController extends Controller implements Initializable 
 
         // Validar campos vacíos
         if (direccion.getText().isEmpty() || telefono.getText().isEmpty()) {
+            AppController.showCamposIncompletos();
             return false;
         }
 
@@ -59,7 +60,8 @@ public class AddShopModalController extends Controller implements Initializable 
         // Verificar si ya existe la dirección o el teléfono
         for (Tienda tienda : tiendas) {
             if (tienda.getUbicacion().equalsIgnoreCase(nuevaDireccion) || tienda.getTelefono().equals(nuevoTelefono)) {
-                return false; // Ya existe una tienda con esa dirección o teléfono
+                AppController.showTiendaYaExistente();
+                return false;
             }
         }
 
@@ -72,8 +74,10 @@ public class AddShopModalController extends Controller implements Initializable 
         Tienda tienda = recogerDatos();
        
         if (tienda != null) { // Verificar que los datos son válidos
-            tdao.insert(tienda); // Insertar la nueva tienda
+            tdao.insert(tienda);
+            // Insertar la nueva tienda
         } else {
+            AppController.showDatosIncorrectos();
             System.out.println("Error: Dirección o teléfono ya existen o los datos son inválidos.");
         }
   
