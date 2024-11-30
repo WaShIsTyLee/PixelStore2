@@ -47,21 +47,23 @@ public class LogInController extends Controller implements Initializable {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         Usuario encontrado = usuarioDAO.findByEmail(usuarioRecogido);
         if (encontrado == null) {
-            System.out.println("El usuario no existe");
+            AppController.showUsuarioInexistente();
+
         }else{
             if (usuarioRecogido.getContrasena().equals(encontrado.getContrasena()) && usuarioRecogido.getEmail().equals(encontrado.getEmail())) {
                 usuarioRecogido = encontrado;
                 Sesion.getInstancia().logIn(usuarioRecogido);
                 if (usuarioRecogido.isAdministrador()) {
-                    System.out.println("Sesion iniciada como admin");
+                    AppController.showAdmin();
                     irAPantallaPrincipalAdmin();
                 } else {
                     //CAMBIAR A PANTALLA PRINCIPAL DE NORMAL
-                    System.out.println("Sesion iniciada como usuario normal");
+                    AppController.showUser();
                     irAPantallaPrincipal();
                 }
             }else {
-                System.out.println("Los credenciales no coinciden");
+                AppController.showCredenciales();
+
             }
         }
 

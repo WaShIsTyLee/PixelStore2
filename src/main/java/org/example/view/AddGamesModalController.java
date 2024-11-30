@@ -101,7 +101,7 @@ public class AddGamesModalController extends Controller implements Initializable
 
             return videojuego;
         } else {
-            System.out.println("Error en los campos");
+            AppController.showErrorCampos();
         }
         return null;
     }
@@ -112,14 +112,14 @@ public class AddGamesModalController extends Controller implements Initializable
 
         for (String name : namesVideojuegos) {
             if (name.equalsIgnoreCase(nombreJuego.getText())) { // Comparación insensible a mayúsculas
-                System.out.println("Error: El nombre del videojuego ya existe.");
+                AppController.showVideojuegoYaExisteEnBBDD();
                 return false;
             }
         }
 
         if (comboBoxDesarrollador.getValue() == null || nombreJuego.getText().isEmpty() ||
                 precioJuego.getText().isEmpty() || DescripcionJuego.getText().isEmpty()) {
-            System.out.println("Error: Hay campos vacíos que deben ser completados.");
+            AppController.showCamposIncompletos();
             return false;
         }
 
@@ -142,7 +142,8 @@ public class AddGamesModalController extends Controller implements Initializable
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Error: Por favor, verifica los campos.");
+            AppController.showVerificaCampos();
+
         }
     }
 

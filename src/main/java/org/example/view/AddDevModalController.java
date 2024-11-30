@@ -58,7 +58,7 @@ public class AddDevModalController extends Controller implements Initializable {
                 nwDesa.setNombre(nombreD);
                 nwDesa.setPais(paisD);
             }else {
-                System.out.println("Los datos son incorrectos");
+                AppController.showDatosIncorrectos();
             }
         }else {
             if (!nombreD.trim().isEmpty()){
@@ -107,8 +107,7 @@ public class AddDevModalController extends Controller implements Initializable {
         if (newDesarrollador == null){
 
             //faltan poner alertas
-
-            System.out.println("ERROR al añadir El desarrollador");
+            AppController.showAñadirDesarrollador();
         }else {
             newDesarrollador =insertar();
             saveDesa.save(newDesarrollador);
