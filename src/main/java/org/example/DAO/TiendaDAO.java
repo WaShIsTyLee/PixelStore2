@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class TiendaDAO {
     private final static String DELETE = "DELETE FROM tienda  WHERE id_tienda = ?";
     private final static String INSERT = "INSERT INTO tienda (ubicacion,telefono) VALUES (?,?)";
-    private final static String FINDALL = "SELECT * FROM tienda";
+    private final static String FINDALL = "SELECT * FROM tienda GROUP BY ubicacion";
     private final static String FINDALLNAMES = "SELECT t.ubicacion FROM tienda as t ";
 
     private final static String UPDATE = "UPDATE tienda SET ubicacion=?, telefono=? WHERE id_tienda=?";
@@ -22,7 +22,7 @@ public class TiendaDAO {
             "SELECT v.id_videojuego, v.nombre, v.precio, v.descripcion, v.id_desarrollador, v.foto " +
                     "FROM tiendavideojuego tv " +
                     "JOIN videojuego v ON tv.id_videojuego = v.id_videojuego " +
-                    "WHERE tv.id_tienda = ?";
+                    "WHERE tv.id_tienda = ? GROUP BY v.precio";
     private final static String DELETEFROMGAMESHOPS = "DELETE FROM tiendavideojuego WHERE id_videojuego = ?";
 
 
