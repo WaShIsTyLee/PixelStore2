@@ -1,17 +1,28 @@
 package org.example.Model;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@XmlRootElement(name = "Usuario")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Usuario {
    private int id_usuario;
-   private String nombre;
+   @XmlElement(name = "NombreUsuario")
+   public String nombre;
    private String email;
    private String contrasena;
    private boolean administrador;
+   @XmlElement(name = "Carrito")
    public ArrayList<Videojuego> carrito = new ArrayList<>();
+   @XmlElement(name = "PrecioTotal")
+   public float precioTotal;
 
    public Usuario(int id_usuario, String nombre, String email, String contrasena, boolean administrador, ArrayList<Videojuego> carrito) {
       this.id_usuario = id_usuario;
@@ -27,7 +38,17 @@ public class Usuario {
    }
 
    public void setCarrito(ArrayList<Videojuego> carrito) {
+      for (Videojuego videojuego: carrito){
+         this.precioTotal = videojuego.getPrecio()+ precioTotal;
+      }
       this.carrito = carrito;
+   }
+   public float getPrecioTotal() {
+      return precioTotal;
+   }
+
+   public void setPrecioTotal(float precioTotal) {
+      this.precioTotal = precioTotal;
    }
 
    public Usuario(int id_usuario, String nombre, String email, String contrasena, boolean administrador) {

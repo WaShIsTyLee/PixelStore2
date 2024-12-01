@@ -1,13 +1,21 @@
 package org.example.Model;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.util.Date;
 import java.util.Objects;
-
+@XmlRootElement(name = "Videojuego")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Videojuego {
     private int id_videojuego;
-    private String nombre;
+    @XmlElement(name = "NombreJuego")
+    public String nombre;
     private String descripcion;
-    private float precio;
+    @XmlElement(name = "PrecioJuego")
+    public float precio;
     private Desarrollador desarrollador;
     private String rutaImagen;
     private Date fechaCompra;

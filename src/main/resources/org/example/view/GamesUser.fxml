@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -29,7 +30,7 @@
             <Image url="@Fotos/Logo_PixelStore.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="volver" fitHeight="43.0" fitWidth="45.0" layoutX="770.0" layoutY="44.0" onMouseClicked="#GoMainUser" styleClass="highlight">
+      <ImageView fx:id="volver" fitHeight="43.0" fitWidth="45.0" layoutX="830.0" layoutY="32.0" onMouseClicked="#GoMainUser" styleClass="highlight">
          <image>
             <Image url="@Fotos/flechaAtras.png" />
          </image>
@@ -37,5 +38,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <Button layoutX="699.0" layoutY="53.0" mnemonicParsing="false" onAction="#XML" text="Factura" />
    </children>
 </AnchorPane>
