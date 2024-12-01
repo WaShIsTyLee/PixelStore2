@@ -17,7 +17,7 @@ public class UsuarioDAO {
     private final static String FINDBYEMAILNECESARY ="SELECT id_usuario,nombre, email FROM usuario WHERE email=?";
     private final static String FINDALLEMAILS = "SELECT email FROM usuario";
     private final static String FINDGAMEUSER = "SELECT v.nombre, v.precio, v.foto, uv.fecha_compra  FROM videojuego v  " +
-            "JOIN usuariovideojuego uv ON v.id_videojuego = uv.id_videojuego  JOIN usuario u ON uv.id_usuario = u.id_usuario  WHERE u.id_usuario = ? GROUP BY v.nombre";
+            "JOIN usuariovideojuego uv ON v.id_videojuego = uv.id_videojuego  JOIN usuario u ON uv.id_usuario = u.id_usuario  WHERE u.id_usuario = ?";
     private final static String FINDGAMEUSERXML = "SELECT v.nombre, v.precio,uv.fecha_compra  FROM videojuego v  " +
             "JOIN usuariovideojuego uv ON v.id_videojuego = uv.id_videojuego  JOIN usuario u ON uv.id_usuario = u.id_usuario  WHERE u.id_usuario = ?";
 
@@ -174,6 +174,7 @@ public class UsuarioDAO {
         if (usuario != null){
             try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDGAMEUSERXML)) {
                 pst.setInt(1,usuario.getId_usuario());
+
                 try (ResultSet res = pst.executeQuery()){
                     while (res.next()){
                         Videojuego v = new Videojuego();
