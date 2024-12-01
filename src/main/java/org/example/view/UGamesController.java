@@ -11,8 +11,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.image.ImageView;
 import org.example.App;
-import org.example.DAO.UsuarioDAO;
-import org.example.DAO.VideojuegoDAO;
+import org.example.DAO.MySQL.UsuarioDAO;
+import org.example.DAO.SQLite.UsuarioDAOSqlite;
+import org.example.DAO.MySQL.VideojuegoDAO;
 import org.example.Model.Usuario;
 import org.example.Model.Videojuego;
 import org.example.Utils.Sesion;
@@ -158,8 +159,10 @@ public class UGamesController extends Controller implements Initializable {
     // Método para insertar un videojuego en el carrito
     public void añadirACarrito(Usuario usuario, Videojuego videojuego) throws IOException {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
+        UsuarioDAOSqlite usuarioDAOSqlite = new UsuarioDAOSqlite();
         // Aquí llamamos al DAO para insertar el videojuego en la base de datos
         usuarioDAO.insertarVideojuegosEnCarrito(usuario, videojuego);
+        //usuarioDAOSqlite.insertarVideojuegosEnCarrito(usuario, videojuego);
         App.currentController.changeScene(Scenes.VIDEOJUEGOSUSUARIO, null);
     }
 

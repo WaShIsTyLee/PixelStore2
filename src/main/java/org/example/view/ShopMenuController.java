@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import org.example.App;
-import org.example.DAO.TiendaDAO;
+import org.example.DAO.MySQL.TiendaDAO;
 import org.example.Model.Tienda;
 
 import java.io.IOException;

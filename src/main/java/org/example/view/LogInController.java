@@ -6,7 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import org.example.App;
-import org.example.DAO.UsuarioDAO;
+import org.example.DAO.MySQL.UsuarioDAO;
 import org.example.Model.Usuario;
 import org.example.Utils.Sesion;
 

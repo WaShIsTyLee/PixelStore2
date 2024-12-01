@@ -1,4 +1,4 @@
-package org.example.DAO;
+package org.example.DAO.MySQL;
 
 
 import org.example.BaseDatos.ConnectionDB;
@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PrimitiveIterator;
 
 public class VideojuegoDAO {
     private final static String INSERTE = "INSERT INTO videojuego(nombre,precio,descripcion,id_desarrollador,foto) VALUES (?, ?, ?, ?,?)";

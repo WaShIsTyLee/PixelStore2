@@ -1,14 +1,10 @@
 package org.example.Test;
 
-import org.example.DAO.DesarrolladorDAO;
-import org.example.DAO.UsuarioDAO;
-import org.example.DAO.VideojuegoDAO;
-import org.example.Model.Desarrollador;
+import org.example.DAO.MySQL.UsuarioDAO;
 import org.example.Model.Usuario;
 import org.example.Model.Videojuego;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Test_videojuego {
     public static void main(String[] args) {

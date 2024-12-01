@@ -1,6 +1,6 @@
 package org.example.Test;
 
-import org.example.DAO.UsuarioDAO;
+import org.example.DAO.MySQL.UsuarioDAO;
 import org.example.Model.Usuario;
 
 public class TestInsert {

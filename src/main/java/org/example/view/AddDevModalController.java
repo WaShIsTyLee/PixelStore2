@@ -7,7 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.App;
-import org.example.DAO.DesarrolladorDAO;
+import org.example.DAO.MySQL.DesarrolladorDAO;
+import org.example.DAO.SQLite.DesarrolladorDAOSqlite;
 import org.example.Model.Desarrollador;
 
 import javafx.scene.Node;
@@ -104,6 +105,7 @@ public class AddDevModalController extends Controller implements Initializable {
     private void AddDesarrollador() throws IOException {
         Desarrollador newDesarrollador = insertar();
         DesarrolladorDAO saveDesa = new DesarrolladorDAO();
+        DesarrolladorDAOSqlite saveDesaSql = new DesarrolladorDAOSqlite();
         if (newDesarrollador == null){
 
             //faltan poner alertas
@@ -111,12 +113,14 @@ public class AddDevModalController extends Controller implements Initializable {
         }else {
             newDesarrollador =insertar();
             saveDesa.save(newDesarrollador);
+            saveDesaSql.save(newDesarrollador);
             App.currentController.changeScene(Scenes.DESARROLLADORES, null);
         }
     }
     @FXML
     private void deleteDesarrollador() throws IOException {
         DesarrolladorDAO delete = new DesarrolladorDAO();
+
         delete.delete(developer);
         App.currentController.changeScene(Scenes.DESARROLLADORES, null);
     }

@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import org.example.App;
-import org.example.DAO.DesarrolladorDAO;
+import org.example.DAO.MySQL.DesarrolladorDAO;
 import org.example.Model.Desarrollador;
 import org.example.Model.Videojuego;
 
