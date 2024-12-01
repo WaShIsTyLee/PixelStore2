@@ -86,26 +86,23 @@ public class AddGamesModalController extends Controller implements Initializable
     public Videojuego recogerVideojuego() {
         Videojuego videojuego = new Videojuego();
         DesarrolladorDAO dao = new DesarrolladorDAO();
-        if (comprobacionCampos()) {
-            Desarrollador desarrolladorSeleccionado = dao.findByName(comboBoxDesarrollador.getValue());
-            videojuego.setNombre(nombreJuego.getText());
-            videojuego.setPrecio(Float.parseFloat(precioJuego.getText()));
-            videojuego.setDescripcion(DescripcionJuego.getText());
-            videojuego.setDesarrollador(desarrolladorSeleccionado);
-            if (imageUrl != null) {
-                videojuego.setRutaImagen(imageUrl);
-            }else {
-                String rutaImagen = getClass().getResource("/org/example/view/Fotos/Portada.jpg").toExternalForm();
-                videojuego.setRutaImagen(rutaImagen); //METER FOTO EN ESPECIFICO
-            }
 
+        Desarrollador desarrolladorSeleccionado = dao.findByName(comboBoxDesarrollador.getValue());
+        videojuego.setNombre(nombreJuego.getText());
+        videojuego.setPrecio(Float.parseFloat(precioJuego.getText()));
+        videojuego.setDescripcion(DescripcionJuego.getText());
+        videojuego.setDesarrollador(desarrolladorSeleccionado);
 
-            return videojuego;
+        if (imageUrl != null) {
+            videojuego.setRutaImagen(imageUrl);
         } else {
-            AppController.showErrorCampos();
+            String rutaImagen = getClass().getResource("/org/example/view/Fotos/Portada.jpg").toExternalForm();
+            videojuego.setRutaImagen(rutaImagen); // METER FOTO EN ESPECÍFICO
         }
-        return null;
+
+        return videojuego;
     }
+
 
     public boolean comprobacionCampos() {
         VideojuegoDAO dao = new VideojuegoDAO();
@@ -130,25 +127,32 @@ public class AddGamesModalController extends Controller implements Initializable
     public void añadiJuegoBD() {
         VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
         VideojuegoDAOSqlite videojuegoDAOSqlite = new VideojuegoDAOSqlite();
-        if (comprobacionCampos()) {
-            try {
-                videojuegoDAO.save(recogerVideojuego());
-                videojuegoDAOSqlite.save(recogerVideojuego());
 
-                // Cerrar la ventana actual
-                Stage currentStage = (Stage) buttonGuardar.getScene().getWindow();
-                currentStage.close();
-
-                // Cambiar la escena a la lista de juegos
-                App.currentController.changeScene(Scenes.GAMES, null);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
+        // Validar los campos antes de construir el objeto
+        if (!comprobacionCampos()) {
             AppController.showVerificaCampos();
+            return; // Detener el flujo si la validación falla
+        }
 
+        try {
+            // Construir el objeto solo después de validar
+            Videojuego videojuego = recogerVideojuego();
+
+            // Guardar en ambas bases de datos
+            videojuegoDAO.save(videojuego);
+            videojuegoDAOSqlite.save(videojuego);
+
+            // Cerrar la ventana actual
+            Stage currentStage = (Stage) buttonGuardar.getScene().getWindow();
+            currentStage.close();
+
+            // Cambiar la escena a la lista de juegos
+            App.currentController.changeScene(Scenes.GAMES, null);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
 
     @Override
     public void onOpen(Object input) throws IOException {
