@@ -14,9 +14,12 @@ public class UsuarioDAO {
     private final static String DELETE = "DELETE FROM usuario  WHERE id_usuario = ?";
     private final static String INSERT = "INSERT INTO usuario( nombre, email, contrasena, administrador) VALUES (?,?,?,?) ";
     private final static String FINDBYEMAIL = "SELECT * FROM usuario WHERE email = ?";
+    private final static String FINDBYEMAILNECESARY ="SELECT id_usuario,nombre, email FROM usuario WHERE email=?";
     private final static String FINDALLEMAILS = "SELECT email FROM usuario";
-    private final static String FINDGAMEUSER = "SELECT v.nombre AS nombre, v.precio, v.foto, uv.fecha_compra  FROM videojuego v  " +
+    private final static String FINDGAMEUSER = "SELECT v.nombre, v.precio, v.foto, uv.fecha_compra  FROM videojuego v  " +
             "JOIN usuariovideojuego uv ON v.id_videojuego = uv.id_videojuego  JOIN usuario u ON uv.id_usuario = u.id_usuario  WHERE u.id_usuario = ? GROUP BY v.nombre";
+    private final static String FINDGAMEUSERXML = "SELECT v.nombre, v.precio,uv.fecha_compra  FROM videojuego v  " +
+            "JOIN usuariovideojuego uv ON v.id_videojuego = uv.id_videojuego  JOIN usuario u ON uv.id_usuario = u.id_usuario  WHERE u.id_usuario = ?";
 
     public boolean insertarVideojuegosEnCarrito(Usuario usuario, Videojuego videojuego) {
         boolean success = false;
@@ -145,5 +148,45 @@ public class UsuarioDAO {
         }
         return result;
     }
+    public Usuario findByEmailNecesary(Usuario usuario){
+        Usuario usuarioAux = null;
 
+        if (usuario != null && usuario.getEmail() != null) {
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDBYEMAILNECESARY)) {
+                pst.setString(1, usuario.getEmail());
+
+                try (ResultSet rs = pst.executeQuery()) {
+                    if (rs.next()) {
+                        usuarioAux = new Usuario();
+                        usuarioAux.setId_usuario(rs.getInt("id_usuario"));
+                        usuarioAux.setNombre(rs.getString("nombre"));
+                        usuarioAux.setEmail(rs.getString("email"));
+                    }
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException("Error al buscar el usuario por email", e);
+            }
+        }
+        return usuarioAux;
+    }
+    public ArrayList<Videojuego> gammerUserXML(Usuario usuario){
+        ArrayList<Videojuego> result = new ArrayList<>();
+        if (usuario != null){
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(FINDGAMEUSERXML)) {
+                pst.setInt(1,usuario.getId_usuario());
+                try (ResultSet res = pst.executeQuery()){
+                    while (res.next()){
+                        Videojuego v = new Videojuego();
+                        v.setNombre(res.getString("nombre"));
+                        v.setPrecio(res.getFloat("precio"));
+                        v.setFechaCompra(res.getDate("fecha_compra"));
+                        result.add(v);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
 }

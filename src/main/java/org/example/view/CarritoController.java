@@ -1,5 +1,6 @@
 package org.example.view;
 
+import jakarta.xml.bind.JAXBException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import org.example.DAO.MySQL.UsuarioDAO;
 import org.example.Model.Usuario;
 import org.example.Model.Videojuego;
 import org.example.Utils.Sesion;
+import org.example.Utils.XMLusuario;
 
 import java.io.IOException;
 import java.net.URL;

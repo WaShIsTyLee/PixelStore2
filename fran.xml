@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Facturas>
+    <UsuarioF>
+        <id_usuario>4</id_usuario>
+        <NombreUsuario>fran</NombreUsuario>
+        <email>fran@gmail.com</email>
+        <administrador>false</administrador>
+        <Carrito>
+            <id_videojuego>0</id_videojuego>
+            <NombreJuego>Minecraft</NombreJuego>
+            <PrecioJuego>20.0</PrecioJuego>
+            <fechaCompra>2024-12-01T00:00:00+01:00</fechaCompra>
+        </Carrito>
+        <PrecioTotal>20.0</PrecioTotal>
+    </UsuarioF>
+</Facturas>
