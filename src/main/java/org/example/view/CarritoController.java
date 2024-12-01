@@ -1,5 +1,6 @@
 package org.example.view;
 
+import jakarta.xml.bind.JAXBException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,8 +18,10 @@ import javafx.scene.layout.VBox;
 import org.example.App;
 import org.example.DAO.UsuarioDAO;
 import org.example.DAO.VideojuegoDAO;
+import org.example.Model.Usuario;
 import org.example.Model.Videojuego;
 import org.example.Utils.Sesion;
+import org.example.Utils.XMLusuario;
 
 import java.io.IOException;
 import java.net.URL;
@@ -112,5 +115,18 @@ public class CarritoController extends Controller implements Initializable{
     @FXML
     private void GoMainUser() throws IOException {
         App.currentController.changeScene(Scenes.PANTALLAUSER, null);
+    }
+    @FXML
+    private void XML(){
+        UsuarioDAO us = new UsuarioDAO();
+        Usuario aux = us.findByEmailNecesary(Sesion.getInstancia().getUsuarioIniciado());
+        aux.setCarrito(us.gammerUserXML(aux));
+        XMLusuario ux = new XMLusuario(aux.getNombre());
+        System.out.println(aux.getPrecioTotal());
+        try {
+            ux.guardarFactura(aux);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
     }
 }
