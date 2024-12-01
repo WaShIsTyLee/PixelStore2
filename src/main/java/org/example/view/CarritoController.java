@@ -15,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import org.example.App;
 import org.example.DAO.MySQL.UsuarioDAO;
 import org.example.Model.Usuario;
@@ -29,6 +30,8 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class CarritoController extends Controller implements Initializable{
+    @FXML
+    private Text textoTotal;
     @FXML
     private ListView<Videojuego> gamerUser;
     @FXML
@@ -122,6 +125,8 @@ public class CarritoController extends Controller implements Initializable{
         aux.setCarrito(us.gammerUserXML(aux));
         XMLusuario ux = new XMLusuario(aux.getNombre());
         System.out.println(aux.getPrecioTotal());
+
+        textoTotal.setText(String.valueOf(aux.getPrecioTotal() ) + " €");
         try {
             ux.guardarFactura(aux);
         } catch (JAXBException e) {

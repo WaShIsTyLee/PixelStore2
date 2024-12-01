@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Facturas>
+    <UsuarioF>
+        <id_usuario>15</id_usuario>
+        <NombreUsuario>hiugo</NombreUsuario>
+        <email>hugo@gmail.com</email>
+        <administrador>false</administrador>
+        <Carrito>
+            <id_videojuego>0</id_videojuego>
+            <NombreJuego>mario bros</NombreJuego>
+            <PrecioJuego>12.0</PrecioJuego>
+            <fechaCompra>2024-12-01T00:00:00+01:00</fechaCompra>
+        </Carrito>
+        <Carrito>
+            <id_videojuego>0</id_videojuego>
+            <NombreJuego>paco</NombreJuego>
+            <PrecioJuego>13.0</PrecioJuego>
+            <fechaCompra>2024-12-01T00:00:00+01:00</fechaCompra>
+        </Carrito>
+        <Carrito>
+            <id_videojuego>0</id_videojuego>
+            <NombreJuego>mario bros</NombreJuego>
+            <PrecioJuego>12.0</PrecioJuego>
+            <fechaCompra>2024-12-01T00:00:00+01:00</fechaCompra>
+        </Carrito>
+        <Carrito>
+            <id_videojuego>0</id_videojuego>
+            <NombreJuego>paco</NombreJuego>
+            <PrecioJuego>13.0</PrecioJuego>
+            <fechaCompra>2024-12-01T00:00:00+01:00</fechaCompra>
+        </Carrito>
+        <PrecioTotal>50.0</PrecioTotal>
+    </UsuarioF>
+</Facturas>
