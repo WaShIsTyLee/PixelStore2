@@ -2,8 +2,7 @@ package org.example.Test;
 
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.annotation.XmlElement;
-
-import org.example.DAO.MySQL.UsuarioDAO;
+import org.example.DAO.UsuarioDAO;
 import org.example.Model.Usuario;
 import org.example.Utils.FacturaXML;
 import org.example.Utils.XMLusuario;

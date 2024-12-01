@@ -13,8 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.App;
-import org.example.DAO.DesarrolladorDAO;
-import org.example.DAO.VideojuegoDAO;
+import org.example.DAO.MySQL.DesarrolladorDAO;
+import org.example.DAO.MySQL.VideojuegoDAO;
+import org.example.DAO.SQLite.VideojuegoDAOSqlite;
 import org.example.Model.Desarrollador;
 import org.example.Model.Videojuego;
 
@@ -128,9 +129,11 @@ public class AddGamesModalController extends Controller implements Initializable
 
     public void añadiJuegoBD() {
         VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
+        VideojuegoDAOSqlite videojuegoDAOSqlite = new VideojuegoDAOSqlite();
         if (comprobacionCampos()) {
             try {
                 videojuegoDAO.save(recogerVideojuego());
+                videojuegoDAOSqlite.save(recogerVideojuego());
 
                 // Cerrar la ventana actual
                 Stage currentStage = (Stage) buttonGuardar.getScene().getWindow();

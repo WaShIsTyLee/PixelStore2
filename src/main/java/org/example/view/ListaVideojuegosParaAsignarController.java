@@ -13,8 +13,9 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.App;
-import org.example.DAO.TiendaDAO;
-import org.example.DAO.VideojuegoDAO;
+import org.example.DAO.MySQL.TiendaDAO;
+import org.example.DAO.MySQL.VideojuegoDAO;
+import org.example.DAO.SQLite.TiendaDAOSqlite;
 import org.example.Model.Tienda;
 import org.example.Model.Videojuego;
 
@@ -152,7 +153,9 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
             }
         if (!aux){
             tiendSeleccionada.setVideojuegos(juegosSeleccionados);
+            TiendaDAOSqlite tiendaDAOSqlite = new TiendaDAOSqlite();
             tiendaDAO.insertarTiendaVideojuego(tiendSeleccionada);
+            tiendaDAOSqlite.insertarTiendaVideojuego(tiendSeleccionada);
 
             Stage currentStage = (Stage) botonInsertar.getScene().getWindow();
             currentStage.close();

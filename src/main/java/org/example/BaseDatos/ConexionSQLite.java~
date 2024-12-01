@@ -1,0 +1,18 @@
+package org.example.BaseDatos;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConexionSQLite {
+    private static final String URL = "jdbc:sqlite:pixelstore.db";
+
+    public static Connection connect() {
+        try {
+            return DriverManager.getConnection(URL);
+        } catch (SQLException e) {
+            System.out.println("Error de conexión: " + e.getMessage());
+            return null;
+        }
+    }
+}

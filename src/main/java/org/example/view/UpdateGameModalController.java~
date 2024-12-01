@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import org.example.App;
 import org.example.DAO.MySQL.DesarrolladorDAO;
 import org.example.DAO.MySQL.VideojuegoDAO;
-import org.example.DAO.SQLite.VideojuegoDAOSqlite;
 import org.example.Model.Desarrollador;
 import org.example.Model.Videojuego;
 
@@ -156,9 +155,7 @@ public class UpdateGameModalController extends Controller implements Initializab
 
         // Realizar el update en la base de datos
         VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
-        VideojuegoDAOSqlite videojuegoDAOSqlite = new VideojuegoDAOSqlite();
         videojuegoDAO.update(videojuegoActualizado);
-        videojuegoDAOSqlite.update(videojuegoActualizado);
 
         // Cerrar la ventana actual y volver a la lista de videojuegos
         Stage currentStage = (Stage) btnGuardar.getScene().getWindow();
@@ -169,9 +166,7 @@ public class UpdateGameModalController extends Controller implements Initializab
     @FXML
     public void borrarJuego() throws IOException {
         VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
-        VideojuegoDAOSqlite videojuegoDAOSqlite = new VideojuegoDAOSqlite();
         videojuegoDAO.delete(videojuegoCapturado);
-        videojuegoDAOSqlite.delete(videojuegoCapturado);
         Stage currentStage = (Stage) btnBorrar.getScene().getWindow();
         currentStage.close();
         App.currentController.changeScene(Scenes.GAMES, null);

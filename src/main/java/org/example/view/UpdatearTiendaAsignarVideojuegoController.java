@@ -12,8 +12,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import org.example.App;
-import org.example.DAO.TiendaDAO;
-import org.example.DAO.VideojuegoDAO;
+import org.example.DAO.MySQL.TiendaDAO;
+import org.example.DAO.SQLite.TiendaDAOSqlite;
 import org.example.Model.Tienda;
 import org.example.Model.Videojuego;
 
@@ -153,7 +153,9 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
     @FXML
     public void eliminarTienda() throws IOException {
         TiendaDAO tdao = new TiendaDAO();
+        TiendaDAOSqlite tdaoSqlite = new TiendaDAOSqlite();
         tdao.delete(tiendaseleccionada);
+        tdaoSqlite.delete(tiendaseleccionada);
         App.currentController.changeScene(Scenes.TIENDAS,null);
     }
 
@@ -211,14 +213,17 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
         }
 
         TiendaDAO tdao = new TiendaDAO();
+        TiendaDAOSqlite tdaoSqlite = new TiendaDAOSqlite();
         tdao.update(tiendaActualizada);
-
+        tdaoSqlite.insert(tiendaActualizada);
 
     }
 
     public void eliminarJuegos() throws IOException {
         TiendaDAO tdao = new TiendaDAO();
+        TiendaDAOSqlite tdaoSqlite = new TiendaDAOSqlite();
         tdao.eliminarJuegosDeTienda(tiendaseleccionada, obtenerVideojuegosSeleccionados());
+        tdaoSqlite.eliminarJuegosDeTienda(tiendaseleccionada, obtenerVideojuegosSeleccionados());
         App.currentController.changeScene(Scenes.TIENDAS, null);
 
     }

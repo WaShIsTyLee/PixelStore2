@@ -1,4 +1,4 @@
-package org.example.DAO;
+package org.example.DAO.MySQL;
 
 import org.example.BaseDatos.ConnectionDB;
 import org.example.Model.Usuario;
@@ -189,4 +189,5 @@ public class UsuarioDAO {
         }
         return result;
     }
+
 }

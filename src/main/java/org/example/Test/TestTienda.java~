@@ -1,6 +1,6 @@
 package org.example.Test;
 
-import org.example.DAO.MySQL.TiendaDAO;
+import org.example.DAO.TiendaDAO;
 import org.example.Model.Tienda;
 
 public class TestTienda {

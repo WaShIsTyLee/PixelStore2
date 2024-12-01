@@ -6,7 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.App;
-import org.example.DAO.TiendaDAO;
+import org.example.DAO.MySQL.TiendaDAO;
+import org.example.DAO.SQLite.TiendaDAOSqlite;
 import org.example.Model.Tienda;
 
 import java.io.IOException;
@@ -71,10 +72,12 @@ public class AddShopModalController extends Controller implements Initializable 
 
     public void insertarTiendaBD() throws IOException {
         TiendaDAO tdao = new TiendaDAO();
+        TiendaDAOSqlite tdao2 = new TiendaDAOSqlite();
         Tienda tienda = recogerDatos();
        
         if (tienda != null) { // Verificar que los datos son válidos
             tdao.insert(tienda);
+            tdao2.insert(tienda);
             // Insertar la nueva tienda
         } else {
             AppController.showDatosIncorrectos();

@@ -15,7 +15,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import org.example.App;
-import org.example.DAO.VideojuegoDAO;
+import org.example.DAO.MySQL.VideojuegoDAO;
 import org.example.Model.Videojuego;
 
 import java.io.IOException;

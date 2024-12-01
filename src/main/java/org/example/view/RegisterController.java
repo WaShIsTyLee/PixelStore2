@@ -7,7 +7,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import org.example.App;
-import org.example.DAO.UsuarioDAO;
+import org.example.DAO.MySQL.UsuarioDAO;
+import org.example.DAO.SQLite.UsuarioDAOSqlite;
 import org.example.Model.Usuario;
 
 import java.io.IOException;
@@ -73,6 +74,7 @@ public class RegisterController extends Controller implements Initializable {
 
     public void registrar() {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
+        UsuarioDAOSqlite usuarioDAOSqlite = new UsuarioDAOSqlite();
         Usuario usuario = recogerUsurio();
         if (usuario == null) {
             AppController.showCamposIncompletos();
@@ -80,6 +82,8 @@ public class RegisterController extends Controller implements Initializable {
             AppController.showEmailRegistrado();
         } else {
             usuarioDAO.insert(usuario);
+            usuarioDAOSqlite.insert(usuario);
+
         }
     }
 
