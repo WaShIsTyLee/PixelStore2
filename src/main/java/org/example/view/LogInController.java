@@ -38,7 +38,7 @@ public class LogInController extends Controller implements Initializable {
     public Usuario recogerDatos() throws IOException {
         Usuario usuario = new Usuario();
         usuario.setEmail(email.getText());
-        usuario.setContrasena(contraseña.getText());
+        usuario.setContrasena(usuario.hashPassword(contraseña.getText()));
         return usuario;
     }
 
