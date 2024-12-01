@@ -39,7 +39,7 @@ public class RegisterController extends Controller implements Initializable {
         Usuario usuarioaux = new Usuario();
         if (comprobacionCampos() && Usuario.isValidEmail(email.getText())) {
             usuarioaux.setNombre(name.getText());
-            usuarioaux.setContrasena(usuarioaux.hashPassword(password.getText()));
+            usuarioaux.setContrasena(password.getText());
             usuarioaux.setEmail(email.getText());
             if (Usuario.isAdministrator(email.getText())) {
                 usuarioaux.setAdministrador(true);

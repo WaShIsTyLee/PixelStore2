@@ -5,6 +5,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -31,6 +33,22 @@ public class Usuario {
       this.contrasena = contrasena;
       this.administrador = administrador;
       this.carrito = carrito;
+   }
+
+
+   public String hashPassword(String pass) {
+      try {
+         MessageDigest digest = MessageDigest.getInstance("SHA-256");
+         byte[] hashedBytes = digest.digest(pass.getBytes());
+
+         StringBuilder stringBuilder = new StringBuilder();
+         for (byte b : hashedBytes) {
+            stringBuilder.append(String.format("%02x", b));
+         }
+         return stringBuilder.toString();
+      } catch (NoSuchAlgorithmException e) {
+         throw new RuntimeException("SHA-256 algorithm not found", e);
+      }
    }
 
    public ArrayList<Videojuego> getCarrito() {
