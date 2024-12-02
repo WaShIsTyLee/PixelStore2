@@ -25,8 +25,7 @@ import org.example.Utils.XMLusuario;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CarritoController extends Controller implements Initializable{
@@ -45,10 +44,12 @@ public class CarritoController extends Controller implements Initializable{
             @Override
             protected void updateItem(Videojuego item, boolean empty) {
                 super.updateItem(item, empty);
+
                 if (empty || item == null) {
                     setText(null);
                     setGraphic(null);
                 } else {
+
                     HBox container = new HBox();
                     container.setSpacing(10);
                     container.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: lightgray;");
@@ -57,18 +58,22 @@ public class CarritoController extends Controller implements Initializable{
                     labels.setSpacing(5);
                     labels.setMaxWidth(Double.MAX_VALUE);
                     labels.setStyle("-fx-hgap: 10;");
+
                     Label nombre = new Label("Nombre: " + item.getNombre());
                     Label precio = new Label("Precio: $" + String.format("%.2f", item.getPrecio()));
                     Label fechaCompra = new Label("Fecha de Compra: " + item.getFechaCompra().toString());
                     labels.getChildren().addAll(nombre, precio, fechaCompra);
+
                     ImageView imagen = new ImageView();
                     if (item.getRutaImagen() != null && !item.getRutaImagen().isEmpty()) {
                         imagen.setImage(new Image(item.getRutaImagen()));
                         imagen.setFitHeight(100);
                         imagen.setPreserveRatio(true);
                     }
+
                     Region espacioVacío = new Region();
                     HBox.setHgrow(espacioVacío, Priority.ALWAYS);
+
                     container.getChildren().addAll(labels, espacioVacío, imagen);
 
                     setGraphic(container);
@@ -78,12 +83,12 @@ public class CarritoController extends Controller implements Initializable{
 
         gamerUser.setItems(this.games);
 
-    }
 
+    }
     @Override
     public void onOpen(Object input) throws IOException {
         UsuarioDAO game = new UsuarioDAO();
-        List<Videojuego> gameList = game.gammerUser(Sesion.getInstancia().getUsuarioIniciado());
+        ArrayList<Videojuego> gameList = game.gammerUser(Sesion.getInstancia().getUsuarioIniciado());
         this.games = FXCollections.observableArrayList(gameList);
         gamerUser.setItems(this.games);
     }
