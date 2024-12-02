@@ -28,24 +28,21 @@ import java.util.ResourceBundle;
 public class AddGamesModalController extends Controller implements Initializable {
 
     @FXML
-    TextField nombreJuego;
+    private TextField nombreJuego;
     @FXML
-    TextField precioJuego;
+    private TextField precioJuego;
     @FXML
-    ComboBox<String> comboBoxDesarrollador;
+    private ComboBox<String> comboBoxDesarrollador;
     @FXML
-    TextArea DescripcionJuego;
+    private TextArea DescripcionJuego;
     @FXML
-    Button buttonGuardar;
+    private Button buttonGuardar;
     @FXML
-    Button buttonSeleccionarImagen;
+    private Button buttonSeleccionarImagen;
     @FXML
-    ImageView imagenJuego;
+    private ImageView imagenJuego;
 
-    // Archivo seleccionado
     private File view;
-
-    // URL de la imagen seleccionada
     private String imageUrl;
 
     @FXML
@@ -58,12 +55,8 @@ public class AddGamesModalController extends Controller implements Initializable
         File select = file.showOpenDialog(buttonSeleccionarImagen.getScene().getWindow());
         if (select != null) {
             view = select;
-
-            // Obtener la URL de la imagen seleccionada
             imageUrl = select.getAbsolutePath().toString();
             System.out.println("URL de la imagen seleccionada: " + imageUrl);
-
-            // Cargar la imagen en el ImageView
             Image image = new Image(imageUrl);
             imagenJuego.setImage(image);
 
@@ -72,7 +65,6 @@ public class AddGamesModalController extends Controller implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Cargar los desarrolladores en el ComboBox
         DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
         ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.findAll();
         ArrayList<String> desarrolladoresString = new ArrayList<>();
@@ -97,7 +89,7 @@ public class AddGamesModalController extends Controller implements Initializable
             videojuego.setRutaImagen(imageUrl);
         } else {
             String rutaImagen = getClass().getResource("/org/example/view/Fotos/Portada.jpg").toExternalForm();
-            videojuego.setRutaImagen(rutaImagen); // METER FOTO EN ESPECÍFICO
+            videojuego.setRutaImagen(rutaImagen);
         }
 
         return videojuego;
@@ -109,7 +101,7 @@ public class AddGamesModalController extends Controller implements Initializable
         ArrayList<String> namesVideojuegos = dao.findAllNames();
 
         for (String name : namesVideojuegos) {
-            if (name.equalsIgnoreCase(nombreJuego.getText())) { // Comparación insensible a mayúsculas
+            if (name.equalsIgnoreCase(nombreJuego.getText())) {
                 AppController.showVideojuegoYaExisteEnBBDD();
                 return false;
             }
@@ -127,26 +119,18 @@ public class AddGamesModalController extends Controller implements Initializable
     public void añadiJuegoBD() {
         VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
         VideojuegoDAOSqlite videojuegoDAOSqlite = new VideojuegoDAOSqlite();
-
-        // Validar los campos antes de construir el objeto
         if (!comprobacionCampos()) {
             AppController.showVerificaCampos();
-            return; // Detener el flujo si la validación falla
+            return;
         }
 
         try {
-            // Construir el objeto solo después de validar
             Videojuego videojuego = recogerVideojuego();
-
-            // Guardar en ambas bases de datos
             videojuegoDAO.save(videojuego);
             videojuegoDAOSqlite.save(videojuego);
 
-            // Cerrar la ventana actual
             Stage currentStage = (Stage) buttonGuardar.getScene().getWindow();
             currentStage.close();
-
-            // Cambiar la escena a la lista de juegos
             App.currentController.changeScene(Scenes.GAMES, null);
         } catch (Exception e) {
             e.printStackTrace();

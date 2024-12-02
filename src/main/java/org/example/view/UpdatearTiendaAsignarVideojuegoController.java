@@ -24,29 +24,28 @@ import java.util.ResourceBundle;
 
 public class UpdatearTiendaAsignarVideojuegoController extends Controller implements Initializable {
     @FXML
-    ImageView volver;
+    private ImageView volver;
     @FXML
-    TextField textFieldLocalizacion;
+    private TextField textFieldLocalizacion;
     @FXML
-    TextField textFieldTelefono;
+    private TextField textFieldTelefono;
     @FXML
     ListView<Videojuego> listViewVideojuegos;
-    private ObservableList<Videojuego> games = FXCollections.observableArrayList(); // Inicializar como ObservableList
+    private ObservableList<Videojuego> games = FXCollections.observableArrayList();
     @FXML
-    Button botonAsignar;
+    private Button botonAsignar;
     @FXML
-    Button botonEliminar;
+    private Button botonEliminar;
     @FXML
-    Button botonEliminarJuego;
+    private Button botonEliminarJuego;
     @FXML
-    Button botonModificar;
+    private Button botonModificar;
 
     Tienda tiendaseleccionada;
     private final ObservableList<Videojuego> videojuegosSeleccionados = FXCollections.observableArrayList();
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Configuración de la celda de ListView
         listViewVideojuegos.setCellFactory(lv -> new ListCell<Videojuego>() {
             @Override
             protected void updateItem(Videojuego item, boolean empty) {
@@ -55,37 +54,32 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Crear un diseño horizontal (HBox) para cada celda
                     HBox container = new HBox();
                     container.setSpacing(10);
                     container.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: lightgray;");
-                    container.setMaxWidth(Double.MAX_VALUE);  // Asegura que el HBox ocupe todo el espacio disponible
-
-                    // Crear los labels con la información del videojuego
+                    container.setMaxWidth(Double.MAX_VALUE);
                     VBox labels = new VBox();
                     labels.setSpacing(5);
-                    labels.setMaxWidth(Double.MAX_VALUE);  // Hacer que el VBox ocupe todo el ancho disponible
+                    labels.setMaxWidth(Double.MAX_VALUE);
                     labels.setStyle("-fx-hgap: 10;");
 
                     Label nombre = new Label("Nombre: " + item.getNombre());
                     Label precio = new Label("Precio: $" + String.format("%.2f", item.getPrecio()));
                     Label descripcion = new Label("Descripción: " + item.getDescripcion());
                     Label desarrollador = new Label("Desarrollador: " + item.getDesarrollador().getNombre());
-                    descripcion.setWrapText(true);  // Ajuste de texto para que se vea correctamente
+                    descripcion.setWrapText(true);
 
                     labels.getChildren().addAll(nombre, precio, descripcion, desarrollador);
 
-                    // Crear un ImageView para mostrar la imagen
                     ImageView imagen = new ImageView();
                     if (item.getRutaImagen() != null && !item.getRutaImagen().isEmpty()) {
-                        imagen.setImage(new Image(item.getRutaImagen()));  // Establecer la imagen
-                        imagen.setFitHeight(100);  // Ajustar el tamaño de la imagen
-                        imagen.setPreserveRatio(true);  // Mantener las proporciones
+                        imagen.setImage(new Image(item.getRutaImagen()));
+                        imagen.setFitHeight(100);
+                        imagen.setPreserveRatio(true);
                     }
 
-                    // Checkbox para seleccionar el videojuego
                     CheckBox checkbox = new CheckBox();
-                    checkbox.setSelected(videojuegosSeleccionados.contains(item)); // Sincroniza con la lista de seleccionados
+                    checkbox.setSelected(videojuegosSeleccionados.contains(item));
                     checkbox.setOnAction(event -> {
                         if (checkbox.isSelected()) {
                             if (!videojuegosSeleccionados.contains(item)) {
@@ -96,24 +90,16 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
                         }
                     });
 
-                    // Crear un contenedor para la información
                     VBox infoContainer = new VBox(labels);
                     infoContainer.setSpacing(5);
 
-                    // Crear un Region vacío para empujar la imagen a la derecha
                     Region espacioVacío = new Region();
-                    HBox.setHgrow(espacioVacío, Priority.ALWAYS);  // Hace que el espacio vacío ocupe todo el espacio disponible
-
-                    // Añadir el checkbox, la información y la imagen al contenedor principal
+                    HBox.setHgrow(espacioVacío, Priority.ALWAYS);
                     container.getChildren().addAll(checkbox, infoContainer, espacioVacío, imagen);
-
-                    // Configurar el gráfico de la celda
                     setGraphic(container);
                 }
             }
         });
-
-// Asignar la lista de videojuegos a la ListView
         listViewVideojuegos.setItems(this.games);
     }
 
@@ -184,7 +170,6 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
     }
 
     public boolean comprobacionCampos() {
-        // Combina ambas validaciones
         return validarNombreParaUpdate() && validarDatos();
     }
 

@@ -31,92 +31,76 @@ public class UGamesController extends Controller implements Initializable {
     @FXML
     private ImageView carro;
     @FXML
-    private TilePane videojuegos; // Cambiado a TilePane
+    private TilePane videojuegos;
     @FXML
     private TextField buscador;
 
     private ObservableList<Videojuego> games;
-    private ArrayList<Videojuego> selectedGames = new ArrayList<>(); // Lista de juegos seleccionados
+    private ArrayList<Videojuego> selectedGames = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Configuración inicial del TilePane (espaciado entre las "tarjetas")
         videojuegos.setHgap(20);
         videojuegos.setVgap(20);
-        videojuegos.setPrefColumns(3); // Número de columnas visibles
+        videojuegos.setPrefColumns(3);
         videojuegos.setStyle("-fx-background-color: #0f0f1a; -fx-padding: 20;");
     }
 
     @Override
     public void onOpen(Object input) throws IOException {
-        // Obtener lista de videojuegos desde el DAO
         VideojuegoDAO gameDAO = new VideojuegoDAO();
         List<Videojuego> gameList = gameDAO.gameList();
         this.games = FXCollections.observableArrayList(gameList);
-
-        // Mostrar videojuegos en el TilePane
         renderGames(this.games);
     }
 
-    // Método para renderizar los videojuegos en el TilePane
     private void renderGames(ObservableList<Videojuego> games) {
-        videojuegos.getChildren().clear(); // Limpiar elementos previos
+        videojuegos.getChildren().clear();
         for (Videojuego game : games) {
             videojuegos.getChildren().add(createGameCard(game));
         }
     }
-
-    // Método para crear una "tarjeta" para cada videojuego
     private VBox createGameCard(Videojuego game) {
         VBox card = new VBox();
         card.setSpacing(10);
         card.setStyle("-fx-padding: 15; -fx-background-color: #1c1c2e; -fx-border-color: #ff4500; "
                 + "-fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;");
-        card.setPrefWidth(150); // Ancho de cada tarjeta
-        card.setMinHeight(200); // Altura mínima de la tarjeta
-
-        // Imagen del videojuego
+        card.setPrefWidth(150);
+        card.setMinHeight(200);
         ImageView imageView = new ImageView();
         try {
-            // Intenta cargar la imagen si está disponible
+
             if (game.getRutaImagen() != null && !game.getRutaImagen().isEmpty()) {
-                imageView.setImage(new Image(game.getRutaImagen())); // Cargar la imagen desde la URL
-                imageView.setFitWidth(150); // Ajustar el tamaño de la imagen
-                imageView.setFitHeight(150); // Ajustar el tamaño de la imagen
-                imageView.setPreserveRatio(true); // Mantener las proporciones de la imagen
+                imageView.setImage(new Image(game.getRutaImagen()));
+                imageView.setFitWidth(150);
+                imageView.setFitHeight(150);
+                imageView.setPreserveRatio(true);
             }
         } catch (Exception e) {
             System.out.println("Error al cargar la imagen: " + e.getMessage());
         }
 
-        // Etiqueta con el nombre del videojuego
         Label name = new Label(game.getNombre());
         name.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         name.setStyle("-fx-text-fill: white;");
-
-        // Etiqueta con el precio del videojuego
         Label price = new Label( String.format("%.2f", game.getPrecio()) + " €");
         price.setStyle("-fx-text-fill: #50fa7b; -fx-font-size: 14;");
-
-        // Etiqueta con el nombre del desarrollador
         Label developer = new Label(game.getDesarrollador().getNombre());
         developer.setStyle("-fx-text-fill: white; -fx-font-size: 12;");
-
-        // Etiqueta con la descripción del videojuego
         Label description = new Label(game.getDescripcion());
         description.setStyle("-fx-text-fill: #b0b0b0; -fx-font-size: 12; -fx-wrap-text: true;");
 
-        // Botón para añadir al carrito
+
         Button addToCart = new Button("Añadir al carrito");
         addToCart.setStyle("-fx-background-color: #ff0000; -fx-text-fill: white; -fx-font-size: 12; "
                 + "-fx-background-radius: 5; -fx-padding: 5;");
 
-        // Acción del botón: llamar al método añadirACarrito
+
         addToCart.setOnAction(event -> {
-            // Obtener el usuario actual de la sesión
+
             Usuario usuario = Sesion.getInstancia().getUsuarioIniciado();
 
-            // Llamar al método añadirACarrito para insertar el videojuego en el carrito
+
             try {
                 añadirACarrito(usuario, game);
             } catch (IOException e) {
@@ -124,20 +108,17 @@ public class UGamesController extends Controller implements Initializable {
             }
         });
 
-        // Añadir los elementos al contenedor de la tarjeta
+
         card.getChildren().addAll(imageView, name, price, developer, description, addToCart);
 
-        // Efecto de expansión solo sobre el cuadrado donde el ratón entra
         card.setOnMouseEntered(event -> {
-            // Expande solo la tarjeta
-            card.setScaleX(1.2); // Escala X (ancho) para expansión
-            card.setScaleY(1.2); // Escala Y (alto) para expansión
+            card.setScaleX(1.2);
+            card.setScaleY(1.2);
         });
 
         card.setOnMouseExited(event -> {
-            // Vuelve a la normalidad
-            card.setScaleX(1.0); // Restaurar tamaño original
-            card.setScaleY(1.0); // Restaurar tamaño original
+            card.setScaleX(1.0);
+            card.setScaleY(1.0);
         });
 
         return card;
@@ -153,20 +134,17 @@ public class UGamesController extends Controller implements Initializable {
     public void buscar() {
         String query = buscador.getText().toLowerCase();
         ObservableList<Videojuego> filteredGames = games.filtered(game -> game.getNombre().toLowerCase().contains(query));
-        renderGames(filteredGames); // Renderizar los juegos filtrados
+        renderGames(filteredGames);
     }
 
-    // Método para insertar un videojuego en el carrito
+
     public void añadirACarrito(Usuario usuario, Videojuego videojuego) throws IOException {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         UsuarioDAOSqlite usuarioDAOSqlite = new UsuarioDAOSqlite();
-        // Aquí llamamos al DAO para insertar el videojuego en la base de datos
         usuarioDAO.insertarVideojuegosEnCarrito(usuario, videojuego);
-        //usuarioDAOSqlite.insertarVideojuegosEnCarrito(usuario, videojuego);
         App.currentController.changeScene(Scenes.VIDEOJUEGOSUSUARIO, null);
     }
 
-    // Método para obtener los videojuegos seleccionados
     public ArrayList<Videojuego> getSelectedGames() {
         return selectedGames;
     }

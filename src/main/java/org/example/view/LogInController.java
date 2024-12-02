@@ -16,15 +16,15 @@ import java.util.ResourceBundle;
 
 public class LogInController extends Controller implements Initializable {
     @FXML
-    ImageView imageFlechaAtras;
+    private ImageView imageFlechaAtras;
     @FXML
-    TextField email;
+    private TextField email;
     @FXML
-    PasswordField contraseña;
+    private PasswordField contraseña;
 
 
     @FXML
-    ImageView imageFlechaRegistrar;
+    private ImageView imageFlechaRegistrar;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -57,7 +57,6 @@ public class LogInController extends Controller implements Initializable {
                     AppController.showAdmin();
                     irAPantallaPrincipalAdmin();
                 } else {
-                    //CAMBIAR A PANTALLA PRINCIPAL DE NORMAL
                     AppController.showUser();
                     irAPantallaPrincipal();
                 }

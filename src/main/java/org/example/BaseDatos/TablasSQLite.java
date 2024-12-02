@@ -5,7 +5,6 @@ import java.sql.Statement;
 
 public class TablasSQLite {
 
-    // Crear tabla usuario
     public static void crearTablaUsuario() {
         String sql = "CREATE TABLE IF NOT EXISTS usuario (\n" +
                 "    id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
@@ -18,7 +17,6 @@ public class TablasSQLite {
         ejecutarSQL(sql, "Tabla usuario creada.");
     }
 
-    // Crear tabla desarrollador
     public static void crearTablaDesarrollador() {
         String sql = "CREATE TABLE IF NOT EXISTS desarrollador (\n" +
                 "    id_desarrollador INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
@@ -29,7 +27,6 @@ public class TablasSQLite {
         ejecutarSQL(sql, "Tabla desarrollador creada.");
     }
 
-    // Crear tabla videojuego
     public static void crearTablaVideojuego() {
         String sql = "CREATE TABLE IF NOT EXISTS videojuego (\n" +
                 "    id_videojuego INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
@@ -44,7 +41,6 @@ public class TablasSQLite {
         ejecutarSQL(sql, "Tabla videojuego creada.");
     }
 
-    // Crear tabla tienda
     public static void crearTablaTienda() {
         String sql = "CREATE TABLE IF NOT EXISTS tienda (\n" +
                 "    id_tienda INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
@@ -55,7 +51,6 @@ public class TablasSQLite {
         ejecutarSQL(sql, "Tabla tienda creada.");
     }
 
-    // Crear tabla tiendavideojuego
     public static void crearTablaTiendaVideojuego() {
         String sql = "CREATE TABLE IF NOT EXISTS tiendavideojuego (\n" +
                 "    id_tienda INTEGER NOT NULL,\n" +
@@ -68,7 +63,6 @@ public class TablasSQLite {
         ejecutarSQL(sql, "Tabla tiendavideojuego creada.");
     }
 
-    // Crear tabla usuariovideojuego
     public static void crearTablaUsuarioVideojuego() {
         String sql = "CREATE TABLE IF NOT EXISTS usuariovideojuego (\n" +
                 "    id_videojuego INTEGER NOT NULL,\n" +
@@ -82,10 +76,8 @@ public class TablasSQLite {
         ejecutarSQL(sql, "Tabla usuariovideojuego creada.");
     }
 
-    // Método general para ejecutar consultas SQL
     private static void ejecutarSQL(String sql, String mensajeExito) {
-        // Usamos la clase ConnectionSQLite para obtener la conexión
-        try (Connection conn = ConnectionSQLite.getConnection(); // Usamos el método getConnection()
+        try (Connection conn = ConnectionSQLite.getConnection();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
             System.out.println(mensajeExito);
@@ -93,9 +85,6 @@ public class TablasSQLite {
             System.out.println("Error al ejecutar SQL: " + e.getMessage());
         }
     }
-
-
-    // Método para crear todas las tablas
     public static void crearTodasLasTablas() {
         crearTablaUsuario();
         crearTablaDesarrollador();

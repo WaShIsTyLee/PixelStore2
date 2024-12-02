@@ -111,7 +111,6 @@ public class DesarrolladorDAO {
         return result;
     }
 
-    //Se tiene que cambiar la accion que hace en la base de datos
     public Desarrollador delete(Desarrollador entity) {
         if (entity != null) {
             try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(DELETE)) {

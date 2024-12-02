@@ -14,13 +14,13 @@ import java.util.ResourceBundle;
 
 public class PantallaPrincipalUserController extends Controller implements Initializable {
     @FXML
-    Text nombreUsuarioIniciado;
+    private Text nombreUsuarioIniciado;
     @FXML
-    ImageView logOut;
+    private ImageView logOut;
     @FXML
-    ImageView carrito;
+    private ImageView carrito;
     @FXML
-    StackPane desarrolladores;
+    private StackPane desarrolladores;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

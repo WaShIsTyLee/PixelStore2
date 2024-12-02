@@ -22,7 +22,7 @@ public class Test_videojuego {
         //System.out.println(f);
         //Videojuego videojuego = new Videojuego("Celda","Juego en un mundo fisticio",17.3f,f);
         //VideojuegoDAO v = new VideojuegoDAO();
-       // List<Videojuego> lisv = .gamesDesarrollador(f);
+        // List<Videojuego> lisv = .gamesDesarrollador(f);
         for(Videojuego videojuego: gameruser){
             System.out.println(videojuego);
         }

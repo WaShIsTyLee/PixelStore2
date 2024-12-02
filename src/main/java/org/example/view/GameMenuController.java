@@ -45,39 +45,32 @@ public class GameMenuController extends Controller implements Initializable {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Crear un diseño horizontal (HBox) para cada elemento
-                    HBox container = new HBox();
-                    container.setSpacing(10);  // Espaciado entre los elementos
-                    container.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: lightgray;");
-                    container.setMaxWidth(Double.MAX_VALUE);  // Asegura que el HBox ocupe todo el espacio disponible
 
-                    // Crear los labels con la información del videojuego
+                    HBox container = new HBox();
+                    container.setSpacing(10);
+                    container.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: lightgray;");
+                    container.setMaxWidth(Double.MAX_VALUE);
                     VBox labels = new VBox();
                     labels.setSpacing(5);
-                    labels.setMaxWidth(Double.MAX_VALUE);  // Hacer que el VBox ocupe todo el ancho disponible
+                    labels.setMaxWidth(Double.MAX_VALUE);
                     labels.setStyle("-fx-hgap: 10;");
 
                     Label nombre = new Label("Nombre: " + item.getNombre());
                     Label precio = new Label("Precio: $" + String.format("%.2f", item.getPrecio()));
                     Label descripcion = new Label("Descripción: " + item.getDescripcion());
                     Label desarrollador = new Label("Desarrollador: " + item.getDesarrollador().getNombre());
-                    descripcion.setWrapText(true);  // Ajuste de texto para que se vea correctamente
+                    descripcion.setWrapText(true);
 
                     labels.getChildren().addAll(nombre, precio, descripcion, desarrollador);
-
-                    // Crear un ImageView para mostrar la imagen
                     ImageView imagen = new ImageView();
                     if (item.getRutaImagen() != null && !item.getRutaImagen().isEmpty()) {
-                        imagen.setImage(new Image(item.getRutaImagen()));  // Establecer la imagen
-                        imagen.setFitHeight(100);  // Ajustar el tamaño de la imagen
-                        imagen.setPreserveRatio(true);  // Mantener las proporciones
+                        imagen.setImage(new Image(item.getRutaImagen()));
+                        imagen.setFitHeight(100);
+                        imagen.setPreserveRatio(true);
                     }
 
-                    // Crear un Region vacío para empujar la imagen a la derecha
                     Region espacioVacío = new Region();
-                    HBox.setHgrow(espacioVacío, Priority.ALWAYS);  // Hace que el espacio vacío ocupe todo el espacio disponible
-
-                    // Añadir los labels y la imagen al HBox
+                    HBox.setHgrow(espacioVacío, Priority.ALWAYS);
                     container.getChildren().addAll(labels, espacioVacío, imagen);
 
                     setGraphic(container);
@@ -120,7 +113,6 @@ public class GameMenuController extends Controller implements Initializable {
     @FXML
     private void GoToModifyDeleteGames() throws Exception {
         Videojuego videojuegoCapturado = videojuegos.getSelectionModel().getSelectedItem();
-        //videojuegoCapturado.setRutaImagen();
         System.out.println(videojuegoCapturado.toString());
         App.currentController.openModalv(Scenes.MODIFICARVIDEOJUEGO,"Modificar Videojuego",this,videojuegoCapturado);
     }
