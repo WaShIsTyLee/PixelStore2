@@ -22,7 +22,7 @@
                 "SELECT v.id_videojuego, v.nombre, v.precio, v.descripcion, v.id_desarrollador, v.foto " +
                         "FROM tiendavideojuego tv " +
                         "JOIN videojuego v ON tv.id_videojuego = v.id_videojuego " +
-                        "WHERE tv.id_tienda = ? ORDER BY v.precio";
+                        "WHERE tv.id_tienda = ? GROUP BY v.precio";
         private final static String DELETEFROMGAMESHOPS = "DELETE FROM tiendavideojuego WHERE id_videojuego = ?";
 
 

@@ -121,8 +121,7 @@ public class UpdateGameModalController extends Controller implements Initializab
         videojuego.setNombre(tfNombre.getText());
         videojuego.setDescripcion(tfDescripcion.getText());
         videojuego.setPrecio(Float.parseFloat(tfPrecio.getText()));
-        DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
-        videojuego.setDesarrollador(desarrolladorDAO.findByName(cmbDesarrolador.getValue()));
+        videojuego.setDesarrollador(videojuegoCapturado.getDesarrollador());
         videojuego.setId_videojuego(videojuegoCapturado.getId_videojuego());
 
         if (imageUrl != null) {

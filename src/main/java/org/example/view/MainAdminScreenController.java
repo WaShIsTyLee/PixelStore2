@@ -32,7 +32,7 @@ public class MainAdminScreenController extends Controller implements Initializab
 
     @Override
     public void onOpen(Object input) throws IOException {
-       texto.setText(Sesion.getInstancia().getUsuarioIniciado().getNombre());
+       texto.setText(Sesion.getInstancia().getUsuarioIniciado().getNombre() + " 🙂");
     }
 
 

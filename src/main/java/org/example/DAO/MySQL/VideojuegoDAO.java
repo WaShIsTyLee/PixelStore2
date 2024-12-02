@@ -15,7 +15,7 @@ public class VideojuegoDAO {
     private final static String INSERTE = "INSERT INTO videojuego(nombre,precio,descripcion,id_desarrollador,foto) VALUES (?, ?, ?, ?,?)";
     private final static String DELETE = "DELETE FROM videojuego WHERE id_videojuego=?";
     private final static String FINDBYID = "SELECT v.id_videojuego,v.nombre,v.precio,v.descripcion,v.id_desarrollador, v.foto FROM videojuego AS v WHERE v.id_videojuego=?";
-    private final static String LISTGAMES = "SELECT v.id_videojuego, v.nombre,v.precio,v.descripcion, v.id_desarrollador, v.foto FROM videojuego AS v GROUP BY v.precio DESC";
+    private final static String LISTGAMES = "SELECT v.id_videojuego, v.nombre,v.precio,v.descripcion, v.id_desarrollador, v.foto FROM videojuego AS v ORDER BY v.precio DESC";
     private final static String FINDALLNAMES = "SELECT v.nombre FROM videojuego AS v GROUP BY V.nombre";
     private final static String UPDATE = "UPDATE videojuego SET nombre=?, precio=?, descripcion=?, id_desarrollador=?,foto=? WHERE id_videojuego=?";
 
