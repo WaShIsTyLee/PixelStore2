@@ -20,6 +20,20 @@ public class UsuarioDAO {
             "JOIN usuariovideojuego uv ON v.id_videojuego = uv.id_videojuego  JOIN usuario u ON uv.id_usuario = u.id_usuario  WHERE u.id_usuario = ?";
     private final static String FINDGAMEUSERXML = "SELECT v.nombre, v.precio,uv.fecha_compra  FROM videojuego v  " +
             "JOIN usuariovideojuego uv ON v.id_videojuego = uv.id_videojuego  JOIN usuario u ON uv.id_usuario = u.id_usuario  WHERE u.id_usuario = ?";
+    private final static String DELETECARRITO = "DELETE FROM usuariovideojuego WHERE id_usuario = ?";
+
+    public void deleteCarrito(Usuario usuario) {
+        if (usuario != null || usuario.getId_usuario() > 0) {
+            try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(DELETECARRITO)) {
+                pst.setInt(1, usuario.getId_usuario());
+                pst.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 
     public boolean insertarVideojuegosEnCarrito(Usuario usuario, Videojuego videojuego) {
         boolean success = false;

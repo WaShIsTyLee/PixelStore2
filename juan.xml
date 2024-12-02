@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Facturas>
+    <UsuarioF>
+        <id_usuario>6</id_usuario>
+        <NombreUsuario>juan</NombreUsuario>
+        <email>juan1@gmail.com</email>
+        <administrador>false</administrador>
+        <Carrito>
+            <id_videojuego>0</id_videojuego>
+            <NombreJuego>Fornite</NombreJuego>
+            <PrecioJuego>0.0</PrecioJuego>
+            <fechaCompra>2024-12-02T00:00:00+01:00</fechaCompra>
+        </Carrito>
+        <Carrito>
+            <id_videojuego>0</id_videojuego>
+            <NombreJuego>GTA V</NombreJuego>
+            <PrecioJuego>70.0</PrecioJuego>
+            <fechaCompra>2024-12-02T00:00:00+01:00</fechaCompra>
+        </Carrito>
+        <PrecioTotal>70.0</PrecioTotal>
+    </UsuarioF>
+</Facturas>

@@ -60,7 +60,7 @@ public class CarritoController extends Controller implements Initializable{
                     labels.setStyle("-fx-hgap: 10;");
 
                     Label nombre = new Label("Nombre: " + item.getNombre());
-                    Label precio = new Label("Precio: $" + String.format("%.2f", item.getPrecio()));
+                    Label precio = new Label("Precio: " + String.format("%.2f", item.getPrecio()) + "€");
                     Label fechaCompra = new Label("Fecha de Compra: " + item.getFechaCompra().toString());
                     labels.getChildren().addAll(nombre, precio, fechaCompra);
 
@@ -116,6 +116,7 @@ public class CarritoController extends Controller implements Initializable{
         textoTotal.setText(String.valueOf(aux.getPrecioTotal() ) + " €");
         try {
             ux.guardarFactura(aux);
+            us.deleteCarrito(aux);
         } catch (JAXBException e) {
             e.printStackTrace();
         }

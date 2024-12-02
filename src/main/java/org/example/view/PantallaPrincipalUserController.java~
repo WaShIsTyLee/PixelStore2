@@ -28,7 +28,7 @@ public class PantallaPrincipalUserController extends Controller implements Initi
 
     @Override
     public void onOpen(Object input) throws IOException {
-        nombreUsuarioIniciado.setText(Sesion.getInstancia().getUsuarioIniciado().getNombre() + "  🙂");
+        nombreUsuarioIniciado.setText(Sesion.getInstancia().getUsuarioIniciado().getNombre() + "  😀");
     }
 
     @FXML
