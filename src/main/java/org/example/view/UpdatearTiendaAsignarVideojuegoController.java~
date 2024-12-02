@@ -208,7 +208,7 @@ public class UpdatearTiendaAsignarVideojuegoController extends Controller implem
         TiendaDAO tdao = new TiendaDAO();
         TiendaDAOSqlite tdaoSqlite = new TiendaDAOSqlite();
         tdao.eliminarJuegosDeTienda(tiendaseleccionada, obtenerVideojuegosSeleccionados());
-    //    tdaoSqlite.eliminarJuegosDeTienda(tiendaseleccionada, obtenerVideojuegosSeleccionados());
+        tdaoSqlite.eliminarJuegosDeTienda(tiendaseleccionada, obtenerVideojuegosSeleccionados());
         App.currentController.changeScene(Scenes.TIENDAS, null);
 
     }
