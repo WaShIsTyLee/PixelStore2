@@ -23,21 +23,20 @@ import java.util.stream.Collectors;
 public class ShopMenuController extends Controller implements Initializable {
 
     @FXML
-    private ImageView atras; // Botón para regresar
+    private ImageView atras;
 
     @FXML
-    ListView<Tienda> tiendas; // ListView para mostrar las tiendas
+    private ListView<Tienda> tiendas;
     @FXML
-    private TextField buscador; // Campo de búsqueda para filtrar las tiendas
+    private TextField buscador;
     @FXML
-    ImageView anadirTienda;
+    private ImageView anadirTienda;
 
 
-    private ObservableList<Tienda> tiendasOA; // Lista observable de tiendas
+    private ObservableList<Tienda> tiendasOA;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Configurar la fábrica de celdas para personalizar la visualización
         tiendas.setCellFactory(lv -> new ListCell<>() {
             @Override
             protected void updateItem(Tienda item, boolean empty) {
@@ -46,7 +45,6 @@ public class ShopMenuController extends Controller implements Initializable {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Crear un diseño para cada tienda
                     VBox container = new VBox();
                     container.setSpacing(5);
                     container.setStyle("-fx-padding: 10; -fx-border-color: black; " +
@@ -61,8 +59,6 @@ public class ShopMenuController extends Controller implements Initializable {
                 }
             }
         });
-
-        // Asignar la lista observable al ListView
         tiendas.setItems(this.tiendasOA);
     }
 
@@ -86,19 +82,16 @@ public class ShopMenuController extends Controller implements Initializable {
 
     @FXML
     private void addStore() throws Exception {
-        // Método para abrir un modal y añadir una tienda
         App.currentController.openModalv(Scenes.ADDTIENDA, "Añadiendo Tienda", this, null);
     }
 
     @FXML
     private void atras() throws Exception {
-        // Cambiar a la pantalla principal
         App.currentController.changeScene(Scenes.PANTALLAADMIN, null);
     }
 
     @FXML
     private void GoToModifyDeleteStore() throws Exception {
-        // Obtener la tienda seleccionada y abrir un modal para modificarla o eliminarla
         Tienda tiendaSeleccionada = tiendas.getSelectionModel().getSelectedItem();
         System.out.println(tiendaSeleccionada.toString());
         App.currentController.changeScene(Scenes.MODIFICARTIENDA, tiendaSeleccionada);

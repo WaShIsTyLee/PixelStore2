@@ -18,18 +18,18 @@ import java.util.ResourceBundle;
 
 public class RegisterController extends Controller implements Initializable {
     @FXML
-    ImageView imageFlechaAtras;
+    private ImageView imageFlechaAtras;
     @FXML
-    PasswordField password;
+    private PasswordField password;
     @FXML
-    TextField name;
+    private TextField name;
     @FXML
-    TextField email;
+    private TextField email;
     @FXML
-    Button botonRegistrar;
+    private Button botonRegistrar;
 
     @FXML
-    ImageView imageFlechaIncioSesión;
+    private ImageView imageFlechaIncioSesión;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

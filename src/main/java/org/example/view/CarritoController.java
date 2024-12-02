@@ -45,7 +45,6 @@ public class CarritoController extends Controller implements Initializable{
             protected void updateItem(Videojuego item, boolean empty) {
                 super.updateItem(item, empty);
 
-
                 if (empty || item == null) {
                     setText(null);
                     setGraphic(null);
@@ -57,18 +56,13 @@ public class CarritoController extends Controller implements Initializable{
                     container.setMaxWidth(Double.MAX_VALUE);
                     VBox labels = new VBox();
                     labels.setSpacing(5);
-                    labels.setMaxWidth(Double.MAX_VALUE);  // Hacer que el VBox ocupe todo el ancho disponible
+                    labels.setMaxWidth(Double.MAX_VALUE);
                     labels.setStyle("-fx-hgap: 10;");
 
                     Label nombre = new Label("Nombre: " + item.getNombre());
-
                     Label precio = new Label("Precio: $" + String.format("%.2f", item.getPrecio()));
-
                     Label fechaCompra = new Label("Fecha de Compra: " + item.getFechaCompra().toString());
-
-
                     labels.getChildren().addAll(nombre, precio, fechaCompra);
-
 
                     ImageView imagen = new ImageView();
                     if (item.getRutaImagen() != null && !item.getRutaImagen().isEmpty()) {
@@ -77,10 +71,8 @@ public class CarritoController extends Controller implements Initializable{
                         imagen.setPreserveRatio(true);
                     }
 
-
                     Region espacioVacío = new Region();
                     HBox.setHgrow(espacioVacío, Priority.ALWAYS);
-
 
                     container.getChildren().addAll(labels, espacioVacío, imagen);
 
@@ -88,6 +80,10 @@ public class CarritoController extends Controller implements Initializable{
                 }
             }
         });
+
+        gamerUser.setItems(this.games);
+
+
     }
     @Override
     public void onOpen(Object input) throws IOException {

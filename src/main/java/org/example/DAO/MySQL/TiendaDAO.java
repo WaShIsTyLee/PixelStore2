@@ -29,22 +29,18 @@
         public void update(Tienda entity) {
             if (entity != null) {
                 try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(UPDATE)) {
-                    // Configurar los parámetros del PreparedStatement
                     pst.setString(1, entity.getUbicacion());
                     pst.setString(2, entity.getTelefono());
                     pst.setInt(3, entity.getId_tienda());
 
-                    // Ejecutar la actualización
                     int filasActualizadas = pst.executeUpdate();
 
-                    // Validar si se actualizó correctamente
                     if (filasActualizadas > 0) {
                         System.out.println("Éxito: Tienda actualizada correctamente.");
                     } else {
                         System.out.println("Advertencia: No se encontró la tienda para actualizar.");
                     }
                 } catch (SQLException e) {
-                    // Manejar la excepción
                     System.err.println("Error durante la actualización: " + e.getMessage());
                     throw new RuntimeException(e);
                 }
@@ -94,7 +90,7 @@
                     System.err.println("Error al buscar juegos de tienda: " + e.getMessage());
                 }
             }
-            return videojuegos; // Devuelve la lista de videojuegos.
+            return videojuegos;
         }
 
         public Tienda insertarTiendaVideojuego(Tienda tienda) {
@@ -113,7 +109,7 @@
             } else {
                 System.out.println("Tienda inválida o sin ID.");
             }
-            return tienda; // Devolvemos la tienda
+            return tienda;
         }
 
 
@@ -163,8 +159,8 @@
                     return tienda;
                 }
                 public Tienda getTienda (Tienda tienda){
-                    Tienda tiendaaux = null; // Inicializamos como null para manejar casos sin resultados.
-                    String GETBYID = "SELECT id, ubicacion, telefono FROM tienda WHERE id = ?"; // Consulta de ejemplo.
+                    Tienda tiendaaux = null;
+                    String GETBYID = "SELECT id, ubicacion, telefono FROM tienda WHERE id = ?";
 
                     if (tienda.getId_tienda() > 0) {
                         try (PreparedStatement pst = ConnectionDB.getConnection().prepareStatement(GETBYID)) {

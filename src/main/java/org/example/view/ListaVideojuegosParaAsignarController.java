@@ -37,8 +37,6 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
 
     private ObservableList<Videojuego> games;
     Tienda tiendSeleccionada;
-
-    // Lista para almacenar los videojuegos seleccionados
     private ArrayList<Videojuego> seleccionados = new ArrayList<>();
 
     @Override
@@ -51,58 +49,44 @@ public class ListaVideojuegosParaAsignarController extends Controller implements
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Contenedor principal para cada celda
                     HBox container = new HBox();
                     container.setSpacing(10);
                     container.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: lightgray;");
-                    container.setMaxWidth(Double.MAX_VALUE);  // Asegura que el HBox ocupe todo el espacio disponible
-
-                    // Crear el CheckBox
+                    container.setMaxWidth(Double.MAX_VALUE);
                     CheckBox checkBox = new CheckBox();
                     checkBox.setOnAction(event -> {
                         if (checkBox.isSelected()) {
                             if (!seleccionados.contains(item)) {
-                                seleccionados.add(item); // Agregar a la lista de seleccionados
+                                seleccionados.add(item);
                             }
                         } else {
-                            seleccionados.remove(item); // Eliminar de la lista si se deselecciona
+                            seleccionados.remove(item);
                         }
                     });
 
-                    // Crear las etiquetas con la información del videojuego
                     Label nombre = new Label("Nombre: " + item.getNombre());
                     Label precio = new Label("Precio: $" + String.format("%.2f", item.getPrecio()));
                     Label descripcion = new Label("Descripción: " + item.getDescripcion());
                     Label desarrollador = new Label("Desarrollador: " + item.getDesarrollador().getNombre());
-                    descripcion.setWrapText(true);  // Ajuste de texto para que se vea correctamente
-
-                    // Agregar las etiquetas a un VBox
+                    descripcion.setWrapText(true);
                     VBox infoContainer = new VBox(nombre, precio, descripcion, desarrollador);
                     infoContainer.setSpacing(5);
-                    infoContainer.setMaxWidth(Double.MAX_VALUE);  // Hacer que el VBox ocupe todo el ancho disponible
+                    infoContainer.setMaxWidth(Double.MAX_VALUE);
 
-                    // Crear el ImageView para mostrar la imagen
+
                     ImageView imagen = new ImageView();
                     if (item.getRutaImagen() != null && !item.getRutaImagen().isEmpty()) {
-                        imagen.setImage(new Image(item.getRutaImagen()));  // Establecer la imagen
-                        imagen.setFitHeight(100);  // Ajustar el tamaño de la imagen
-                        imagen.setPreserveRatio(true);  // Mantener las proporciones
+                        imagen.setImage(new Image(item.getRutaImagen()));
+                        imagen.setFitHeight(100);
+                        imagen.setPreserveRatio(true);
                     }
-
-                    // Crear un Region vacío para empujar la imagen a la derecha
                     Region espacioVacío = new Region();
-                    HBox.setHgrow(espacioVacío, Priority.ALWAYS);  // Hace que el espacio vacío ocupe todo el espacio disponible
-
-                    // Añadir el CheckBox, el contenedor de la información y la imagen al contenedor principal
+                    HBox.setHgrow(espacioVacío, Priority.ALWAYS);
                     container.getChildren().addAll(checkBox, infoContainer, espacioVacío, imagen);
-
-                    // Configurar el gráfico de la celda
                     setGraphic(container);
                 }
             }
         });
-
-        // Asignar la lista de videojuegos a la ListView
         videojuegos.setItems(this.games);
     }
 

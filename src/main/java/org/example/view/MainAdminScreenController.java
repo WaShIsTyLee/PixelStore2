@@ -14,15 +14,15 @@ import java.util.ResourceBundle;
 
 public class MainAdminScreenController extends Controller implements Initializable {
     @FXML
-    StackPane stackPaneTienda;
+    private StackPane stackPaneTienda;
     @FXML
-    StackPane stackPaneJuego;
+    private StackPane stackPaneJuego;
     @FXML
-    StackPane stackPaneDesarrollador;
+    private StackPane stackPaneDesarrollador;
     @FXML
-    ImageView salir;
+    private ImageView salir;
     @FXML
-    Text texto;
+    private Text texto;
 
 
 

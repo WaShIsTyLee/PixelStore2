@@ -18,12 +18,12 @@ import java.util.ResourceBundle;
 public class AddShopModalController extends Controller implements Initializable {
 
     @FXML
-    Button butonAñadir;
+    private Button butonAñadir;
     @FXML
-    TextField telefono;
+    private TextField telefono;
 
     @FXML
-    TextField direccion;
+    private TextField direccion;
 
 
     @Override
@@ -47,18 +47,12 @@ public class AddShopModalController extends Controller implements Initializable 
     public boolean comprobarDatos() {
         TiendaDAO tdao = new TiendaDAO();
         ArrayList<Tienda> tiendas = tdao.findAll();
-
-        // Validar campos vacíos
         if (direccion.getText().isEmpty() || telefono.getText().isEmpty()) {
             AppController.showCamposIncompletos();
             return false;
         }
-
-        // Obtener los valores ingresados
         String nuevaDireccion = direccion.getText();
         String nuevoTelefono = telefono.getText();
-
-        // Verificar si ya existe la dirección o el teléfono
         for (Tienda tienda : tiendas) {
             if (tienda.getUbicacion().equalsIgnoreCase(nuevaDireccion) || tienda.getTelefono().equals(nuevoTelefono)) {
                 AppController.showTiendaYaExistente();
@@ -66,7 +60,7 @@ public class AddShopModalController extends Controller implements Initializable 
             }
         }
 
-        return true; // Los datos son válidos
+        return true;
     }
 
 
@@ -75,10 +69,10 @@ public class AddShopModalController extends Controller implements Initializable 
         TiendaDAOSqlite tdao2 = new TiendaDAOSqlite();
         Tienda tienda = recogerDatos();
        
-        if (tienda != null) { // Verificar que los datos son válidos
+        if (tienda != null) {
             tdao.insert(tienda);
             tdao2.insert(tienda);
-            // Insertar la nueva tienda
+
         } else {
             AppController.showDatosIncorrectos();
             System.out.println("Error: Dirección o teléfono ya existen o los datos son inválidos.");

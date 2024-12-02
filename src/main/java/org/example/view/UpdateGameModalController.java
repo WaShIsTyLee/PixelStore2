@@ -51,26 +51,19 @@ public class UpdateGameModalController extends Controller implements Initializab
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // No es necesario código inicial adicional
     }
 
     @Override
     public void onOpen(Object input) throws IOException {
         videojuegoCapturado = (Videojuego) input;
-
-        // Configurar campos con los datos del videojuego
         tfNombre.setText(videojuegoCapturado.getNombre());
         tfDescripcion.setText(videojuegoCapturado.getDescripcion());
         Float precio = videojuegoCapturado.getPrecio();
         tfPrecio.setText(precio.toString());
-
-        // Configurar la imagen
         if (videojuegoCapturado.getRutaImagen() != null) {
             Image image = new Image(videojuegoCapturado.getRutaImagen());
             imagenGame.setImage(image);
         }
-
-        // Poblar el ComboBox con los desarrolladores
         DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
         ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.findAll();
         ArrayList<String> nombresDesarroladores = new ArrayList<>();
@@ -95,8 +88,7 @@ public class UpdateGameModalController extends Controller implements Initializab
                 }
             }
         }
-        return true; // Nombre válido (es el mismo que tenía o no existe en la base)
-    }
+        return true; }
 
     public boolean validarCampos() {
         if (cmbDesarrolador.getValue() == null || tfNombre.getText().isEmpty() ||
@@ -116,18 +108,18 @@ public class UpdateGameModalController extends Controller implements Initializab
     }
 
     public boolean comprobacionCampos() {
-        // Combina ambas validaciones
+
         return validarNombreParaUpdate() && validarCampos();
     }
 
     public Videojuego recogerDatos() {
         if (!comprobacionCampos()) {
             AppController.showVerificaCampos();
-            System.out.println("Error: No se puede procesar debido a validaciones fallidas.");
+
             return null;
         }
 
-        // Recoge los datos para la actualización
+
         Videojuego videojuego = new Videojuego();
         videojuego.setNombre(tfNombre.getText());
         videojuego.setDescripcion(tfDescripcion.getText());
@@ -135,7 +127,6 @@ public class UpdateGameModalController extends Controller implements Initializab
         videojuego.setDesarrollador(videojuegoCapturado.getDesarrollador());
         videojuego.setId_videojuego(videojuegoCapturado.getId_videojuego());
 
-        // Usar la ruta de la nueva imagen si fue seleccionada; de lo contrario, mantener la original
         if (imageUrl != null) {
             videojuego.setRutaImagen(imageUrl);
         } else {
@@ -146,21 +137,16 @@ public class UpdateGameModalController extends Controller implements Initializab
 
     @FXML
     public void modificarJuego2() throws IOException {
-        // Validar y recoger los datos
         Videojuego videojuegoActualizado = recogerDatos();
 
         if (videojuegoActualizado == null) {
             AppController.showVerificaCampos();
             return;
         }
-
-        // Realizar el update en la base de datos
         VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
         VideojuegoDAOSqlite videojuegoDAOSqlite = new VideojuegoDAOSqlite();
         videojuegoDAO.update(videojuegoActualizado);
         videojuegoDAOSqlite.update(videojuegoActualizado);
-
-        // Cerrar la ventana actual y volver a la lista de videojuegos
         Stage currentStage = (Stage) btnGuardar.getScene().getWindow();
         currentStage.close();
         App.currentController.changeScene(Scenes.GAMES, null);
@@ -187,12 +173,8 @@ public class UpdateGameModalController extends Controller implements Initializab
         File select = file.showOpenDialog(cambiarImagen.getScene().getWindow());
         if (select != null) {
             view = select;
-
-            // Obtener la URL de la imagen seleccionada
-            imageUrl = select.getAbsolutePath().toString(); // Cambiar a URI para que funcione en JavaFX
+            imageUrl = select.getAbsolutePath().toString();
             System.out.println("URL de la imagen seleccionada: " + imageUrl);
-
-            // Cargar la imagen en el ImageView
             Image image = new Image(imageUrl);
             imagenGame.setImage(image);
         }

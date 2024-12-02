@@ -12,7 +12,7 @@ import org.example.App;
 public class LogRegisterController extends Controller implements Initializable {
 
     @FXML
-    Button button;
+    private Button button;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

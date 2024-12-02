@@ -36,12 +36,11 @@ public class DevMenuController extends Controller implements Initializable {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Crear un diseño encuadrado para cada elemento
                     VBox container = new VBox();
                     container.setSpacing(5);
                     container.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: lightgray;");
 
-                    //Label id = new Label("Codigo: " + item.getId_desarrollador());
+
                     Label Nombre = new Label("Nombre: " + item.getNombre());
                     Label pais = new Label("Pais: " + item.getPais());
                     pais.setWrapText(true);

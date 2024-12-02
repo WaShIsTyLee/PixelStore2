@@ -41,12 +41,9 @@ public class TiendaUserController extends Controller implements Initializable {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Crear un diseño encuadrado para cada elemento
                     VBox container = new VBox();
                     container.setSpacing(5);
                     container.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: lightgray;");
-
-                    //Label id = new Label("Codigo: " + item.getId_desarrollador());
                     Label ubicación = new Label("Ubicación: " + item.getUbicacion());
                     Label teléfono = new Label("Teléfono: " + item.getTelefono());
 
@@ -57,13 +54,11 @@ public class TiendaUserController extends Controller implements Initializable {
                     for (int i = 0; i < videojuegos.size(); i++) {
                         juegosConcatenados.append(videojuegos.get(i).getNombre());
                         if (i < videojuegos.size() - 1) {
-                            juegosConcatenados.append(", "); // Agregar coma si no es el último juego
+                            juegosConcatenados.append(", ");
                         }
                     }
 
                     Label juegosLabel = new Label(juegosConcatenados.toString());
-
-                    // Agregar elementos al contenedor principal
                     container.getChildren().addAll(ubicación, teléfono, juegosLabel);
                     setGraphic(container);
                 }

@@ -25,11 +25,11 @@ public class AddDevModalController extends Controller implements Initializable {
 
 
     @FXML
-    TextField nombreDesa;
+    private TextField nombreDesa;
     @FXML
-    TextField pais;
+    private TextField pais;
     @FXML
-    Button save;
+    private Button save;
 
     private Desarrollador developer =null;
 
@@ -82,7 +82,7 @@ public class AddDevModalController extends Controller implements Initializable {
                 DesarrolladorDAO desarr = new DesarrolladorDAO();
                 ArrayList<Desarrollador> desarrolladors = desarr.findAll();
                 for(Desarrollador d : desarrolladors){
-                    if (d.getNombre().equals(desarrollador)){
+                    if (d.getNombre().equalsIgnoreCase(desarrollador)){
                         result = true;
                         break;
                     }
@@ -107,8 +107,6 @@ public class AddDevModalController extends Controller implements Initializable {
         DesarrolladorDAO saveDesa = new DesarrolladorDAO();
         DesarrolladorDAOSqlite saveDesaSql = new DesarrolladorDAOSqlite();
         if (newDesarrollador == null){
-
-            //faltan poner alertas
             AppController.showAñadirDesarrollador();
         }else {
             newDesarrollador =insertar();

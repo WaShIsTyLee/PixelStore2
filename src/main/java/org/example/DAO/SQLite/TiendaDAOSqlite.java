@@ -17,12 +17,12 @@ public class TiendaDAOSqlite {
 
 
     public void eliminarJuegosDeTienda(Tienda tienda, ArrayList<Videojuego> videojuegosAEliminar) {
-        if (tienda != null && tienda.getId_tienda() > 0) {  // Verificar que la tienda sea válida
+        if (tienda != null && tienda.getId_tienda() > 0) {
             for (Videojuego videojuego : videojuegosAEliminar) {
                 try (PreparedStatement pst = ConnectionSQLite.getConnection().prepareStatement(DELETEFROMGAMESHOPS)) {
-                    pst.setInt(1, videojuego.getId_videojuego());  // Establecer el ID del videojuego
-                    pst.setInt(2, tienda.getId_tienda());  // Establecer el ID de la tienda
-                    pst.executeUpdate();  // Ejecutar la eliminación
+                    pst.setInt(1, videojuego.getId_videojuego());
+                    pst.setInt(2, tienda.getId_tienda());
+                    pst.executeUpdate();
                 } catch (SQLException e) {
                     System.err.println("Error al eliminar el videojuego con ID: " + videojuego.getId_videojuego());
                     e.printStackTrace();
@@ -33,13 +33,13 @@ public class TiendaDAOSqlite {
         }
     }
     public Tienda insertarTiendaVideojuego(Tienda tienda) {
-        if (tienda != null && tienda.getId_tienda() > 0) {  // Solo realizamos la inserción si la tienda tiene un ID válido
+        if (tienda != null && tienda.getId_tienda() > 0) {
             try (PreparedStatement pst = ConnectionSQLite.getConnection().prepareStatement(ADDTOGAMESSHOPS)) {
-                ArrayList<Videojuego> videojuegos = tienda.getVideojuegos();  // Obtenemos la lista de videojuegos de la tienda
+                ArrayList<Videojuego> videojuegos = tienda.getVideojuegos();
                 for (Videojuego videojuego : videojuegos) {
-                    pst.setInt(1, videojuego.getId_videojuego());  // Establecemos el ID del videojuego
-                    pst.setInt(2, tienda.getId_tienda());  // Establecemos el ID de la tienda
-                    pst.executeUpdate();  // Ejecutamos la inserción
+                    pst.setInt(1, videojuego.getId_videojuego());
+                    pst.setInt(2, tienda.getId_tienda());
+                    pst.executeUpdate();
                 }
             } catch (SQLException e) {
                 System.out.println("Error al insertar tienda y videojuegos: " + e.getMessage());
@@ -47,12 +47,12 @@ public class TiendaDAOSqlite {
         } else {
             System.out.println("Tienda inválida o sin ID.");
         }
-        return tienda;  // Devolvemos la tienda
+        return tienda;
     }
 
-    // Método para insertar tienda
+
     public Tienda insert(Tienda tienda) {
-        if (tienda != null && tienda.getId_tienda() == 0) { // Aseguramos que la tienda no tenga ID antes de insertar
+        if (tienda != null && tienda.getId_tienda() == 0) {
             try (PreparedStatement pst = ConnectionSQLite.getConnection().prepareStatement(INSERT)) {
                 pst.setString(1, tienda.getUbicacion());
                 pst.setString(2, tienda.getTelefono());
@@ -64,9 +64,9 @@ public class TiendaDAOSqlite {
         return tienda;
     }
 
-    // Método para actualizar tienda
+
     public void update(Tienda tienda) {
-        if (tienda != null && tienda.getId_tienda() > 0) { // Solo actualizamos si la tienda tiene un ID válido
+        if (tienda != null && tienda.getId_tienda() > 0) {
             try (PreparedStatement pst = ConnectionSQLite.getConnection().prepareStatement(UPDATE)) {
                 pst.setString(1, tienda.getUbicacion());
                 pst.setString(2, tienda.getTelefono());
@@ -84,9 +84,9 @@ public class TiendaDAOSqlite {
         }
     }
 
-    // Método para eliminar tienda
+
     public Tienda delete(Tienda tienda) {
-        if (tienda != null && tienda.getId_tienda() > 0) { // Solo eliminamos si la tienda tiene un ID válido
+        if (tienda != null && tienda.getId_tienda() > 0) {
             try (PreparedStatement pst = ConnectionSQLite.getConnection().prepareStatement(DELETE)) {
                 pst.setInt(1, tienda.getId_tienda());
                 pst.executeUpdate();
